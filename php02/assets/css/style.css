@@ -1,0 +1,127 @@
+
+/* ON PEUT CREER DU CSS SPECIFIQUE A CHAQUE PAGE */
+.accueil h1 {
+    color:orange;
+}
+
+.contact h1 {
+    color:lightgreen;
+}
+
+/* RESET CSS */
+html, body {
+    font-size: 14px;
+    width: 100%;
+    height:100%; /* bug en js avec certains navigateurs */
+    padding:0;
+    margin:0;
+}
+* {
+    box-sizing: border-box;
+    /* border: 1px dashed #000000;*/
+    width:100%;
+}
+header {
+    padding:2rem;
+}
+footer {
+    text-align:center;
+    padding:5rem;
+}
+h1, h2, h3 {
+    text-align: center;
+    margin:0;
+    padding:2rem;
+}
+nav {
+    text-align: center;
+}
+nav a {
+    padding: 1rem;
+}
+a {
+    text-decoration: none;
+    color:#333333;
+}
+section {
+    padding-bottom:2rem;
+}
+img {
+    height:25vh;
+    object-fit:cover;
+}
+.photofix {
+    background: url('../img/photo.jpg') no-repeat fixed center center;
+    background-size: cover;
+    min-height:50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-shadow: 2px 4px 8px #000000;
+    text-align: center;
+}
+.photofix p {
+    max-width:540px;
+    padding:1rem;
+    font-size:1.5rem;
+}
+.photofix h2 {
+    font-size:2rem;
+}
+
+.s3 {
+    background-color: #eeeeee;
+}
+/* FLEXBOX */
+.ligne {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width:1366px;
+    margin: 0 auto;
+}
+/* > NE SELECTIONNE QUE LES BALISES ENFANTS DIRECTS */
+.ligne > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.ligne p {
+    padding:0.75rem;
+    margin:0;
+}
+
+
+
+/* LES REGLES SANS MEDIA QUERIES SONT POUR LES PLUS PETITES TAILLE D'ECRAN */
+@media screen and (min-width: 630px)
+{
+    /* JE SELECTIONNE SEULEMENT LES BALISES QUI ONT LES 2 CLASSES ENSEMBLE */
+    .ligne.x2col > * {
+        margin:0.25rem;
+        width: calc(100% / 2 - 0.5rem); /* IL FAUT SOUSTRAIRE 2x margin */
+        background-color: #cccccc;
+    }
+    .ligne.x3col > * {
+        margin:0.25rem;
+        width: calc(100% / 2 - 0.5rem); /* IL FAUT SOUSTRAIRE 2x margin */
+    }
+}
+@media screen and (min-width: 660px)
+{
+    .ligne.x3col > *{
+        margin:0.25rem;
+        width: calc(100% / 3 - 0.5rem); /* IL FAUT SOUSTRAIRE 2x margin */
+        background-color: #aaaaaa;
+    }
+}
+
+
+/* FORMULAIRES */
+
+form {
+    max-width:600px;
+    padding:1rem;
+}
