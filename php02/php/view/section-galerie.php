@@ -3,21 +3,26 @@
     <h2>GALERIE</h2>
     <style>
 .lightbox {
-    display:none;
-    transition: all 2s linear;
+    transition: all 1s ease;
     opacity:0;
+    position:fixed;
+    left:0;
+    bottom:-100%;
+    background-color: rgba(0,0,0,0.8);
+    display:block;
+    padding:4rem;
+    width:100%;
+    height:100%;
 }
 .lightbox.actif {
     opacity:1;
-    display:block;
-    position:fixed;
-    top:0;
-    left:0;
-    padding:2rem;
-    width:100%;
-    height:100%;
-    background-color: rgba(0,0,0,0.8);
+    z-index:10;
+    bottom:0%;
 }        
+img.grand {
+    object-fit: contain;
+    height:60vh;
+}
     </style>
     <div class="ligne">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam omnis delectus consequatur aut veritatis molestiae dolore, rerum non mollitia explicabo dolorum consequuntur unde optio, deserunt corrupti repellendus eos odit!</p>
