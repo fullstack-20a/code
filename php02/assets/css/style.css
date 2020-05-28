@@ -84,8 +84,6 @@ img {
 }
 /* > NE SELECTIONNE QUE LES BALISES ENFANTS DIRECTS */
 .ligne > * {
-    display: flex;
-    flex-direction: column;
 }
 
 .ligne p {
@@ -124,4 +122,16 @@ img {
 form {
     max-width:600px;
     padding:1rem;
+}
+
+form input, form textarea, form button {
+    padding:0.5rem;
+    margin:0.5rem;
+}
+/*  PAGE GALERIE */
+img.grand {
+    min-height:50vh;
+}
+.mini img {
+    cursor: pointer;
 }
