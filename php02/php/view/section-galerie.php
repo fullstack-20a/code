@@ -3,7 +3,7 @@
     <h2>GALERIE</h2>
     <style>
 .lightbox {
-    transition: all 1s ease;
+    transition: all 0.8s ease;
     opacity:0;
     position:fixed;
     left:0;
@@ -33,9 +33,11 @@ img.grand {
         </div>
         <div class="lightbox">
             <img class="grand" src="assets/img/photo1.jpg" alt="photo">
-            <button>précédent</button>  
-            <button class="fermer">fermer la lightbox</button>  
-            <button>suivant</button>  
+            <div class="ligne x3col">
+                <button>précédent</button>  
+                <button class="fermer">fermer la lightbox</button>  
+                <button>suivant</button>  
+            </div>
         </div>
     </div>
     <div class="ligne">
