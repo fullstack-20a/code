@@ -347,3 +347,6 @@ JS ET PHP FONT PARTIE DE LA MEME FAMILLE (LANGAGE C, C++, JAVA, etc...)
     https://github.com/fullstack-20a/code
 
 
+    PAUSE JUSQU'A 15H45...
+
+    

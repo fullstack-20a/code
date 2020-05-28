@@ -9,7 +9,7 @@
 </head>
 <body class="<?php echo $classBody ?? "" ?>">
     <header>
-        <h1><?php echo $h1 ?? "TITRE PAR DEFAUT" ?></h1>
+        <h1><a href=""><?php echo $h1 ?? "TITRE PAR DEFAUT" ?></a></h1>
         <nav>
             <a href="index.php">accueil</a>
             <a href="galerie.php">galerie</a>

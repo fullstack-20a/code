@@ -1,13 +1,3 @@
-
-/* ON PEUT CREER DU CSS SPECIFIQUE A CHAQUE PAGE */
-.accueil h1 {
-    color:orange;
-}
-
-.contact h1 {
-    color:lightgreen;
-}
-
 /* RESET CSS */
 html, body {
     font-size: 14px;
@@ -38,6 +28,9 @@ nav {
 }
 nav a {
     padding: 1rem;
+}
+nav a:hover {
+    border-bottom: 1px solid #666666;
 }
 a {
     text-decoration: none;
@@ -135,3 +128,14 @@ img.grand {
 .mini img {
     cursor: pointer;
 }
+
+/* ON PEUT CREER DU CSS SPECIFIQUE A CHAQUE PAGE */
+.accueil h1 a {
+    color:orange;
+}
+
+.contact h1 a {
+    color:lightgreen;
+}
+
+
