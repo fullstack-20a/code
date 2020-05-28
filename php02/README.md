@@ -279,3 +279,12 @@ JS ET PHP FONT PARTIE DE LA MEME FAMILLE (LANGAGE C, C++, JAVA, etc...)
             ├── section-contact.php
             ├── section-galerie.php
             └── section-index.php
+
+
+## COMPTE GITHUB AVEC REPOSITORY POUR LE CODE
+
+    COPIE DU DOSSIER wf3/ SUR GITHUB
+
+    https://github.com/fullstack-20a/code
+
+
