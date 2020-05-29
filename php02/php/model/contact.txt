@@ -1,0 +1,20 @@
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+    [email] => test1228@mail.me
+    [nom] => nom1228
+    [sujet] => sujet1228
+    [message] => message1228
+)
+Array

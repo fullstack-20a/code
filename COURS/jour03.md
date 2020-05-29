@@ -169,3 +169,73 @@ echo $texte;
 ```
 
     PAUSE JUSQU'A 11H...
+
+
+## FORMULAIRE EN GET
+
+    LIMITE EN TAILLE (QUELQUES Ko..)
+    NAVIGATEUR QUI GARDE HISTORIQUE (ATTENTIONS AUX CYBERCAFES...)
+
+    HISTORIQUEMENT: 
+    ON DOIT UTILISER GET SI ON FAIT UNE REQUETE EN LECTURE
+    (EXEMPLE: FORMULAIRE DE RECHERCHE DEVRAIT ETRE EN METHODE GET...)
+
+
+    http://localhost/wf3/php02/contact.php?email=test119%40mail.me&nom=nom1119&sujet=sujet1119&message=message11
+
+
+
+    <input type="email" name="email" required placeholder="votre email">
+    ...
+    <input type="text" name="nom" required placeholder="votre nom">
+    ...
+    <input type="text" name="sujet" required placeholder="votre sujet">
+    ...
+    <textarea name="message" required cols="30" rows="8"></textarea>
+
+
+
+    http://localhost/wf3/php02/contact.php  => DESTINATAIRE DES INFOS
+
+    PARTIE GET
+    ?
+
+    email=test119%40mail.me
+    &
+    nom=nom1119
+    &
+    sujet=sujet1119
+    &
+    message=message11
+
+
+## FORMULAIRE EN POST
+
+    HISTORIQUEMENT (STANDARD):
+    SI UN FORMULAIRE SERT A CREER DU CONTENU SUR LE SERVEUR
+    => ON DEVRAIT L'ENVOYER EN POST
+
+    EN PRATIQUE: ON PEUT MELANGER CA MARCHE QUAND MEME
+    ON PEUT UTILISER GET OU POST POUR FAIRE DE LA LECTURE ET ECRITURE
+
+    EN POST:
+    * TAILLE DE MESSAGE => PLUSIEURS Go
+        => PERMET D'UPLOADER DES GROS FICHIERS
+
+
+## DESTINATAIRE DU FORMULAIRE
+
+    L'ATTRIBUT action PERMET DE DONNER L'URL DE LA PAGE QUI VA RECEVOIR LES INFOS
+
+
+        <form method="POST" action="destinataire.php">
+    => ENVOYER VERS LA PAGE destinataire.php
+
+        <form method="POST" action="">
+    => ASTUCE
+    => SI ON NE MET RIEN
+    => LE DESTINATAIRE EST LA PAGE ACTUELLE DU FORMULAIRE
+
+
+    PAUSE DEJEUNER JUSQU'A 13H50...
+    
