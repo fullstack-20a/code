@@ -238,4 +238,41 @@ echo $texte;
 
 
     PAUSE DEJEUNER JUSQU'A 13H50...
+
+## MISE EN LIGNE DU SITE SUR IONOS
+
+    UTILISER WP FILE MANAGER POUR GLISSER LE DOSSIER php02/
+
+    https://lh.entrequotes.com/php02/
+
+## EXERCICE POUR CET APRES-MIDI
+
+    COMPLETER VOTRE SITE VITRINE
+    accueil
+    galerie
+    contact
+
+    AVOIR UN FORMULAIRE DE CONTACT QUI FONCTIONNE
+            stocke les infos dans un fichier
+            envoi de mail
+
+    METTRE LE SITE EN LIGNE
+    ET VALIDER QU'IL FONCTIONNE CORRECTEMENT
+        (envoi de mail qui pourra fonctionner...)
+
+    ET TESTER AVEC DES OUTILS COMME web.dev
+    QUEL EST LE SCORE DE VOTRE SITE...
+
+    BONUS:
+    AJOUTER UN FORMULAIRE D'INSCRIPTION A UNE NEWSLETTER SUR LA PAGE D'ACCUEIL
+    AJOUTER DES PAGES SUPPLEMENTAIRES...    
+
+
+    PAUSE JUSQU'A 15H55...
+
+
+## SWIPED: POUR GERER LE SWIPE SUR MOBILE
+
+    https://github.com/mishk0/swiped
+
     

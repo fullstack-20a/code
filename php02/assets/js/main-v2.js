@@ -1,13 +1,14 @@
 // ON UTILISE UNE VARIABLE POUR MEMORISER QUE QUELLE MINIATURE ON A CLIQUE
 // ON UTILISE UNE VARIABLE POUR MEMORISER QUE QUELLE MINIATURE ON A CLIQUE
 var miniActuelle = null;
-var imageGrand = document.querySelector('img.grand');
+var indiceActuel = 0;
 
 var listeImg = document.querySelectorAll('.mini img');
 for(var i=0; i<listeImg.length; i++)
 {
     var imageActuelle = listeImg[i];
     imageActuelle.addEventListener('click', function(event){
+        var imageGrand = document.querySelector('img.grand');
         imageGrand.src = event.target.src;
         var lightbox = document.querySelector('.lightbox');
         lightbox.classList.add('actif');
@@ -16,12 +17,7 @@ for(var i=0; i<listeImg.length; i++)
         // SUR LAQUELLE ON A CLIQUE
         console.log(event.target);
         miniActuelle = event.target;
-
-        // SI ON VEUT DEFILER AUTOMATIQUEMENT
-        setInterval(function(){
-            // ON SIMULE UN CLICK SUR LE BOUTON
-            boutonSuivant.click();
-        }, 2000);
+        indiceActuel = Array.from(listeImg).indexOf(miniActuelle);
     });
 }
 var boutonFermer = document.querySelector('button.fermer');
@@ -40,16 +36,21 @@ if (boutonPrecedent != null)
     boutonPrecedent.addEventListener('click', function(event){
         // DEBUG
         console.log('PRECEDENT');
-        // ON VA NAVIGUER DANS LE DOM
-        var miniPrecedente = miniActuelle.previousElementSibling;
-        console.log(miniPrecedente);
-        if (miniPrecedente == null)
+        // SI ON UTILISE LES INDICES 
+        var indicePrecedent = indiceActuel -1;
+        // ON DOIT GERER LE CAS DU PREMIER
+        // SI ON EST DEJA SUR LE PREMIER ALORS ON PASSE AU DERNIER
+        if (indiceActuel == 0)
         {
-            miniPrecedente = listeImg[listeImg.length -1];
+            indicePrecedent = listeImg.length -1; // DERNIER INDICE
         }
-        imageGrand.src = miniPrecedente.src;
-
-        miniActuelle = miniPrecedente;
+        var imagePrecedente = listeImg[indicePrecedent];
+        console.log(imagePrecedente);
+        // on change l'image
+        var imageGrand = document.querySelector('img.grand');
+        imageGrand.src = imagePrecedente.src;
+        // on a changé d'image actuelle
+        indiceActuel = indicePrecedent;
     });
 }
 
@@ -58,15 +59,18 @@ if (boutonSuivant != null)
 {
     boutonSuivant.addEventListener('click', function(event){
         // DEBUG
-        // ON VA NAVIGUER DANS LE DOM
-        var miniSuivant = miniActuelle.nextElementSibling;
-        console.log(miniSuivant);
-        if (miniSuivant == null)
-        {
-            miniSuivant = listeImg[0];
-        }
-        imageGrand.src = miniSuivant.src;
+        console.log('SUIVANT');
+        // SI ON UTILISE LES INDICES 
+        // ON DOIT GERER LE CAS DU DERNIER
+        // SI ON EST DEJA SUR LE PREMIER ALORS ON PASSE AU DERNIER
+        var indiceSuivant = (indiceActuel +1) % listeImg.length;
 
-        miniActuelle = miniSuivant;
+        var imageSuivante = listeImg[indiceSuivant];
+        console.log(imageSuivante);
+        // on change l'image
+        var imageGrand = document.querySelector('img.grand');
+        imageGrand.src = imageSuivante.src;
+        // on a changé d'image actuell
+        indiceActuel = indiceSuivant;
     });
 }

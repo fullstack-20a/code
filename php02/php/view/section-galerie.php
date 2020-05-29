@@ -30,22 +30,16 @@ img.grand {
             <img src="assets/img/photo1.jpg" alt="photo">
             <img src="assets/img/photo2.jpg" alt="photo">
             <img src="assets/img/photo3.jpg" alt="photo">
+            <img src="assets/img/photo4.jpg" alt="photo">
+            <img src="assets/img/photo0.jpg" alt="photo">
         </div>
         <div class="lightbox">
             <img class="grand" src="assets/img/photo1.jpg" alt="photo">
             <div class="ligne x3col">
-                <button>précédent</button>  
+                <button class="precedent">précédent</button>  
                 <button class="fermer">fermer la lightbox</button>  
-                <button>suivant</button>  
+                <button class="suivant">suivant</button>  
             </div>
-        </div>
-    </div>
-    <div class="ligne">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam omnis delectus consequatur aut veritatis molestiae dolore, rerum non mollitia explicabo dolorum consequuntur unde optio, deserunt corrupti repellendus eos odit!</p>
-        <div class="ligne x3col mini">
-            <img src="assets/img/photo4.jpg" alt="photo">
-            <img src="assets/img/photo0.jpg" alt="photo">
-            <img src="assets/img/photo3.jpg" alt="photo">
         </div>
     </div>
     <script>
