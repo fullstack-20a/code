@@ -271,8 +271,20 @@ echo $texte;
     PAUSE JUSQU'A 15H55...
 
 
-## SWIPED: POUR GERER LE SWIPE SUR MOBILE
+## POUR GERER LE SWIPE SUR MOBILE
+
+    HAMMER
+    
+    https://hammerjs.github.io/getting-started/
+
+    SWIPED
 
     https://github.com/mishk0/swiped
 
-    
+
+## sessionStorage et localStorage
+
+    POUR STOCKER DES INFORMATIONS DANS LE NAVIGATEUR ET LES PARTAGER ENTRE PLUSIEURS PAGES
+
+https://www.alsacreations.com/article/lire/1402-web-storage-localstorage-sessionstorage.html
+
