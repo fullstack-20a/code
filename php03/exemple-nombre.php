@@ -29,8 +29,9 @@ echo "<h3>prixTTC</h3>";
 $prixHT     = 300;
 $tauxTVA    = 20;
 $prixTTC    = $prixHT + $tauxTVA / 100 * $prixHT;
+echo "(formule1: $prixHT (HT) MAIS $prixTTC euros TTC)";
+
+echo "<h3>prixTTC avec formule factorisée</h3>";
 // FORMULE FACTORISEE
 $prixTTC2   = $prixHT * (1 + $tauxTVA / 100);
-
-echo "(formule1: $prixHT (HT) MAIS $prixTTC euros TTC)";
 echo "(formule2: $prixHT (HT) MAIS $prixTTC2 euros TTC)";

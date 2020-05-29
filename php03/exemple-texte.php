@@ -28,12 +28,12 @@ echo "</pre>";
 
 
 echo "<h3>sans heredoc</h3>";
-//
+// pénible car on doit ajouter plein de \
 $texte0 = "<h3 class=\"titre3\" id=\"montitre\">mon texte 2</h3>";
 echo $texte0;
 
 echo "<h3>sans heredoc avec guillemets simples</h3>";
-//
+// les variables ne sont pas reconnues
 $texte00 = '<h3 class="titre3" id="montitre">$aurevoir</h3>';
 
 echo $texte00;

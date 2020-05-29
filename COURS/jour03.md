@@ -67,6 +67,8 @@
 
     LA PLUPART DU TEMPS, ON VA UTILISER LES ""
 
+```php
+
     $debut      = "Bonjour";
     $fin        = "Comment ça va ?";
     $aurevoir   = "Au revoir";
@@ -96,6 +98,8 @@
 
     // https://developer.mozilla.org/fr/docs/Web/HTML/Element/pre
 
+```
+
     ASTUCE EN PHP:
 
     AVEC LES GUILLEMETS "" ON PEUT CONCATENER DIRECTEMENT DES VARIABLES DEDANS
@@ -113,7 +117,7 @@
 $texte = 
 <<<MABALISE
 mon texte
-MABALISE ;
+MABALISE;
 
 echo $texte;
 
@@ -150,6 +154,8 @@ echo $texte;
 
     12 = 6 * 2 + 0  => MODULO = 0
 
+```php
+
     $nombre1 = 123;
     $reste   = $nombre1 % 10;
 
@@ -160,6 +166,6 @@ echo $texte;
     $prixTTC    = $prixHT + $tauxTVA / 100 * $prixHT;
     $prixTTC    = $prixHT * (1 + $tauxTVA / 100);
 
+```
 
     PAUSE JUSQU'A 11H...
-    
