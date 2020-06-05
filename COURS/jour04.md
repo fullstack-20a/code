@@ -679,21 +679,18 @@ while ($compteur < count($tabOrdonne))
     $nombre1 = 10
     $nombre2 = 2
     $nombre3 = 7
-
     // RESULTAT ATTENDU 2
 
     ET ON TESTERA AVEC 
     $nombre1 = 1
     $nombre2 = 7
     $nombre3 = 19
-
     // RESULTAT ATTENDU 1
 
     ET ON TESTERA AVEC 
     $nombre1 = 12
     $nombre2 = 71
     $nombre3 = 9
-
     // RESULTAT ATTENDU 9
 
 
@@ -760,6 +757,9 @@ while ($compteur < count($tabOrdonne))
     <img src="assets/img/photo1.jpg">
     <img src="assets/img/photo2.jpg">
     <img src="assets/img/photo3.jpg">
+
+    ON POURRA AUSSI UTILISER LA FONCTION glob POUR CONSTRUIRE LE TABLEAU...
+    https://www.php.net/manual/fr/function.glob.php
 
 
 ### EXERCICE 09
