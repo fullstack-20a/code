@@ -575,6 +575,9 @@ while ($compteur < count($tabOrdonne))
     => LA PROGRAMMATION ORIENTE OBJET... (ANNEES 90)
             (ET ON AURA AUSSI PLUS D'OUTILS PUISSANTS...;-p)
 
+
+    https://informationisbeautiful.net/visualizations/million-lines-of-code/
+
 ```php
 
     // CREER SA FONCTION
@@ -600,6 +603,251 @@ while ($compteur < count($tabOrdonne))
 
     PAUSE JUSQU'A 15H50
     ET ENSUITE EXERCICES EN AUTONOMIE SUR LES FONCTIONS
+
+
+
+## EXERCICES
+
+### EXERCICE 01
+
+    CREER UN FICHIER PAR EXERCICE
+    exo01.php
+
+    CREER UNE FONCTION QUI CALCULE LE VOLUME D'UNE PIECE
+    EN PARAMETRE ON FOURNIRA LES 3 DIMENSIONS
+    $longueur
+    $largeur 
+    $hauteur
+
+    ET ON TESTERA AVEC 
+    $longueur = 4
+    $largeur  = 3
+    $hauteur  = 2
+    // RESULTAT ATTENDU: 24m3
+
+
+### EXERCICE 02
+
+    CREER UN FICHIER PAR EXERCICE
+    exo02.php
+    
+    CREER UNE FONCTION QUI CALCULE LA SURFACE DES 4 MURS
+    EN PARAMETRE ON FOURNIRA LES 3 DIMENSIONS
+    $longueur
+    $largeur 
+    $hauteur
+
+    ET ON TESTERA AVEC 
+    $longueur = 4
+    $largeur  = 3
+    $hauteur  = 2
+    // RESULTAT ATTENDU: 28m2
+
+    $mur1   = $longueur * $hauteur
+    $mur2   = $largeur  * $hauteur
+    $mur3   = $longueur * $hauteur
+    $mur4   = $largeur  * $hauteur
+
+
+### EXERCICE 03
+
+    CREER UN FICHIER PAR EXERCICE
+    exo03.php
+    
+    CREER UNE FONCTION QUI CALCULE LE PLUS PETIT ENTRE 2 NOMBRES
+    EN PARAMETRE, ON FOURNIRA LES 2 NOMBRES
+    $nombre1
+    $nombre2
+
+    ET ON TESTERA AVEC 
+    $nombre1 = 10
+    $nombre2 = 20
+    // RESULTAT ATTENDU 10
+
+### EXERCICE 04
+
+    CREER UN FICHIER PAR EXERCICE
+    exo04.php
+    
+    CREER UNE FONCTION QUI CALCULE LE PLUS PETIT ENTRE 3 NOMBRES
+    EN PARAMETRE, ON FOURNIRA LES 3 NOMBRES
+    $nombre1
+    $nombre2
+    $nombre3
+
+    ET ON TESTERA AVEC 
+    $nombre1 = 10
+    $nombre2 = 2
+    $nombre3 = 7
+
+    // RESULTAT ATTENDU 2
+
+### EXERCICE 05
+
+    CREER UN FICHIER PAR EXERCICE
+    exo05.php
+    
+    CREER UNE FONCTION QUI TROUVE LA PLUS PETITE VALEUR DANS UN TABLEAU DE NOMBRES
+    EN PARAMETRE, ON FOURNIRA UN TABLEAU DE NOMBRES
+    $tabNombre
+
+    ET ON TESTERA AVEC 
+    $tabNombre = [ 12, 3, 45, 1, 100, 35 ];
+
+    // RESULTAT ATTENDU 1
+
+
+### EXERCICE 06
+
+    CREER UN FICHIER PAR EXERCICE
+    exo06.php
+    
+    CREER UNE FONCTION QUI CALCULE LA SOMME DES VALEURS DANS UN TABLEAU DE NOMBRES
+    EN PARAMETRE, ON FOURNIRA UN TABLEAU DE NOMBRES
+    $tabNombre
+
+    ET ON TESTERA AVEC 
+    $tabNombre = [ 12, 3, 45, 1, 100, 35 ];
+
+    // RESULTAT ATTENDU 196
+
+### EXERCICE 07
+
+    CREER UN FICHIER PAR EXERCICE
+    exo07.php
+
+    CREER UNE FONCTION QUI RENVOIE 
+    UN TEXTE CONCATENANT LES VALEURS D'UN TABLEAU DE LETTRES
+    EN SEPARANT CHAQUE LETTRE AVEC UNE VIRGULE
+    EN PARAMETRE, ON FOURNIRA UN TABLEAU DE LETTRES
+    $tabLettre
+
+    ET ON TESTERA AVEC 
+    $tabLettre = [ "a", "b", "c", "d" ];
+
+    // RESULTAT ATTENDU "a,b,c,d"
+    // ATTENTION: PAS DE VIRGULE AU DEBUT OU A LA FIN
+
+### EXERCICE 08
+
+    CREER UN FICHIER PAR EXERCICE
+    exo08.php
+
+    CREER UNE FONCTION QUI PREND EN PARAMETRE UN TABLEAU ORDONNE
+    DE CHEMINS D'IMAGE $tabImage
+    ET QUI AFFICHE UNE LISTE D'IMAGES EN HTML
+
+    EXEMPLE:
+    creerGalerie([ "assets/img/photo1.jpg", "assets/img/photo2.jpg", "assets/img/photo2.jpg" ]);
+
+    ET QUI PRODUIRA LE CODE HTML
+
+    <img src="assets/img/photo1.jpg">
+    <img src="assets/img/photo2.jpg">
+    <img src="assets/img/photo3.jpg">
+
+
+### EXERCICE 09
+
+    CREER UN FICHIER PAR EXERCICE
+    exo09.php
+
+    CREER UNE FONCTION QUI PREND EN PARAMETRE UN TABLEAU ASSOCIATIF
+    ET QUI AFFICHE UN MENU EN HTML
+
+    EXEMPLE:
+    creerMenu([ 
+        "accueil" => "index.php", 
+        "galerie" => "galerie.php", 
+        "contact" => "contact.php" 
+        ]);
+
+    ET QUI PRODUIRA LE CODE HTML
+
+    <nav>
+        <a href="index.php">accueil</a>
+        <a href="galerie.php">galerie</a>
+        <a href="contact.php">contact</a>
+    </nav>
+
+
+### EXERCICE 10
+
+    (UN PEU PLUS COMPLIQUE...)
+    CREER UN FICHIER PAR EXERCICE
+    exo10.php
+
+    CREER UN DAMIER
+    CREER UNE FONCTION QUI AFFICHE UN DAMIER CARRE
+
+    EN PARAMETRE ON DONNE LE NOMBRE DE CASES PAR COTE
+    ET ON DOIT AFFICHER UN DAMIER
+
+    EXEMPLE:
+    creerDamier(3);
+
+    XOX
+    OXO
+    XOX
+
+    creerDamier(4);
+
+    XOXO
+    OXOX
+    XOXO
+    OXOX
+
+    creerDamier(5);
+
+    XOXOX
+    OXOXO
+    XOXOX
+    OXOXO
+    XOXOX
+
+
+### EXERCICE 11
+
+    (UN PEU PLUS COMPLIQUE...)
+    CREER UN FICHIER PAR EXERCICE
+    exo11.php
+
+    CREER UN DISTRIBUTEUR DE BILLETS
+    
+    CREER UNE FONCTION QUI PREND EN PARAMETRE UN MONTANT DEMANDE
+    $montantDemande
+    ET QUI RENVERRA UN TABLEAU ASSOCIATIF DE BILLETS
+
+    EXEMPLE:
+    distribuerBillet(345);
+
+    ON OBTIENDRA COMME RESULTAT UN TABLEAU ASSOCIATIF
+
+    $tabResultat =
+    [
+        "500"   => 0,
+        "200"   => 1,
+        "100"   => 1,
+        "50"    => 0,
+        "20"    => 2,
+        "10"    => 0,
+        "5"     => 1,
+    ];
+
+    BONUS:
+    CREER UNE PAGE AVEC UN FORMULAIRE QUI DEMANDE LE MONTANT
+    ET AFFICHER LES BILLETS CORRESPONDANTS...
+
+    LES IMAGES DES BILLETS PEUVENT ETRE TROUVEES SUR INTERNET...
+    https://fr.wikipedia.org/wiki/Billets_de_banque_en_euros
+
+
+
+
+
+
+
+
 
 
 

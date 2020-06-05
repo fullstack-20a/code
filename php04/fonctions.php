@@ -45,10 +45,15 @@ function calculerTTC($prixHT, $tauxTVA)
 // ETAPE2: APPELER LA FONCTION AVEC LES VALEURS DE TEST
 echo "<hr>";
 echo calculerTTC(50, 20);   // TRAVAIL FACILE: UTILISER LA FONCTION
+echo "<hr>";
 
 echo "<h4>EXO CALCULER PRIX TTC</h4>";
-echo calculerTTC(150, 20);
+
+$resultat = calculerTTC(150, 20);
+echo "<h5>VOICI LE RESULTAT $resultat</h5>";
 
 
 
 
+// SIMPLIFICATION
+// ON PEUT NE PAS METTRE LA BALISE FERMANTE PHP
