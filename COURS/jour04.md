@@ -682,6 +682,21 @@ while ($compteur < count($tabOrdonne))
 
     // RESULTAT ATTENDU 2
 
+    ET ON TESTERA AVEC 
+    $nombre1 = 1
+    $nombre2 = 7
+    $nombre3 = 19
+
+    // RESULTAT ATTENDU 1
+
+    ET ON TESTERA AVEC 
+    $nombre1 = 12
+    $nombre2 = 71
+    $nombre3 = 9
+
+    // RESULTAT ATTENDU 9
+
+
 ### EXERCICE 05
 
     CREER UN FICHIER PAR EXERCICE
@@ -818,8 +833,17 @@ while ($compteur < count($tabOrdonne))
     $montantDemande
     ET QUI RENVERRA UN TABLEAU ASSOCIATIF DE BILLETS
 
+    IL Y A DES FONCTIONS PHP POUR ARRONDIR
+    https://www.php.net/manual/fr/function.floor.php
+    https://www.php.net/manual/fr/function.ceil.php
+    https://www.php.net/manual/fr/function.round.php
+
+    ET AUSSI ASTUCE: UTILISER LE MODULO %...
+
+
     EXEMPLE:
     distribuerBillet(345);
+
 
     ON OBTIENDRA COMME RESULTAT UN TABLEAU ASSOCIATIF
 
