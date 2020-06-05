@@ -34,7 +34,7 @@ if (boutonFermer != null)
 }
 
 // AJOUTER UNE INTERACTION SUR LES BOUTONS PRECEDENT ET SUIVANT
-var boutonPrecedent = document.querySelector('button.precedent');
+var boutonPrecedent = document.querySelector('.precedent');
 if (boutonPrecedent != null)
 {
     boutonPrecedent.addEventListener('click', function(event){
@@ -53,7 +53,7 @@ if (boutonPrecedent != null)
     });
 }
 
-var boutonSuivant = document.querySelector('button.suivant');
+var boutonSuivant = document.querySelector('.suivant');
 if (boutonSuivant != null)
 {
     boutonSuivant.addEventListener('click', function(event){
