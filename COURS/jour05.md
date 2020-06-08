@@ -216,6 +216,58 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?430F2596D7047AC807A3ABAEF
     * AFFICHAGE DES ARTICLES (SCENARIO READ)
 
 
+## PDO: Php Data Objects
+
+    POUR SE CONNECTER A UNE DATABASE MySQL, ON UTILISERA PDO
+    (=> PROGRAMMATION ORIENTEE OBJET...)
+    
+```php
+
+// ON VA CODER LA PAGE ADMIN QUI PERMETTRA DE CREER UN NOUVEL ARTICLE
+// $requeteSQL PEUT AVOIR DES TOKENS
+// $tabAssoToken FOURNIRA LES VALEURS DE CES TOKENS
+function envoyerRequeteSQL ($requeteSQL, $tabAssoToken)
+{
+    // POUR CONNECTER PHP A SQL
+    // ON VA DEVOIR PASSER PAR PAS MAL D'ETAPES UN PEU LOURD...
+    // HISTORIQUEMENT IL Y A PLUSIEURS MOYENS POUR SE CONNECTER
+    // => VERSION PREFEREE ACTUELLE AVEC PDO
+    // Php Data Objects
+    // => PROGRAMMATION ORIENTE OBJET
+    // https://www.php.net/manual/fr/book.pdo.php
+    // https://www.php.net/manual/fr/class.pdo.php
+
+    $database   = "blog";       // A CHANGER A CHAQUE PROJET
+
+    $host       = "127.0.0.1";
+    $user       = "root";
+    $password   = "";           // SAUF AVEC MAMP "root" (A VERIFIER...)
+    $port       = "3306";       // MAIS PEUT ETRE AUTRE CHOSE "8889"
+
+    // Data Source Name (DSN)
+    // ATTENTION: IL FAUT PRECISER charset=utf8 (SANS -)
+    $dsn        = "mysql:host=$host;port=$port;dbname=$database;charset=utf8";
+
+    // ON CREE LA CONNEXION ENTRE PHP ET MySQL
+    $dbh        = new PDO($dsn, $user, $password);
+
+    // ENSUITE ON VA AJOUTER LA REQUETE DANS LA CONNEXION
+    // https://www.php.net/manual/fr/pdo.prepare.php
+    // prepare NOUS RENVOIE UN AUTRE OBJET $pdoStatement QUI SERVIRA A EXECUTER LA REQUETE SQL
+    $pdoStatement = $dbh->prepare($requeteSQL);
+
+    // ENFIN ON EXECUTE LA REQUETE SQL
+    $pdoStatement->execute($tabAssoToken);
+
+    $pdoStatement->debugDumpParams();
+
+    // ON DOIT RAJOUTER UN RETURN POUR LE CAS DE LA LECTURE
+    return $pdoStatement;
+
+}
+
+```
+
 
 
 
