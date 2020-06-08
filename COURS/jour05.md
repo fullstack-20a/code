@@ -220,7 +220,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?430F2596D7047AC807A3ABAEF
 
     POUR SE CONNECTER A UNE DATABASE MySQL, ON UTILISERA PDO
     (=> PROGRAMMATION ORIENTEE OBJET...)
-    
+
 ```php
 
 // ON VA CODER LA PAGE ADMIN QUI PERMETTRA DE CREER UN NOUVEL ARTICLE
@@ -268,6 +268,26 @@ function envoyerRequeteSQL ($requeteSQL, $tabAssoToken)
 
 ```
 
+## ETAPES DE TRANSMISSION DES INFOS
 
 
+    FORMULAIRE HTML
+        titre
+        photo
+        description
 
+    => ENVOYE A PHP DANS $_POST
+                            titre
+                            photo
+                            description
+
+    => PHP VA TRANSMETTRE A SQL
+        AVEC LA REQUETE INSERT INTO
+                        + $tabAssoToken = $_POST        (TEMPORAIRE...)
+                                                titre
+                                                photo
+                                                description
+
+    => SQL LE RANGE DANS UNE LIGNE DE LA TABLE SQL article
+
+    
