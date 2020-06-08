@@ -94,5 +94,116 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?430F2596D7047AC807A3ABAEF
 
     PAUSE JUSQU'A 10H50...
 
-    
+## STRUCTURE DES BASES DE DONNEES SQL
+
+    * NIVEAU 1
+    DATABASE (BASE DE DONNEES)
+        => UNE BDD PAR PROJET
+        => DONNER UN NOM POUR DISTINGUER CHAQUE BDD
+        => ET BIEN CHOISIR LE CHARSET utf8mb4_general_ci
+
+    * NIVEAU 2
+    TABLES  => ON PEUT CREER AUTANT DE TABLES SQL QUE NECESSAIRES...
+    PAR EXEMPLE:
+        ON AURA UNE TABLE SQL article POUR STOCKER LES ARTICLES
+        ON POURRA AVOIR UNE TABLE contact POUR STOCKER LES MESSAGES DU FORMULAIRE DE CONTACT
+        ON POURRA AVOIR UNE TABLE user POUR STOCKER LES UTILISATEURS DU SITE
+        ...
+
+        DANS UNE TABLE SQL, 
+        ON VA SEPARER LES INFORMATIONS DANS DES COLONNES DIFFERENTES
+        (TABLEURS... EXCEL...)
+        ET ENSUITE CHAQUE LIGNE VA REGROUPER UN JEU DE DONNEES
+
+        ON AURA TOUJOURS UNE COLONNE 
+        id              INT     INDEX=PRIMARY   A_I (AUTO_INCREMENT)    (FACILITE TECHNIQUE)
+
+        ENSUITE, ON DECIDE DES INFORMATIONS UTILES A STOCKER
+
+        titre           VARCHAR(160)
+        photo           VARCHAR(160)        (ON STOCKE LE CHEMIN VERS LA PHOTO...)
+        description     TEXT
+        ...
+        date
+        auteur
+        categorie
+        resume
+        ...
+
+
+## LANGAGE SQL
+
+    MySQL EST UN PROGRAMME QUI MET EN OEUVRE LE LANGAGE SQL
+    MariaDB
+    PostgreSQL
+    Oracle
+    ...
+
+    SQL
+    Structured
+    Query
+    Language
+
+    PHPMYADMIN CREE LE CODE SQL POUR NOUS... ;-p
+
+    * POUR INSERER UNE LIGNE
+
+    INSERT INTO `article` 
+    (`id`, `titre`, `photo`, `description`) 
+    VALUES 
+    (NULL, 'les gateaux', 'assets/img/photo0.jpg', 'baba au rhum...\r\nla recette ec...');
+
+    ATTENTION: SQL UTILISE DES GUILLEMETS INVERSES... ``
+
+    * ON POURRA UTILISER UN CODE SQL SIMPLIFIE
+    (SI ON NE MET PAS DE CARACTERES BIZARRES...)
+
+```sql
+
+    INSERT INTO article
+    (titre, photo, description) 
+    VALUES 
+    ('titre1202', 'assets/img/photo2.jpg', 'description de 1202');
+
+```
+
+    ON VA PREPARER DES REQUETES SQL
+    QUE PHP VA ENVOYER VERS MySQL
+    => IL FAUDRA INTEGRER DANS NOTRE CODE PHP LA PARTIE SQL...
+
+
+## POUR APPRENDRE SQL EN FRANCAIS
+
+    https://sql.sh/
+
+    INSERT
+    https://sql.sh/cours/insert-into
+
+## CYCLE DE VIE DES INFORMATIONS: CRUD
+
+    CREATE      ON CREE DE L'INFORMATION
+        => INSERT INTO
+    READ        ON VEUT UTILISER L'INFORMATION
+        => SELECT * FROM `article`
+    UPDATE      ON PEUT MODIFIER L'INFORMATION
+        => UPDATE `article` SET `titre` = 'le ciel est bleu et ensoleillé' WHERE `article`.`id` = 2;
+    DELETE      ON PEUT DETRUIRE L'INFORMATION
+        => DELETE FROM `article` WHERE `article`.`id` = 2
+
+    POUR CHAQUE TABLE SQL
+    => IL FAUDRA METTRE EN PLACE UN CRUD...
+
+    => VOTRE VIE DE DEV TOURNE AUTOUR DU CODAGE DE CRUD POUR CHAQUE TABLE SQL...
+    => DEVELOPPER UN BACK-OFFICE...
+
+    DANS UN PROJET WEB SANS CMS
+    * ON DOIT CODER LA PARTIE PUBLIQUE
+    * ET ON DOIT AUSSI CODER LA PARTIE BACK OFFICE
+
+
+    PAUSE DEJEUNER JUSQU'A 13H35
+
+
+
+
 
