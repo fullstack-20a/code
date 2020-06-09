@@ -99,6 +99,8 @@ img {
 
 header {
     background-image: url('../img/photo.jpg'); /* ATTENTION: URL RELATIF AU FICHIER CSS */
+    background-size: cover;
+    background-position: center center;
 }
 
 /* LES REGLES SANS MEDIA QUERIES SONT POUR LES PLUS PETITES TAILLE D'ECRAN */
