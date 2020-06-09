@@ -97,6 +97,10 @@ img {
     height:160px;
 }
 
+header {
+    background-image: url('../img/photo.jpg'); /* ATTENTION: URL RELATIF AU FICHIER CSS */
+}
+
 /* LES REGLES SANS MEDIA QUERIES SONT POUR LES PLUS PETITES TAILLE D'ECRAN */
 @media screen and (min-width: 630px)
 {
