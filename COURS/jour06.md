@@ -189,4 +189,5 @@ $objet->afficherTexte("valeur1", "valeur2");
                     => CREER UNE VARIABLE POUR MEMORISER LES RESULTATS DES OPERATIONS
     * SI ON DOIT CHOISIR ENTRE 2 POSSIBILITES (OU PLUS...)
         => PENSER A UTILISER UNE CONDITION (if...else...)
-        
+
+## PAUSE JUSQU'A 15H50
