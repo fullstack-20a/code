@@ -26,7 +26,7 @@ echo creerGalerie($tableauBillet);
 
         <section>
             <h2>AFFICHAGE DE LA LISTE DES ARTICLES</h2>
-            <div class="listeblog">
+            <div class="listeblog ligne x3col">
 <?php
 
 $tableauArticle = recupererArticles();

@@ -24,7 +24,7 @@
 
 <section>
     <h2>LISTE DES ARTICLES (PHP)</h2>
-    <div class="listeblog">
+    <div class="ligne listeblog x3col">
 <?php
 
 $tableauArticle = recupererArticles();
