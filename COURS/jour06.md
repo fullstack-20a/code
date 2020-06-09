@@ -170,3 +170,7 @@ $objet->afficherTexte("valeur1", "valeur2");
 
 
     PAUSE JUSQU'A 10H55...
+
+
+    PAUSE DEJEUNER JUSQU'A 13H35...
+    
