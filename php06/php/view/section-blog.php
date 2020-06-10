@@ -23,6 +23,18 @@
 -->
 
 <section>
+    <h2>FORMULAIRE INTERMEDIAIRE EN GET</h2>
+    <pre>
+        UN FORMULAIRE PERMET DE TRANSMETTRE DES INFOS 
+        D'UNE PAGE SOURCE VERS UNE PAGE CIBLE        
+    </pre>
+    <form action="article.php" method="GET">
+        <input type="text" name="id" required placeholder="id">
+        <button type="submit">aller sur la page de l'article</button>
+    </form>
+</section>
+
+<section>
     <h2>LISTE DES ARTICLES (PHP)</h2>
     <div class="ligne listeblog x3col">
 <?php

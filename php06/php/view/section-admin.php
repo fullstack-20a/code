@@ -22,6 +22,8 @@ echo creerGalerie($tableauBillet);
 ?>
                 </div>
             </div>
+            <script>
+            </script>
         </section>
 
         <section>

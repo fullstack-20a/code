@@ -72,3 +72,22 @@ if (boutonSuivant != null)
         miniActuelle = miniSuivant;
     });
 }
+
+
+// ON VA AJOUTER SUR CHAQUE BALISE img QUI SERONT DANS LA BALISE .media 
+// UN EVENEMENT SUR LE CLICK
+// QUAND LE VISITEUR VA CLIQUER ALORS ON VA COPIER L'ATTRIBUT src 
+// DANS LE CHAMP INPUT
+var listeImg   = document.querySelectorAll(".media img");
+var inputPhoto = document.querySelector("form input[name=photo]");
+for(var i=0; i < listeImg.length; i++)
+{
+    var imageEncours = listeImg[i];
+    imageEncours.addEventListener('click', function(event){
+        // DEBUG
+        console.log(event.target);
+        // ON VA COPIER L'ATTRIBUT src DE L'IMAGE DANS LE CHAMP INPUT
+        inputPhoto.value = event.target.src;
+    });
+}
+

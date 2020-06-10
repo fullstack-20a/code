@@ -1,5 +1,16 @@
 <?php
 
+// PARAMETRAGE DU SERVEUR WEB 
+// POUR AFFICHER LE PLUS DE MESSAGES D'ERREURS POSSIBLES
+// (RECOMMENDE EN MODE DEV)
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// PARAMETRAGE RECOMMENDE EN MODE PROD
+// error_reporting(0);
+// ini_set('display_errors', 0);
+
+
 // ON VA CODER LA PAGE ADMIN QUI PERMETTRA DE CREER UN NOUVEL ARTICLE
 // $requeteSQL PEUT AVOIR DES TOKENS
 // $tabAssoToken FOURNIRA LES VALEURS DE CES TOKENS
@@ -152,6 +163,7 @@ function creerBlog ($tableauArticle)
         // print_r($tabAsso);
 
         // JE VEUX RECUPERER LA VALEUR QUI EST ASSOCIEE AVEC LA CLE "titre"
+        $id          = $tabAsso["id"];
         $titre       = $tabAsso["titre"];
         $photo       = $tabAsso["photo"];
         $description = $tabAsso["description"];
@@ -159,7 +171,7 @@ function creerBlog ($tableauArticle)
         $resultat = $resultat . 
 <<<CODEHTML
 <article>
-    <h2>$titre</h2>
+    <h2><a href="article.php?id=$id">$titre</a></h2>
     <img src="$photo" alt="photo">
     <p>$description</p>
 </article>
