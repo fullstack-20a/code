@@ -208,12 +208,16 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
 
 ### DELETE
 
+```php
+
     function creerDelete ($nomTable)
     {
         // ... COMPLETER LE CODE ICI...
 
         return $resultat;
     }
+
+```
 
     EXEMPLE:
     SI ON APPELLE LA FONCTION creerDelete ("article");
@@ -230,12 +234,16 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
 
 ### INSERT
 
+```php
+
     function creerInsert ($nomTable, $tabAssoToken)
     {
         // ... COMPLETER LE CODE ICI...
 
         return $resultat;
     }
+
+```
 
     EXEMPLE:
     SI ON APPELLE LA FONCTION 
@@ -260,6 +268,8 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
 
 ### READ
 
+```php
+
     function creerSelect ($nomTable, $colonne)
     {
         // ... COMPLETER LE CODE ICI...
@@ -267,6 +277,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
         return $resultat;
     }
 
+```
 
     SI ON APPELLE LA FONCTION 
     creerSelect ("article", "titre");
@@ -276,7 +287,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     WHERE
     titre = :titre
 
-        SI ON APPELLE LA FONCTION 
+    // SI ON APPELLE LA FONCTION 
     creerSelect ("user", "email");
 
     // ON AURA COMME RESULTAT 
@@ -287,12 +298,16 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
 
 ### UPDATE
 
+```php
+
     function creerUpdate ($nomTable, $tabAssoToken)
     {
         // ... COMPLETER LE CODE ICI...
 
         return $resultat;
     }
+
+```
 
     EXEMPLE:
     // SI ON APPELLE LA FONCTION 
