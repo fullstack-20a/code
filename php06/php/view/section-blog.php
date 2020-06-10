@@ -50,8 +50,9 @@ echo "<h4>IL Y A $nbArticle ARTICLES</h4>";
 
 ?>
 </section>
+
 <script>
-// ICI ON CODE DU JS
+// ICI ON CODE DU JS... MELANGE AVEC DU PHP...
 var nbArticle = <?php echo $nbArticle ?>;    
 </script>
 
