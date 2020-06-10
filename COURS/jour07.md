@@ -149,6 +149,9 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
 
     https://sql.sh/fonctions/agregation/count
 
+    ET COTE PHP, ON POURRA UTILISER fetchColumn POUR RECUPERER LE NOMBRE DIRECTEMENT
+    https://www.php.net/manual/fr/pdostatement.fetchcolumn.php
+
 
 ## FORGER UNE REQUETE GET
 
@@ -183,12 +186,27 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     ET SUR CETTE ON AFFICHERA LES ARTICLES 
     DONT SOIT LE TITRE SOIT LA DESCRIPTION CONTIENNENT LE MOT CLE
 
+    BONUS: SI AUCUN RESULTAT N'EST TROUVE ALORS AFFICHER UN MESSAGE 
+            POUR INFORMER LE VISITEUR
+            "Désolé, aucun contenu ne correspond à vos critères..."
+
+    BONUS2: SI ON NE TROUVE RIEN
+                AFFICHER UN ARTICLE AU HASARD...
+
+            SELECT * FROM article ORDER BY RAND() LIMIT 1
+        
+
+
 
 ## EXERCICES SUR LES FONCTIONS
+
+    PREPARER LE CODE POUR NOUS AIDER SUR LE CRUD...
 
     PROGRAMMATION PAR CLASSE
     CREER UNE CLASSE CodeSQL
     ET AJOUTER DES METHODES STATIC DE CLASSE
+
+### DELETE
 
     function creerDelete ($nomTable)
     {
@@ -209,6 +227,8 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     // ON AURA COMME RESULTAT 
     DELETE FROM user
     WHERE id = :id
+
+### INSERT
 
     function creerInsert ($nomTable, $tabAssoToken)
     {
@@ -238,4 +258,60 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     VALUES
     ( :email, :nom, :message )
 
+### READ
 
+    function creerSelect ($nomTable, $colonne)
+    {
+        // ... COMPLETER LE CODE ICI...
+
+        return $codeSQL;
+    }
+
+
+    SI ON APPELLE LA FONCTION 
+    creerSelect ("article", "titre");
+
+    // ON AURA COMME RESULTAT 
+    SELECT * FROM article
+    WHERE
+    titre = :titre
+
+        SI ON APPELLE LA FONCTION 
+    creerSelect ("user", "email");
+
+    // ON AURA COMME RESULTAT 
+    SELECT * FROM user
+    WHERE
+    email = :email
+
+
+### UPDATE
+
+    function creerUpdate ($nomTable, $tabAssoToken)
+    {
+        // ... COMPLETER LE CODE ICI...
+
+        return $codeSQL;
+    }
+
+    EXEMPLE:
+    // SI ON APPELLE LA FONCTION 
+    creerUpdate ("article", 
+                    [ "titre" => "toto", "photo" => "titi", "description" => "tutu" ]);
+
+    // ON AURA COMME RESULTAT 
+    UPDATE article
+    SET
+    titre = :titre,
+    photo = :photo,
+    description = :description
+
+
+    // SI ON APPELLE LA FONCTION 
+    creerUpdate ("user", 
+                    [ "password" => "toto" ]);
+
+    // ON AURA COMME RESULTAT 
+    UPDATE user
+    SET
+    password = :password

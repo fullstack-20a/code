@@ -35,6 +35,24 @@
 </section>
 
 <section>
+    <h2>NOMBRE D'ARTICLES</h2>
+<?php
+
+$requeteSQL     = "SELECT count(*) FROM article";
+$tabAssoToken   = [];
+$pdoStatement   = envoyerRequeteSQL($requeteSQL, $tabAssoToken);
+$nbArticle      = $pdoStatement->fetchColumn();
+
+echo "IL Y A $nbArticle ARTICLES";
+
+?>
+</section>
+<script>
+// ICI ON CODE DU JS
+var nbArticle = <?php echo $nbArticle ?>;    
+</script>
+
+<section>
     <h2>LISTE DES ARTICLES (PHP)</h2>
     <div class="ligne listeblog x3col">
 <?php

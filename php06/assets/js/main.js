@@ -91,3 +91,6 @@ for(var i=0; i < listeImg.length; i++)
     });
 }
 
+// JE PEUX UTILISER LA VARIABLE CREEE AUPARAVANT
+if (typeof nbArticle !== 'undefined')
+    console.log(nbArticle);
