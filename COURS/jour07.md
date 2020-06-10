@@ -354,7 +354,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     SQL
 
     POUR DEMARRER UN PROJET
-    => VOUS ALLEZ COMMCENCER PAR LISTER LES PAGES DU SITE
+    => VOUS ALLEZ COMMENCER PAR LISTER LES PAGES DU SITE
             accueil     => TEMPLATE ACCUEIL
             blog        => TEMPLATE BLOG
             article POUR CHAQUE ARTICLE
