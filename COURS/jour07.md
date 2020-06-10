@@ -330,3 +330,15 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     UPDATE user
     SET
     password = :password
+
+
+## STATE OF JS
+
+    POUR SUIVRE LES TENDANCES...
+
+    https://2019.stateofjs.com/front-end-frameworks/
+
+    PANNEAU GENERAL DES TENDANCES
+    
+    https://2019.stateofjs.com/overview/
+
