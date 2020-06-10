@@ -57,7 +57,9 @@ echo "</pre>";
 
 
 ?>
-<div class="ligne">
-    <?php echo creerBlog($tabResultat) ?>
-</div>
+
+    <div class="ligne">
+        <?php echo creerBlog($tabResultat) ?>
+    </div>
+
 </section>

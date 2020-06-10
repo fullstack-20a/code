@@ -38,12 +38,15 @@
     <h2>NOMBRE D'ARTICLES</h2>
 <?php
 
+// ON OBTIENDRA LE RESULTAT DANS UN TABLE SQL
+// AVEC UNE SEULE LIGNE ET UNE SEULE COLONNE
 $requeteSQL     = "SELECT count(*) FROM article";
 $tabAssoToken   = [];
 $pdoStatement   = envoyerRequeteSQL($requeteSQL, $tabAssoToken);
+// ASTUCE: ON RECUPERE DIRECTEMENT LA VALEUR DANS LA PREMIERE CASE
 $nbArticle      = $pdoStatement->fetchColumn();
 
-echo "IL Y A $nbArticle ARTICLES";
+echo "<h4>IL Y A $nbArticle ARTICLES</h4>";
 
 ?>
 </section>
