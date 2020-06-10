@@ -258,7 +258,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
 
     SI ON APPELLE LA FONCTION 
     creerInsert ("contact", 
-                    [ "email" => "toto", "nom" => "titi", "message" => "tutu"]);
+                    [ "email" => "toto", "nom" => "titi", "message" => "tutu" ]);
 
     // ON AURA COMME RESULTAT 
     INSERT INTO contact
@@ -321,7 +321,6 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     photo = :photo,
     description = :description
 
-
     // SI ON APPELLE LA FONCTION 
     creerUpdate ("user", 
                     [ "password" => "toto" ]);
@@ -339,6 +338,151 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     https://2019.stateofjs.com/front-end-frameworks/
 
     PANNEAU GENERAL DES TENDANCES
-    
+
     https://2019.stateofjs.com/overview/
 
+
+## RESUME
+
+    * FRONT
+    HTML
+    CSS
+    JS
+
+    * BACK
+    PHP
+    SQL
+
+    POUR DEMARRER UN PROJET
+    => VOUS ALLEZ COMMCENCER PAR LISTER LES PAGES DU SITE
+            accueil     => TEMPLATE ACCUEIL
+            blog        => TEMPLATE BLOG
+            article POUR CHAQUE ARTICLE
+                        => UN SEUL TEMPLATE POUR TOUS LES ARTICLES (COOL)
+            admin       => TEMPLATE ADMIN
+    => ON VA POUVOIR CREER DES SITES AVEC PLEIN DE PAGES
+            MAIS EN UTILISANT DES TEMPLATES
+    => DE LA LISTE DES PAGES 
+        => DETERMINER LE NOMBRE DE TEMPLATES
+        => CAR LES TEMPLATES SONT LA VRAI CHARGE DE TRAVAIL DU DEV
+                (ATTENTION: IL NE FAUT PAS OUBLIER LES TEMPLATES DE LA PARTIE ADMIN...)
+
+    => CREER LES MAQUETTES EN HTML, CSS, JS POUR CHAQUE TEMPLATE
+            * FRONT (VISITEURS)
+            index.html      TEMPLATE ACCUEIL
+            boutique.html   TEMPLATE BOUTIQUE
+            blog.html       TEMPLATE BLOG
+            article.html    TEMPLATE POUR CHAQUE ARTICLE
+            * BACK (AVEC ACCES PROTEGE AVEC LOGIN) (CLIENT)
+            admin.html      TEMPLATE POUR LA PARTIE ADMIN
+
+            IDENTITE VISUELLE ET CHARTE GRAPHIQUE
+            => GENERALEMENT ON A UN HEADER ET UN FOOTER COMMUN ENTRE LES TEMPLATES
+
+            ET ON OBTIENT AUSSI TOUT LE DOSSIER
+                assets
+                    css/
+                    js/
+                    fonts/
+                    img/
+
+    => SOUVENT ON A DU CODE DUPLIQUE POUR LES HEADERS ET FOOTERS...
+
+    => ON VA PASSER EN PHP POUR DECOUPER NOS TEMPLATES ET CENTRALISER LES FICHIERS COMMUNS
+
+        index.html          =>  index.php
+                                    php/view/header.php
+                                    php/view/section-index.php
+                                    php/view/footer.php
+        blog.html           =>  blog.php
+                                    php/view/header.php
+                                    php/view/section-blog.php
+                                    php/view/footer.php
+        article.html        =>  article.php
+                                    php/view/header.php
+                                    php/view/section-article.php
+                                    php/view/footer.php
+        admin.html          =>  admin.php (Single Page Application / JS + AJAX)
+
+
+    => ENSUITE, ON VA SE POSER LA QUESTION DU CONTENU DYNAMIQUE
+        DANS QUELLES TABLES SQL ON VA STOCKER CE CONTENU DYNAMIQUE ?
+
+        UNE PAGE DU SITE = TEMPLATE PHP + CONTENU DANS UNE LIGNE SQL
+
+        POUR UTILISER SQL
+        => ON CREE UNE DATABASE POUR LE PROJET
+        => ET ENSUITE ON DETERMINE LA LISTE DES TABLES SQL NECESSAIRES
+
+        EXEMPLE DU BLOG:
+        TEMPLATE article.php
+            POUR CHAQUE ARTICLE, ON VA AFFICHER
+                un titre
+                une image
+                une description
+
+        => ON VA CREER UNE TABLE article
+                ET ON AURA COMME COLONNES
+                id
+                titre
+                image
+                description
+                ...
+
+        => POUR TESTER, IL FAUT COMMENCER A RAJOUTER DES LIGNES
+        => SOIT PAR PHPMYADMIN (ONGLET INSERER...)
+        => SOIT PAR VOTRE SITE
+            => ON TRAVAILLE SUR LA admin.php POUR RAJOUTER LE FORMULAIRE DE CREATE
+                    header.php
+                    section-admin.php   => ON TRAVAILLE EN FAIT SUR LA SECTION...
+                    footer.php
+                    
+            => DANS LE FORMULAIRE HTML, ON VA UTILISER LE NOM DES COLONNES SQL
+                DANS LES ATTRIBUTS name="" 
+
+            => COMME LE FORMULAIRE HTML ARRIVE DANS UN TABLEAU ASSOCIATIF PHP
+                => ON AURA BESOIN DE RECUPERER CES INFOS DANS DES VARIABLES PHP
+                => ON VA UTILISER LE NOM DES COLONNES 
+                    EXEMPLE:    $titre EN PHP
+            => IL FAUT AJOUTER LE CODE PHP POUR TRAITER CE FORMULAIRE 
+                    ET ENVOYER LES INFOS DANS SQL
+
+    ENSUITE ON PEUT AFFICHER LES LIGNES DE LA TABLE article
+    => READ
+    => DANS LA PAGE ADMIN, SOUS LE FORMULAIRE DE CREATE
+        ON PEUT AFFICHER LA LISTE DES ARTICLES
+
+    => ET ENSUITE, ON PEUT REUTILISER LE MEME CODE POUR LA PAGE blog
+
+    => ET ENSUITE, JE PEUX REUTILISER LE MEME CODE POUR PAGE D'UN SEUL ARTICLE
+
+    => ET ENSUITE, JE PEUX REUTILISER LE MEME CODE POUR LA RECHERCHE
+
+
+## PHP COTE TECHNIQUE
+
+    PROGRAMMATION FONCTIONNELLE
+    => ON VA CREER DES FONCTIONS POUR RANGER NOTRE CODE
+            VARIABLES
+            VALEURS
+            PARAMETRES
+            VALEURS DE RETOUR
+            BOUCLES
+            CONDITIONS
+
+    PREVIEW
+    => LA PROGRAMMATION FONCTIONNELLE N'EST QU'UNE ETAPE
+        CAR ACTUELLEMENT LA TECHNIQUE A EVOLUE EN PROGRAMMATION ORIENTE OBJET
+            CLASSE
+            METHODE STATIQUE DE CLASSE
+            METHODE D'OBJET
+            ...
+
+## PRINT
+
+    DANS LE NAVIGATEUR, ON PEUT IMPRIMER UNE PAGE
+    => ON PEUT AJOUTER DU CSS SPECIALEMENT POUR LE PRINT
+    => MEDIA QUERIES print...
+
+    COTE SERVEUR, PHP EST CAPABLE DE CREER DES FICHIERS PDF...
+    => ON POURRAIT UTILISER PHP POUR PRODUIRE UN FICHIER PDF AVEC LE CONTENU D'UNE PAGE
