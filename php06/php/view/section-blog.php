@@ -44,9 +44,10 @@ $requeteSQL     = "SELECT count(*) FROM article";
 $tabAssoToken   = [];
 $pdoStatement   = envoyerRequeteSQL($requeteSQL, $tabAssoToken);
 // ASTUCE: ON RECUPERE DIRECTEMENT LA VALEUR DANS LA PREMIERE CASE
+// https://www.php.net/manual/fr/pdostatement.fetchcolumn.php
 $nbArticle      = $pdoStatement->fetchColumn();
 
-echo "<h4>IL Y A $nbArticle ARTICLES</h4>";
+echo "<h3>IL Y A $nbArticle ARTICLES</h3>";
 
 ?>
 </section>
