@@ -212,7 +212,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     {
         // ... COMPLETER LE CODE ICI...
 
-        return $codeSQL;
+        return $resultat;
     }
 
     EXEMPLE:
@@ -234,7 +234,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     {
         // ... COMPLETER LE CODE ICI...
 
-        return $codeSQL;
+        return $resultat;
     }
 
     EXEMPLE:
@@ -264,7 +264,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     {
         // ... COMPLETER LE CODE ICI...
 
-        return $codeSQL;
+        return $resultat;
     }
 
 
@@ -291,7 +291,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?27DA72885129CF70E19B0642B
     {
         // ... COMPLETER LE CODE ICI...
 
-        return $codeSQL;
+        return $resultat;
     }
 
     EXEMPLE:
