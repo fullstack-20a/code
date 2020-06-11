@@ -33,7 +33,7 @@
                 <input type="text" name="nom" required placeholder="votre nom">
                 <input type="email" name="email" required placeholder="votre email">
                 <textarea name="message" required placeholder="votre message"></textarea>
-                <button type="submit">inscription</button>
+                <button type="submit">envoyer le message</button>
                 <!-- ASTUCE: UN CHAMP TECHNIQUE POUR RAJOUTER DES INFOS UTILES POUR PHP -->
                 <!-- <input type="hidden" name="codebarre" value="contact"> -->
                 <input type="hidden" name="classeCible" value="Contact">
