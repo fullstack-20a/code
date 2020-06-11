@@ -141,8 +141,9 @@ class Secret
 // PHP: PARANOIA HYPER PARANOIA ;-p
 // => TOUTE INFORMATION QUI VIENT DE L'EXTERIEUR PEUT ETRE DANGEREUSE
 // (ATTAQUE PAR CHEVAL DE TROIE...)
-// <input type="hidden" name="classeCible" value="ApiContact">
-// <input type="hidden" name="methodeCible" value="create">
+// LES INFOS DE LA METHODE A ACTIVER VIENNENT DU HTML
+//      <input type="hidden" name="classeCible" value="ApiContact">
+//      <input type="hidden" name="methodeCible" value="create">
 $classeCible  = Controller::filtrer("classeCible");     // $name = "classeCible"
 $methodeCible = Controller::filtrer("methodeCible");
 
@@ -158,6 +159,7 @@ if (is_callable($codeCible))
     // ON DONNE LE MOYEN DEPUIS L'EXTERIEUR 
     // D'ACTIVER N'IMPORTE QUELLE METHODE
     // SI OUI ALORS ON VA ACTIVER LE CODE DANS LE TEXTE
+    // EXEMPLE: $codeCible = "ApiNewsletter::create";
     $codeCible();
 }
 
