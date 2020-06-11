@@ -33,6 +33,9 @@ class ApiNewsletter
         // TODO: ON DOIT VALIDER QUE LES INFOS SONT CORRECTES
         if (Controller::isOK())
         {
+            // TODO...
+            // Model::insert("newsletter", $tabAssoToken);
+
             // MAINTENANT JE PEUX PREPARER MA REQUETE SQL
             $requeteSQL =
 <<<CODESQL
