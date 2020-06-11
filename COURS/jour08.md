@@ -8,8 +8,8 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?F10D474AC9C06206EDCF77205
 
 ## PLANNING
 
-* PORTEE DE VARIABLES EN PHP
-* FORMULAIRES ET PHP
+    * PORTEE DE VARIABLES EN PHP
+    * FORMULAIRES ET PHP
 
 ## PORTEE DE VARIABLES EN PHP
 
@@ -51,6 +51,8 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?F10D474AC9C06206EDCF77205
     * SOIT ON UTILISE UNE PROPRIETE STATIC DE CLASSE
         (ON N'UTILISE PLUS DE VARIABLE GLOBALE...)
 
+```php
+
     class MaClasse
     {
         // PROPRIETES static
@@ -86,6 +88,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?F10D474AC9C06206EDCF77205
         }
     }
 
+```
 
     PAUSE DEJEUNER JUSQU'A 13H40...
 
@@ -95,4 +98,4 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?F10D474AC9C06206EDCF77205
     * CREER UN FORMULAIRE D'INSCRIPTION A UNE NEWSLETTER
     * CREER UN FORMULAIRE DE CONTACT
     * ...
-    
+
