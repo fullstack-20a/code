@@ -25,6 +25,7 @@ class ApiNewsletter
         // $tabAssoToken = [ "nom"   => $nom, "email" => $email ];
 
         $tabAssoToken = [ 
+            // COLONNE SQL              INPUT NAME
             "nom"   => Controller::filtrer("nom"), 
             "email" => Controller::filtrer("email")     // VERIFICATION SUR LE FORMAT
         ];
