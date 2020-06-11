@@ -20,7 +20,7 @@
                 <button type="submit">inscription</button>
                 <!-- ASTUCE: UN CHAMP TECHNIQUE POUR RAJOUTER DES INFOS UTILES POUR PHP -->
                 <input type="hidden" name="codebarre" value="newsletter">
-                <input type="hidden" name="classeCible" value="ApiNewsletter">
+                <input type="hidden" name="classeCible" value="Newsletter">
                 <input type="hidden" name="methodeCible" value="create">
             </form>
         </section>
@@ -36,7 +36,7 @@
                 <button type="submit">inscription</button>
                 <!-- ASTUCE: UN CHAMP TECHNIQUE POUR RAJOUTER DES INFOS UTILES POUR PHP -->
                 <input type="hidden" name="codebarre" value="contact">
-                <input type="hidden" name="classeCible" value="ApiContact">
+                <input type="hidden" name="classeCible" value="Contact">
                 <input type="hidden" name="methodeCible" value="create">
             </form>
         </section>

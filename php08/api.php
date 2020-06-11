@@ -11,8 +11,95 @@ class ApiNewsletter
         // DEBUG
         echo "<h5>ON ACTIVE LE CODE DE ApiNewsletter::create</h5>";
         // COMPLETER LE CODE ICI...
+
+        // RECUPERER LES INFOS DU FORMULAIRE UN PAR UN ET LES FILTRER
+        // ENSUITE SI LES INFOS SONT VALIDES
+        // SI OUI, ON VA CONSTRUIRE LA REQUETE SQL
+        // ET ON VA ENVOYER LES INFOS DANS UNE LIGNE DE LA TABLE SQL newsletter
+
+        // nom ET email
+        // <input type="text" name="nom" required placeholder="votre nom">
+
+        // $nom    = Controller::filtrer("nom");         // $name = "nom"
+        // $email  = Controller::filtrer("email");       // $name = "email"
+        // $tabAssoToken = [ "nom"   => $nom, "email" => $email ];
+
+        $tabAssoToken = [ 
+            "nom"   => Controller::filtrer("nom"), 
+            "email" => Controller::filtrer("email")     // VERIFICATION SUR LE FORMAT
+        ];
+
+        // TODO: ON DOIT VALIDER QUE LES INFOS SONT CORRECTES
+        if (Controller::isOK())
+        {
+            // MAINTENANT JE PEUX PREPARER MA REQUETE SQL
+            $requeteSQL =
+<<<CODESQL
+
+INSERT INTO newsletter
+( nom, email )
+VALUES
+( :nom, :email )
+
+CODESQL;
+
+            Model::envoyerRequeteSQL($requeteSQL, $tabAssoToken);
+        }
+    }
+
+}
+
+class Controller 
+{
+    static function filtrer ($name)
+    {
+        $resultat = $_REQUEST[$name] ?? "";
+        // IL FAUDRA AJOUTER PLUS DE SECURITE
+        // ON ENLEVE LES ESPACES EN TROP (AU DEBUT ET A LA FIN)
+        $resultat = trim($resultat);
+        // ...
+        return $resultat;
+    }
+
+    static function isOK ()
+    {
+        // A COMPLETER
+        return true;
+    }
+
+}
+
+class Model
+{
+    static function envoyerRequeteSQL ($requeteSQL, $tabAssoToken)
+    {
+        $database   = "blog";       // A CHANGER A CHAQUE PROJET    
+        $host       = "127.0.0.1";
+        $user       = "root";
+        $password   = "";           // SAUF AVEC MAMP "root" (A VERIFIER...)
+        $port       = "3306";       // MAIS PEUT ETRE AUTRE CHOSE "8889"
+        $dsn        = "mysql:host=$host;port=$port;dbname=$database;charset=utf8";    
+        $dbh        = new PDO($dsn, $user, $password);
+    
+        $pdoStatement = $dbh->prepare($requeteSQL);    
+        $pdoStatement->execute($tabAssoToken);    
+        // $pdoStatement->debugDumpParams();
+        return $pdoStatement;  
+    }
+    
+}
+
+// FABRICANT
+class Micro
+{
+    static function cuire ($aliment)
+    {
+        echo "JE CUIS TEL $aliment";
     }
 }
+
+// CLIENT
+Micro::cuire("poulet"); // $aliment = "poulet"
 
 class ApiContact
 {
@@ -26,6 +113,19 @@ class ApiContact
 
 }
 
+class Secret
+{
+    // METHODES static
+    static function boom ()
+    {
+        // DEBUG
+        echo "<h5>ON ACTIVE LE CODE DE Secret::boom</h5>";
+        // COMPLETER LE CODE ICI...
+    }
+
+}
+
+
 // API
 // Application Programming Interface
 
@@ -37,11 +137,17 @@ class ApiContact
 //      DE CONTACT          => SQL contact
 // AU FINAL IL FAUT STOCKER LES INFORMATIONS DANS 2 TABLES SQL DIFFERENTES
 
+// PHP: PARANOIAI HYPER PARANOIA
+// => TOUTE INFORMATION QUI VIENT DE L'EXTERIEUR PEUT ETRE DANGEREUSE
+// (ATTAQUE PAR CHEVAL DE TROIE...)
 // <input type="hidden" name="classeCible" value="ApiContact">
 // <input type="hidden" name="methodeCible" value="create">
-$classeCible  = $_REQUEST["classeCible"];
-$methodeCible = $_REQUEST["methodeCible"];
-$codeCible    = "$classeCible::$methodeCible";
+$classeCible  = Controller::filtrer("classeCible");     // $name = "classeCible"
+$methodeCible = Controller::filtrer("methodeCible");
+
+// PETITE PROTECTION: 
+// ON NE DONNE ACCES QU'AUX CLASSES QUI COMMENCENT PAR Api
+$codeCible    = "Api$classeCible::$methodeCible";
 
 echo "<h4>ON VEUT ACTIVER LE CODE $codeCible</h4>";
 // ON PEUT ACTIVER DU CODE A PARTIR D'UN TEXTE... COOL ;-p
