@@ -19,7 +19,7 @@
                 <input type="email" name="email" required placeholder="votre email">
                 <button type="submit">inscription</button>
                 <!-- ASTUCE: UN CHAMP TECHNIQUE POUR RAJOUTER DES INFOS UTILES POUR PHP -->
-                <input type="hidden" name="codebarre" value="newsletter">
+                <!-- <input type="hidden" name="codebarre" value="newsletter"> -->
                 <input type="hidden" name="classeCible" value="Newsletter">
                 <input type="hidden" name="methodeCible" value="create">
             </form>
@@ -35,7 +35,7 @@
                 <textarea name="message" required placeholder="votre message"></textarea>
                 <button type="submit">inscription</button>
                 <!-- ASTUCE: UN CHAMP TECHNIQUE POUR RAJOUTER DES INFOS UTILES POUR PHP -->
-                <input type="hidden" name="codebarre" value="contact">
+                <!-- <input type="hidden" name="codebarre" value="contact"> -->
                 <input type="hidden" name="classeCible" value="Contact">
                 <input type="hidden" name="methodeCible" value="create">
             </form>
