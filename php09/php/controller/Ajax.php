@@ -28,16 +28,16 @@ class Ajax
         // ON VA PRODUIRE AVEC PHP DU TEXTE EN FORMAT JSON
         // => CELA PERMET DE RENVOYER PLUSIEURS INFORMATIONS
         // => JS VA FACILEMENT COMPRENDRE CE FORMAT JSON
-        
-        // EN PHP LES TABLEAUX ASSOCIATIFS, SONT TRES SIMILAIRES AUX OBJETS JS
+
+        Ajax::$tabAssoJson["debug"]           = $debug;        
+        // EN PHP LES TABLEAUX ASSOCIATIFS SONT TRES SIMILAIRES AUX OBJETS JS
         // => ON A UNE FONCTION json_encode POUR CONVERTIR UN TABLEAU ASSOCIATIF PHP EN JSON
         // https://www.php.net/manual/fr/function.json-encode.php
-        Ajax::$tabAssoJson["debug"]           = $debug;
 
-        // COOL: ON CONVERTIR LE TABLEAU EN CODE JS
+        // COOL: ON CONVERTIT LE TABLEAU EN CODE JS
         $texteJson = json_encode(Ajax::$tabAssoJson);
         
-        // ON ENVOIT LE CODE JS VERS LE NAVIGATEUR
+        // ON ENVOIE LE CODE JS VERS LE NAVIGATEUR
         echo $texteJson;
     }
 }
