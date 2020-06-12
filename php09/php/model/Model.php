@@ -44,6 +44,8 @@ class Model
     */
     static function insert ($nomTable, $tabAssoToken)
     {
+        // ON VA CREER LA BONNE REQUETE SQL A PARTIR DES CLES DU TABLEAU ASSOCIATIF $tabAssoToken
+        
         $listeColonne = "";
         $listeToken   = "";
         // ON EXTRAIT DANS UN TABLEAU ORDONNE LES CLES DU TABLEAU ASSOCIATIF
