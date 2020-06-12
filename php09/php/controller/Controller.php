@@ -6,9 +6,9 @@ class Controller
     {
         $resultat = $_REQUEST[$name] ?? "";
         // IL FAUDRA AJOUTER PLUS DE SECURITE
+        // ... striptags...
         // ON ENLEVE LES ESPACES EN TROP (AU DEBUT ET A LA FIN)
         $resultat = trim($resultat);
-        // ...
         return $resultat;
     }
 
