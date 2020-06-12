@@ -11,6 +11,9 @@ class Ajax
     {
         ob_start();
 
+        // POUR ACTIVER debugDumpParams
+        Model::$debug = true;
+
         $classeCible  = Controller::filtrer("classeCible");     // $name = "classeCible"
         $methodeCible = Controller::filtrer("methodeCible");
         $codeCible    = "Api$classeCible::$methodeCible";
@@ -20,7 +23,7 @@ class Ajax
             $codeCible();
         }
         
-        $ancienAffichage = ob_get_clean();
+        $debug = ob_get_clean();
         
         // ON VA PRODUIRE AVEC PHP DU TEXTE EN FORMAT JSON
         // => CELA PERMET DE RENVOYER PLUSIEURS INFORMATIONS
@@ -31,7 +34,8 @@ class Ajax
         // https://www.php.net/manual/fr/function.json-encode.php
         Ajax::$tabAssoJson["propriete1"]      = "valeur1";
         Ajax::$tabAssoJson["propriete2"]      = "valeur2";
-        
+        Ajax::$tabAssoJson["debug"]           = $debug;
+
         // COOL: ON CONVERTIR LE TABLEAU EN CODE JS
         $texteJson = json_encode(Ajax::$tabAssoJson);
         

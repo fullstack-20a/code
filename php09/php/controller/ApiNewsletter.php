@@ -9,7 +9,7 @@ class ApiNewsletter
     static function create ()
     {
         // DEBUG
-        echo "<h5>ON ACTIVE LE CODE DE ApiNewsletter::create</h5>";
+        // echo "<h5>ON ACTIVE LE CODE DE ApiNewsletter::create</h5>";
         // COMPLETER LE CODE ICI...
 
         // RECUPERER LES INFOS DU FORMULAIRE UN PAR UN ET LES FILTRER

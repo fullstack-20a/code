@@ -79,13 +79,16 @@ for(var f=0; f < listeForm.length; f++)
             reponseServeur
                 // .text()  // POUR LE TEXTE BRUT
                 .json()     // POUR LE FORMAT JSON
-                .then(function(objetJS) {   // ON CREE UN PARAMETRE QUI SERA REMPLI PAR JS COMME VALEUR AVEC UN OBJET JS
+                .then(function(objetJS) {   // ON CREE UN PARAMETRE QUI SERA REMPLI PAR JS AVEC COMME VALEUR UN OBJET JS
                     // COOL ON A MAINTENANT UN OBJET JS QU'ON PEUT UTILISER
                     console.log(objetJS);
 
                     // ON PEUT AFFICHER LE MESSAGE DE CONFIRMATION
                     var baliseConfirmation = event.target.querySelector(".confirmation");
                     baliseConfirmation.innerHTML = objetJS.confirmation;
+
+                    // debug serveur
+                    if ('debug' in objetJS) console.log(objetJS.debug);
                 });
         });
     });

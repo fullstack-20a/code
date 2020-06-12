@@ -2,6 +2,9 @@
 
 class Model
 {
+    // PROPRIETES
+    public static $debug = false;
+
     static function envoyerRequeteSQL ($requeteSQL, $tabAssoToken)
     {
         $database   = "blog";       // A CHANGER A CHAQUE PROJET    
@@ -12,9 +15,18 @@ class Model
         $dsn        = "mysql:host=$host;port=$port;dbname=$database;charset=utf8";    
         $dbh        = new PDO($dsn, $user, $password);
     
+        // AFFICHER LES ERREURS SQL COMME ERREURS PHP
+        // https://www.php.net/manual/fr/pdo.error-handling.php
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
         $pdoStatement = $dbh->prepare($requeteSQL);    
-        $pdoStatement->execute($tabAssoToken);    
-        // $pdoStatement->debugDumpParams();
+        $pdoStatement->execute($tabAssoToken);  
+
+        if (Model::$debug)
+        {
+            $pdoStatement->debugDumpParams();
+        }
+
         return $pdoStatement;  
     }
     
@@ -27,15 +39,15 @@ class Model
         // https://www.php.net/manual/fr/function.array-keys
         $tabCle       = array_keys($tabAssoToken);
         // https://www.php.net/manual/fr/function.implode
-        $listeColonne = implode(", ", $tabCle);
+        $listeColonne = implode("`, `", $tabCle);
         $listeToken   = implode(", :", $tabCle);    // ATTENTION IL MANQUE LE PREMIER :
 
         // MAINTENANT JE PEUX PREPARER MA REQUETE SQL
         $requeteSQL =
 <<<CODESQL
 
-INSERT INTO $nomTable
-( $listeColonne )
+INSERT INTO `$nomTable`
+( `$listeColonne` )
 VALUES
 ( :$listeToken )
 
