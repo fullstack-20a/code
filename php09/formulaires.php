@@ -74,7 +74,7 @@ for(var f=0; f < listeForm.length; f++)
             method: 'POST',     // PRATIQUE CAR CA MARCHERA POUR L'UPLOAD DE FICHIER
             body:   formData
         })
-        .then(function(reponseServeur) {       // PROMESSE => ON SAIT QU'ON VA RECEVOIR UNE REPONSE MAIS ON NE PAS QUAND... 
+        .then(function(reponseServeur) {    // PROMESSE => ON SAIT QU'ON VA RECEVOIR UNE REPONSE MAIS ON NE SAIT PAS QUAND... 
             // DEBUG
             console.log(reponseServeur);
             // JE VEUX EXTRAIRE LE CONTENU RETOURNE PAR LE SERVEUR

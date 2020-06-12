@@ -31,6 +31,8 @@ class Model
     }
     
     // CREATE
+    // PERMET D'AJOUTER UNE LIGNE DANS UNE TABLE SQL
+    // EXEMPLE: Model::insert("newsletter", [ "nom" => "jean", "email" => "jean@mail.me" ])
     static function insert ($nomTable, $tabAssoToken)
     {
         $listeColonne = "";
