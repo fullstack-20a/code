@@ -12,6 +12,7 @@
     <main>
         <section>
             <h2>FORMULAIRE D'INSCRIPTION A LA NEWSLETTER</h2>
+            <!-- la classe .ajax sert au code js pour bloquer le formulaire classique -->
             <form class="ajax" action="api.php" method="POST">
                 <!-- NORMALEMENT ON A UNE TABLE SQL newsletter AVEC COMME COLONNES id ET nom ET email -->
                 <!-- DANS LE CRUD = CREATE SUR LA TABLE newsletter -->
@@ -28,6 +29,7 @@
 
         <section>
             <h2>FORMULAIRE DE CONTACT</h2>
+            <!-- la classe .ajax sert au code js pour bloquer le formulaire classique -->
             <form class="ajax" action="api.php" method="POST">
                 <!-- NORMALEMENT ON A UNE TABLE SQL contact AVEC COMME COLONNES id ET nom ET email ET message -->
                 <!-- DANS LE CRUD = CREATE SUR LA TABLE contact -->
