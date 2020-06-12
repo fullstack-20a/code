@@ -46,4 +46,45 @@
 
 
     PAUSE JUSQU'A 10H45...
-    
+
+    AJAX EST LA BRIQUE TECHNOLOGIQUE QUI A DEMARRE LE WEB2.0
+    ET ENSUITE WEBAPP ET SPA...
+    (REACT, ANGULAR, VUEJS etc... SE SONT CONSTRUIT SUR LES POSSIBILITES AVEC AJAX...)
+
+## JSON
+
+    JavaScript
+    Object
+    Notation
+
+    EN JS, ON PEUT CREER DES OBJETS...
+
+    var monObjet = 
+    {
+        "propriete1": "valeur1",
+        "propriete2": "valeur2"
+    };
+
+
+## BILAN TECHNOLOGIQUE
+
+    HTML
+    CSS
+    JS
+    PHP
+    SQL
+
+    AJAX
+
+    PROGRAMMATION ORIENTE OBJET
+
+
+## EXERCICES PRATIQUES
+
+    AJOUTER PAGES accueil, contact, admin blog
+    AJOUTER DELETE
+    (AJOUTER UPDATE...)
+
+    PAUSE DEJEUNER => 13H40
+
+

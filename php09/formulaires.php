@@ -22,12 +22,13 @@
                 <!-- <input type="hidden" name="codebarre" value="newsletter"> -->
                 <input type="hidden" name="classeCible" value="Newsletter">
                 <input type="hidden" name="methodeCible" value="create">
+                <pre class="confirmation"></pre>
             </form>
         </section>
 
         <section>
             <h2>FORMULAIRE DE CONTACT</h2>
-            <form class="" action="api.php" method="POST">
+            <form class="ajax" action="api.php" method="POST">
                 <!-- NORMALEMENT ON A UNE TABLE SQL contact AVEC COMME COLONNES id ET nom ET email ET message -->
                 <!-- DANS LE CRUD = CREATE SUR LA TABLE contact -->
                 <input type="text" name="nom" required placeholder="votre nom">
@@ -38,6 +39,7 @@
                 <!-- <input type="hidden" name="codebarre" value="contact"> -->
                 <input type="hidden" name="classeCible" value="Contact">
                 <input type="hidden" name="methodeCible" value="create">
+                <pre class="confirmation"></pre>
             </form>
         </section>
 
@@ -68,7 +70,23 @@ for(var f=0; f < listeForm.length; f++)
         // ON ENVOIE UNE REQUETE SANS RECHARGER LA PAGE
         fetch('api.php', {
             method: 'POST',     // PRATIQUE CAR CA MARCHERA POUR L'UPLOAD DE FICHIER
-            body: formData
+            body:   formData
+        })
+        .then(function(reponseServeur) {       // PROMESSE => ON SAIT QU'ON VA RECEVOIR UNE REPONSE MAIS ON NE PAS QUAND... 
+            // DEBUG
+            console.log(reponseServeur);
+            // JE VEUX EXTRAIRE LE CONTENU RETOURNE PAR LE SERVEUR
+            reponseServeur
+                // .text()  // POUR LE TEXTE BRUT
+                .json()     // POUR LE FORMAT JSON
+                .then(function(objetJS) {   // ON CREE UN PARAMETRE QUI SERA REMPLI PAR JS COMME VALEUR AVEC UN OBJET JS
+                    // COOL ON A MAINTENANT UN OBJET JS QU'ON PEUT UTILISER
+                    console.log(objetJS);
+
+                    // ON PEUT AFFICHER LE MESSAGE DE CONFIRMATION
+                    var baliseConfirmation = event.target.querySelector(".confirmation");
+                    baliseConfirmation.innerHTML = objetJS.confirmation;
+                });
         });
     });
 }        
