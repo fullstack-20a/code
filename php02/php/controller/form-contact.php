@@ -41,6 +41,8 @@ else
     // ON VA LE STOCKER DANS LE FICHIER php/view/contact.txt 
     // FILE_APPEND PERMET DE GARDER L'ANCIEN CONTENU
     file_put_contents("php/model/contact.txt", $affichageDetourne, FILE_APPEND);
+    // DANGER SI ON LAISSE UN HACKER PRENDRE LA MAIN SUR LE SERVEUR...
+    // file_put_contents("assets/contact.php", $affichageDetourne, FILE_APPEND);
 
     // https://www.php.net/manual/fr/function.mail.php
     // NE PAS OUBLIER DE METTRE LA BONNE ADRESSE EMAIL (PAS LA MIENNE SVP...)
