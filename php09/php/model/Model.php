@@ -33,16 +33,25 @@ class Model
     // CREATE
     // PERMET D'AJOUTER UNE LIGNE DANS UNE TABLE SQL
     // EXEMPLE: Model::insert("newsletter", [ "nom" => "jean", "email" => "jean@mail.me" ])
+    /*
+        POUR INSERER UNE LIGNE DANS UNE TABLE SQL
+
+        INSERT INTO newsletter
+        ( `nom`, `email` )
+        VALUES
+        ( :nom, :email )
+
+    */
     static function insert ($nomTable, $tabAssoToken)
     {
         $listeColonne = "";
         $listeToken   = "";
         // ON EXTRAIT DANS UN TABLEAU ORDONNE LES CLES DU TABLEAU ASSOCIATIF
         // https://www.php.net/manual/fr/function.array-keys
-        $tabCle       = array_keys($tabAssoToken);
+        $tabCle       = array_keys($tabAssoToken);      // [ "nom", "email" ]
         // https://www.php.net/manual/fr/function.implode
-        $listeColonne = implode("`, `", $tabCle);
-        $listeToken   = implode(", :", $tabCle);    // ATTENTION IL MANQUE LE PREMIER :
+        $listeColonne = implode("`, `", $tabCle);       // "nom`, `email"
+        $listeToken   = implode(", :", $tabCle);        // "nom, :email"    // ATTENTION IL MANQUE LE PREMIER :
 
         // MAINTENANT JE PEUX PREPARER MA REQUETE SQL
         $requeteSQL =
