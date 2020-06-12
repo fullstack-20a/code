@@ -33,7 +33,7 @@ class ApiNewsletter
         // TODO: ON DOIT VALIDER QUE LES INFOS SONT CORRECTES
         if (Controller::isOK())
         {
-            // TODO...
+            // INSERE UNE NOUVELLE LIGNE DANS LA TABLE SQL
             Model::insert("newsletter", $tabAssoToken);
 
             // ON VA POUVOIR AJOUTER UN MESSAGE DE CONFIRMATION 

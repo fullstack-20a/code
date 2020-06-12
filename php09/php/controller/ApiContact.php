@@ -17,6 +17,7 @@ class ApiContact
         // TODO: ON DOIT VALIDER QUE LES INFOS SONT CORRECTES
         if (Controller::isOK())
         {
+            // INSERE UNE NOUVELLE LIGNE DANS LA TABLE SQL
             Model::insert("contact", $tabAssoToken);
 
             // ON VA POUVOIR AJOUTER UN MESSAGE DE CONFIRMATION 
