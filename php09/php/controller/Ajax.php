@@ -32,8 +32,6 @@ class Ajax
         // EN PHP LES TABLEAUX ASSOCIATIFS, SONT TRES SIMILAIRES AUX OBJETS JS
         // => ON A UNE FONCTION json_encode POUR CONVERTIR UN TABLEAU ASSOCIATIF PHP EN JSON
         // https://www.php.net/manual/fr/function.json-encode.php
-        Ajax::$tabAssoJson["propriete1"]      = "valeur1";
-        Ajax::$tabAssoJson["propriete2"]      = "valeur2";
         Ajax::$tabAssoJson["debug"]           = $debug;
 
         // COOL: ON CONVERTIR LE TABLEAU EN CODE JS
