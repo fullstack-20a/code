@@ -10,17 +10,17 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3CC7ACC33EC9082382823A0ED
 
 ## PLANNING DE LA SEMAINE
 
-CRUD POUR PREPARER L'EXAMEN
+    CRUD POUR PREPARER L'EXAMEN
 
-BLOG V2
+    BLOG V2
 
-HTML
-CSS
-JS
-PHP
-SQL
+    HTML
+    CSS
+    JS
+    PHP
+    SQL
 
-SQL
+    SQL
         => DATABASE             blogv2      AVEC CHARSET utf8mb4_general_ci
             => TABLES SQL
         article
