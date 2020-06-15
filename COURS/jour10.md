@@ -80,9 +80,10 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3CC7ACC33EC9082382823A0ED
             // ET ON LE CONCATENE POUR CREER NOTRE REQUETE SQL
             // => ATTAQUE PAR CHEVAL DE TROIE (INJECTION SQL)
             // A B C
-            // B EST CE QUI VIENT DE L'EXTERIEUR
+            // (B EST CE QUI VIENT DE L'EXTERIEUR)
             // UN HACKER PEUT DETOURNER B EN B C X A B
             // A B C X A B C
+
     INSERT INTO article ( titre, contenu, photo, categorie, datePublication ) 
     VALUES ( 'test1130', 'contenu1130', 'assets/img/photo1.jpg', 'test', '2020-06-15 11:36:33' )
 
