@@ -48,6 +48,16 @@ input, textarea, button {
         </section>
         <section>
             <h2>DELETE</h2>
+            <form action="api.php" method="POST">
+                <!-- PARTIE A REMPLIR PAR L'UTILISATEUR -->
+                <input type="number" name="id" required placeholder="id">
+                <button type="submit">SUPPRIMER MON ARTICLE</button>
+                <!-- PARTIE TECHNIQUE -->
+                <input type="hidden" name="classeCible" value="Article">
+                <input type="hidden" name="methodeCible" value="delete">
+                <!-- POUR AFFICHER UN MESSAGE DE CONFIRMATION -->
+                <div class="confirmation"></div>
+            </form>
         </section>
         <section>
             <h2>UPDATE</h2>
