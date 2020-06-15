@@ -129,10 +129,13 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3CC7ACC33EC9082382823A0ED
 
     https://sql.sh/cours/delete
 
+    COMME DANS SELECT, ON AJOUTE UNE CLAUSE WHERE POUR SELECTIONNER LES LIGNES A SUPPRIMER.
+    LA PLUPART DU TEMPS, ON UTILISE LA COLONNE id QUI SERT D'IDENTIFIANT UNIQUE POUR CHAQUE LIGNE.
+
 ```sql
 
-DELETE FROM `table`
-WHERE condition
+DELETE FROM `article`
+WHERE id = 15
 
 ```
 
