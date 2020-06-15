@@ -15,7 +15,8 @@ require_once "php/controller/ApiArticle.php";
 
 // LA METHODE QU'ON ACTIVE AU DEPART
 Controller::traiterFormulaire();
-
+// ON REDIRIGE VERS LA PAGE PRECEDENTE...
+Controller::redirigerPrecedent();
 
 // LA FIN DU FICHIER SERT DE BALISE FERMANTE POUR PHP
 // COOL ;-p

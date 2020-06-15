@@ -29,14 +29,19 @@ class Controller
             }
         }
 
+    }
+
+    static function redirigerPrecedent ()
+    {
         // SI ON VEUT ON PEUT FAIRE UNE REDICECTION VERS LA PAGE D'AVANT
         // https://www.php.net/manual/fr/reserved.variables.server.php
         $urlPrecedente = $_SERVER["HTTP_REFERER"];
         // REDIRECTION
         // https://www.php.net/manual/fr/function.header.php
         header("location: $urlPrecedente");
-    }
 
+    }
+    
     // CETTE METHODE VA PROTEGER PHP
     // EN FILTRANT LES INFOS RECUES DES FORMULAIRES
     static function filtrer ($name)
