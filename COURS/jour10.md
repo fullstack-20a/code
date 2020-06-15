@@ -144,3 +144,106 @@ WHERE id = 15
 
 
     PAUSE DEJEUNER JUSQU'A 13H40
+
+
+## FRAMEWORK MVC
+
+    ON ESSAIE DE METTRE EN PLACE UN CODE QUI POURRA ETRE REUTILISE POUR LES DIFFERENTS CRUD...
+
+
+## UPDATE SQL
+
+
+    https://sql.sh/cours/update
+
+    IMPORTANT: ON UTILISE UNE CLAUSE WHERE POUR SELECTIONNER LA LIGNE A MODIFIER
+    SI ON NE MET PAS DE CLAUSE WHERE ON VA MODIFIER TOUTES LES LIGNES...
+
+    EN PRATIQUE, ON UTILISERA LA COLONNE id POUR SELECTIONNER UNE LIGNE PRECISE
+
+```sql
+
+
+ UPDATE article 
+ SET 
+ titre = 'modifTITRE', 
+ contenu = 'modifCONTENU', 
+ photo = 'modifPHOOT', 
+ categorie = 'modifCAT', 
+ datePublication = '2020-06-15 14:10:04' 
+ WHERE id = '14'
+
+
+UPDATE client
+SET 
+    rue = '49 Rue Ameline',
+    ville = 'Saint-Eustache-la-Forêt',
+    code_postal = '76210'
+WHERE id = 2
+```
+
+
+## SELECT SQL ET PHP fetchAll
+
+```php
+Array
+(
+    [0] => Array
+        (
+            [id] => 18
+            [titre] => titre1409
+            [contenu] => contenu1409
+            [photo] => assets/img/photo1.jpg
+            [categorie] => test1409
+            [datePublication] => 2020-06-15 14:09:22
+        )
+
+    [1] => Array
+        (
+            [id] => 17
+            [titre] => titre1409
+            [contenu] => contenu1409
+            [photo] => assets/img/photo1.jpg
+            [categorie] => test1409
+            [datePublication] => 2020-06-15 14:09:21
+        )
+
+    [2] => Array
+        (
+            [id] => 16
+            [titre] => titre1409
+            [contenu] => contenu1409
+            [photo] => assets/img/photo1.jpg
+            [categorie] => test1409
+            [datePublication] => 2020-06-15 14:09:20
+        )
+
+    [3] => Array
+        (
+            [id] => 15
+            [titre] => titre1409
+            [contenu] => contenu1409
+            [photo] => assets/img/photo1.jpg
+            [categorie] => test1409
+            [datePublication] => 2020-06-15 14:09:20
+        )
+
+)
+```
+
+## CRUD EN UNE SEULE PAGE
+
+DELETE 
+
+    ASTUCE EN HTML ET JS
+    ON PEUT AJOUTER DES ATTRIBUTS data-toto DANS UNE BALISE HTML
+    ET CA PASSE AU VALIDATEUR HTML5 ;-p
+
+
+    PAUSE JUSQU'A 15H45... ;-p
+
+## DRAG DROP UPLOAD FICHIER
+
+    TUTO ASSEZ BIEN DETAILLE:
+    https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+

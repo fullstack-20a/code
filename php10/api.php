@@ -1,5 +1,6 @@
 <?php
 
+// POUR TRAITER LES FORMULAIRES
 class ApiArticle 
 {
     // METHODES
@@ -55,6 +56,36 @@ class ApiArticle
     static function update ()
     {
         // ICI ON VA TRAITER LE FORMULAIRE DE UPDATE
+        // DEBUG
+        echo "<h4>ON A ACTIVE LE CODE DE ApiArticle::update</h4>";
+
+        // RECUPERER LES INFOS FOURNIES PAR L'UTILISATEUR
+        // VALIDER QUE TOUTES LES INFOS SONT CORRECTE
+        // ET SI TOUT EST OK
+        //      => MEMORISER LES INFOS DANS UNE LIGNE SQL DE LA TABLE article
+
+        // SECURITE: ON MET EN QUARANTAINE LES DONNEES QUI VIENNENT DE L'EXTERIEUR
+        $tabAssoToken =
+        [
+            // "cle"   => "valeur",
+            // CLE: COLONNES SQL (DEJA CREEES)         // VALEUR: name HTML
+            "titre"             => Controller::filtrer("titre"),
+            "contenu"           => Controller::filtrer("contenu"),
+            "photo"             => Controller::filtrer("photo"),
+            "categorie"         => Controller::filtrer("categorie"),
+            // COMPLETER LES COLONNES MANQUANTES
+            "datePublication"   => date("Y-m-d H:i:s"), // FORMAT DATETIME 2020-06-15 11:07:23
+        ];
+
+        // ON RECUPERE id A PART
+        $id = Controller::filtrer("id");
+
+        // SECURITE: VERIFIER QUE TOUTES LES INFOS SONT CORRECTES...
+        if (Controller::isOK())
+        {
+            // ON VA FAIRE APPEL AU MODEL POUR AJOUTER UNE LIGNE SQL
+            Model::update("article", $id, $tabAssoToken);
+        }
     }
 
     static function read ()
@@ -64,92 +95,6 @@ class ApiArticle
 }
 
 
-class Model
-{
-    // METHODES
-
-    // ON VA UTILISER id POUR EFFACER UNE LIGNE
-    static function delete ($nomTable, $tabAssoToken)
-    {
-        $requeteSQL =
-<<<CODESQL
-
-DELETE FROM $nomTable
-WHERE id = :id
-
-CODESQL;
-
-        Model::envoyerRequeteSQL($requeteSQL, $tabAssoToken);
-
-    }
-
-    static function insert ($nomTable, $tabAssoToken)
-    {
-        // ON UTILISE LES CLES DU TABLEAU ASSO POUR CONSTRUIRE LES 2 LISTES
-        $listeColonne   = "";
-        $listeToken     = "";
-        // https://www.php.net/manual/fr/function.array-keys.php
-        $tabCle         = array_keys($tabAssoToken);
-        // [ "titre", "photo", "contenu", "categorie", "datePublication" ]
-        // "titre, photo, contenu, categorie, datePublication"
-        // "titre, :photo, :contenu, :categorie, :datePublication"
-        $listeColonne   = implode(", ", $tabCle);
-        $listeToken     = implode(", :", $tabCle);  // ATTENTION: IL MANQUE LE PREMIER :
-
-        // CONCATENATION POUR OBTENIR LA REQUETE SQL
-        $requeteSQL =
-<<<CODESQL
-
-INSERT INTO $nomTable
-( $listeColonne )
-VALUES
-( :$listeToken )
-
-CODESQL;
-
-        Model::envoyerRequeteSQL($requeteSQL, $tabAssoToken);
-    }
-
-    static function envoyerRequeteSQL($requeteSQL, $tabAssoToken)
-    {
-        $dbname         = Config::$dbnameSQL ?? "";     // A CHANGER A CHAQUE PROJET
-        $userSQL        = Config::$userSQL ?? "root";
-        $passwordSQL    = Config::$passwordSQL ?? "";
-        $port           = Config::$portSQL ??"3306";
-        $host           = Config::$hostSQL ?? "localhost";
-
-        // CODE NECESSAIRE POUR COMMUNIQUER ENTRE PHP ET SQL
-        // $dbh GERE LA CONNEXION ENTRE PHP ET SQL
-        $dbh = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $userSQL, $passwordSQL);
-
-        // AFFICHER LES ERREURS SQL COMME ERREURS PHP
-        // https://www.php.net/manual/fr/pdo.error-handling.php
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-
-        // SECURITE: ON ISOLE LES VALEURS DANS LE TABLEAU ASSOCIATIF
-        // PROTECTION CONTRE LES INJECTIONS SQL
-        $pdoStatement = $dbh->prepare($requeteSQL);
-        
-        $pdoStatement->execute($tabAssoToken);
-
-        // AFFICHE LES INFOS SUR LA REQUETE SQL 
-        // => PRATIQUE POUR LE DEBUG (A ACTIVER SI BESOIN...)
-        $pdoStatement->debugDumpParams();
-
-    }
-}
-
-// ON METTRA TOUS LES PARAMETRES A CHANGER POUR CHAQUE PROJET
-class Config
-{
-    // PROPRIETES
-    public static $dbnameSQL        = "blogv2";
-    public static $userSQL          = "root";
-    public static $passwordSQL      = "";
-    public static $portSQL          = "3306";
-    public static $hostSQL          = "localhost";
-
-}
 
 // RESPONSABLE SECURITE
 // VALABLE POUR TOUS LE FORMULAIRES
@@ -179,12 +124,21 @@ class Controller
                 $codeCible();
             }
         }
+
+        // SI ON VEUT ON PEUT FAIRE UNE REDICECTION VERS LA PAGE D'AVANT
+        // https://www.php.net/manual/fr/reserved.variables.server.php
+        $urlPrecedente = $_SERVER["HTTP_REFERER"];
+        // REDIRECTION
+        // https://www.php.net/manual/fr/function.header.php
+        header("location: $urlPrecedente");
     }
 
     // CETTE METHODE VA PROTEGER PHP
     // EN FILTRANT LES INFOS RECUES DES FORMULAIRES
     static function filtrer ($name)
     {
+        // $_REQUEST VA RECEVOIR LES INFOS EN GET ET EN POST: PRATIQUE COTE HTML ON PEUT FAIRE LES 2
+
         $resultat = $_REQUEST[$name] ?? "";     
         // PREMIERE SECURITE: ON MET UNE VALEUR PAR DEFAUT SI L'INFO N'EST PAS PRESENTE
         // ON NE VEUT PAS RECEVOIR DU CODE HTML OU AUTRE
@@ -207,6 +161,9 @@ class Controller
     }
 }
 
+// CHARGER LE CLASSES DEFINIES DANS DES FICHIERS SEPARES
+require_once "php/model/Config.php";
+require_once "php/model/Model.php";
 
 // DEFINITION D'UNE API
 // Application Programming Interface
