@@ -89,7 +89,7 @@ table td {
             <form class="update" action="api.php" method="POST">
                 <!-- PARTIE A REMPLIR PAR L'UTILISATEUR -->
                 <div class="update-copy">
-                    <input type="number" name="id" required placeholder="id">
+                    <input type="hidden" name="id" required placeholder="id">
                     <input type="text" name="titre" required placeholder="titre">
                     <textarea name="contenu" required placeholder="contenu"></textarea>
                     <input type="text" name="photo" required placeholder="photo">
@@ -156,7 +156,7 @@ foreach($tabLigne as $ligne)
     <button data-id="$id" class="update">modifier</button>
     <div class="source update-$id">
         <!-- PARTIE A REMPLIR PAR L'UTILISATEUR -->
-        <input type="number" name="id" required placeholder="id" value="$id">
+        <input type="hidden" name="id" required placeholder="id" value="$id">
         <input type="text" name="titre" required placeholder="titre" value="$titre">
         <textarea name="contenu" required placeholder="contenu">$contenu</textarea>
         <input type="text" name="photo" required placeholder="photo" value="$photo">
