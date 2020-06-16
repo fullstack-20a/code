@@ -15,9 +15,16 @@ html, body {
     box-sizing: border-box;
     width:100%;
 }
+h1, h2, h3 {
+    text-align: center;
+}
+footer {
+    text-align: center;
+}
 form {
     max-width:640px;
     padding:1rem;
+    margin: 0 auto;
 }
 input, textarea, button {
     padding:0.5rem;
@@ -41,6 +48,7 @@ table td button {
 
 .lightbox {
     display: none;
+    color:#ffffff;
 }
 .lightbox.active {
     display: block;
@@ -91,9 +99,9 @@ table td button {
         </section>
 
         <section class="lightbox">
-            <button class="close">fermer la lightbox</button>
             <h2>UPDATE</h2>
             <form class="ajax update" action="api.php" method="POST">
+                <button type="reset" class="close">fermer la lightbox</button>
                 <!-- PARTIE A REMPLIR PAR L'UTILISATEUR -->
                 <div class="update-copy">
                     <input type="hidden" name="id" required placeholder="id">
