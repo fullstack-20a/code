@@ -394,6 +394,9 @@ var envoyerRequeteAjax = function (event)
                 ajouterAction('tbody.container-articles button.delete', 'click', activerDelete);
                 ajouterAction('tbody.container-articles button.update', 'click', activerModifier);
 
+                // A LA FIN
+                // JE VIDE LE FORMULAIRE
+                event.target.reset();
             }
         })
     });
