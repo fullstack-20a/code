@@ -23,11 +23,18 @@ input, textarea, button {
     padding:0.5rem;
     margin:0.5rem;
 }
-
+table thead {
+    background-color: #eeeeee;
+}
 table td {
     border:1px solid #cccccc;
+    width: fit-content;
+    padding:0.5rem;
 }
-
+table td button {
+    display: inline-block;
+    width: calc(100% - 1rem); /* remove 2x margin */
+}
 .source {
     display:none;
 }
