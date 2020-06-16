@@ -104,8 +104,23 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?E9F9E9D41C854952B30A43EFC
     => LE SERVEUR ENVOIE LA LISTE DES DONNEES SOUS FORMAT JSON
     => ET EN JS (COTE FRONT), ON CREE LE HTML A PARTIR DU JSON
 
+
+    PAUSE DEJEUNER REPRISE A 13H40...
+
+
+## BALISE picture
+
+    https://developer.mozilla.org/fr/docs/Web/HTML/Element/picture
+
+    https://www.alsacreations.com/article/lire/1337-html5-elements-figure-et-figcaption.html
+
+
+## 17 ANS ET DES MILLIONS SUITE AU COVID-19
+
+
+    https://www.businessinsider.com/high-school-student-avi-schiffman-made-a-coronavirus-tracker-2020-5?IR=T
+
+
+    PAUSE ET REPRISE A 15H45... ;-p
+
     
-
-
-
-

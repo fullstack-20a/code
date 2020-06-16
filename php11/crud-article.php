@@ -106,6 +106,14 @@ table td {
 
         <section>
             <h2>READ</h2>
+            <form class="ajax read" action="">
+                <button type="submit">RAFRAICHIR LA LISTE DES ARTICLES</button>
+                <!-- PARTIE TECHNIQUE -->
+                <input type="hidden" name="classeCible" value="Article">
+                <input type="hidden" name="methodeCible" value="read">
+                <!-- POUR AFFICHER UN MESSAGE DE CONFIRMATION -->
+                <div class="confirmation"></div>
+            </form>
             <table>
                 <thead>
                     <!-- TITRE DES COLONNES-->
@@ -120,7 +128,7 @@ table td {
                         <td>SUPPRIMER</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="container-articles">
                     <!-- LIGNE => TABLE ROW => TR -->
 <?php
 // CHARGER LE CLASSES DEFINIES DANS DES FICHIERS SEPARES
@@ -185,16 +193,30 @@ CODEHTML;
     $codeHTML .= "</tr>";
 
 }
-echo $codeHTML;
+// echo $codeHTML;
 ?>
                 </tbody>
             </table>
         </section>
         <script>
+
+// ETAPE1: DECLARATION DE LA FONCTION
+// PASSAGE DES FORMULAIRES EN AJAX
+function ajouterAction (selecteurCSS, evenement, callback)
+{
+    var listeBalise = document.querySelectorAll(selecteurCSS);
+    for(var b=0; b<listeBalise.length; b++)
+    {
+        var balise = listeBalise[b];
+        balise.addEventListener(evenement, callback);
+    }
+}
+
 // ON VEUT AJOUTER UN FONCTION DE CALLBACK
 // QUAND ON CLIQUE SUR UN BOUTON delete
 var baliseButtonDelete  = document.querySelector('form.delete button[type=submit]'); 
 var baliseInputIdDelete = document.querySelector('form.delete input[name=id]'); 
+/*
 var listeBoutonDelete   = document.querySelectorAll('button.delete');
 for(var b=0; b<listeBoutonDelete.length; b++)
 {
@@ -210,11 +232,25 @@ for(var b=0; b<listeBoutonDelete.length; b++)
         baliseButtonDelete.click();
     })
 }
+*/
+var activerDelete = function(event) {
+    // DEBUG
+    console.log(event.target);
+    var id = event.target.getAttribute('data-id');
+    console.log(id);
+    // COPIER LA VALEUR DE id
+    baliseInputIdDelete.value = id;
+    // ET IL SUFFIT D'ACTIVER LE FORMULAIRE
+    baliseButtonDelete.click();
+};
+ajouterAction('button.delete', 'click', activerDelete);
 
 // QUAND ON CLIQUE SUR LE BOUTON modifier
 // JE VEUX COPIER LE FORMULAIRE PRE-REMPLI DANS LE FORMULAIRE D'UPDATE
 var baliseSectionUpdate = document.querySelector('section.lightbox');
 var baliseUpdateCopy = document.querySelector('form.update div.update-copy');
+/*
+
 var listeBoutonModifier = document.querySelectorAll('button.update');
 for(var b=0; b<listeBoutonModifier.length; b++)
 {
@@ -232,6 +268,20 @@ for(var b=0; b<listeBoutonModifier.length; b++)
         baliseSectionUpdate.classList.add('active');
     })
 }
+*/
+var activerModifier = function(event) {
+    var id = event.target.getAttribute('data-id');
+    var selecteurForm = '.update-' + id;
+    var divSource = document.querySelector(selecteurForm);
+    // DEBUG
+    console.log(divSource);
+    // ON COPIE LE FORMULAIRE PREREMPLI
+    baliseUpdateCopy.innerHTML = divSource.innerHTML;
+
+    // ON MONTRE LA LIGHTBOX
+    baliseSectionUpdate.classList.add('active');
+}
+ajouterAction('button.update', 'click', activerModifier);
 
 // ON AJOUTE LE BOUTON POUR FERMER LA LIGHTBOX
 var boutonClose = document.querySelector('section.lightbox .close');
@@ -280,28 +330,77 @@ var envoyerRequeteAjax = function (event)
             {
                 console.log(objetJS.debug);
             }
+
+            // ON RECOIT LA NOUVELLE LISTE DES ARTICLES
+            if ('listeArticle' in objetJS)
+            {
+                console.log(objetJS.listeArticle);
+                // ON VA RECONSTRUIRE LA LISTE DANS LA PARTIE READ
+                // POUR AFFICHER UNE LISTE D'ARTICLES ACTUALISEE
+                // JE VAIS VIDER LA LISTE ACTUELLE QUI EST PERIMEE
+                var baliseTableBody = document.querySelector('tbody.container-articles');
+                baliseTableBody.innerHTML = '';
+                // MAINTENANT IL FAUT RECONSTRUIRE LE NOUVEL CODE HTML
+                var nouveauCodeHtml = '';
+                // PARCOURIR LA LISTE JSON ET CONSTRUIRE LE HTML POUR CHAQUE ARTICLE
+                for(var a=0; a <objetJS.listeArticle.length; a++)
+                {
+                    var article = objetJS.listeArticle[a];
+                    // ON CONCATENE AVEC LE CODE HTML
+                    nouveauCodeHtml += 
+                    `
+                        <tr>
+                            <td>${article.id}</td>
+                            <td>${article.titre}</td>
+                            <td>${article.contenu}</td>
+                            <td>${article.photo}</td>
+                            <td>${article.categorie}</td>
+                            <td>${article.datePublication}</td>
+                            <!-- BOUTONS -->
+                            <td>
+                                <button data-id="${article.id}" class="update">modifier</button>
+                                <div class="source update-${article.id}">
+                                    <!-- PARTIE A REMPLIR PAR L'UTILISATEUR -->
+                                    <input type="hidden" name="id" required placeholder="id" value="${article.id}">
+                                    <input type="text" name="titre" required placeholder="titre" value="${article.titre}">
+                                    <textarea name="contenu" required placeholder="contenu">${article.contenu}</textarea>
+                                    <input type="text" name="photo" required placeholder="photo" value="${article.photo}">
+                                    <input type="text" name="categorie" required placeholder="categorie" value="${article.categorie}">
+                                </div>
+                            </td>
+                            <td><button class="delete" data-id="${article.id}">supprimer</button></td>
+                        </tr>
+                    `;
+                }
+
+                baliseTableBody.innerHTML = nouveauCodeHtml;
+                // LE JS DES EVENT LISTENER EST AUSSI PARTI AVEC L'ANCIEN HTML
+                // IL FAUT LE REINSTALLER SUR LE NOUVEAU HTML
+                ajouterAction('tbody.container-articles button.delete', 'click', activerDelete);
+                ajouterAction('tbody.container-articles button.update', 'click', activerModifier);
+
+            }
         })
     });
 
 }
 
-// ETAPE1: DECLARATION DE LA FONCTION
-// PASSAGE DES FORMULAIRES EN AJAX
-function ajouterAction (selecteurCSS, evenement, callback)
-{
-    var listeBalise = document.querySelectorAll(selecteurCSS);
-    for(var b=0; b<listeBalise.length; b++)
-    {
-        var balise = listeBalise[b];
-        balise.addEventListener(evenement, callback);
-    }
-}
 
 // ETAPE2: ON APPELLE LA FONCTION
 // => ON DONNE LES VALEURS AUX PARAMETRES
 // JS FAIT selecteur = 'form.ajax' ET evenement = 'submit' ET callback = function (event) { ... }
 
 ajouterAction('form.ajax', 'submit', envoyerRequeteAjax);
+
+
+// JE VAIS CHARGER LA LISTE AVEC UN TEMPS DE DECALAGE
+setTimeout(function(){
+    console.log('ON SIMULE UN REFRESH...');
+    var boutonRafraichir = document.querySelector('form.read button[type=submit]');
+    // ON SIMULE UN CLICK SUR LE BOUTON
+    boutonRafraichir.click();
+},
+2000);
 
         </script>
 

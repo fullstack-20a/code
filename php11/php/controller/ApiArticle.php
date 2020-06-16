@@ -38,7 +38,7 @@ class ApiArticle
             // DANS LA REPONSE JSON
             // ON UTILISE LA METHODE read QUI RENVOIE LA LISTE DES LIGNES
             // SOUS LA FORME D'UN TABLEAU DE TABLEAUX...
-            Controller::$tabAssoJson["listeArticle"] = Model::read("article");
+            ApiArticle::read();
         }
     }
 
@@ -56,6 +56,7 @@ class ApiArticle
         if (Controller::isOK())
         {
             Model::delete("article", $tabAssoToken);
+            ApiArticle::read();
         }
     }
 
@@ -91,11 +92,13 @@ class ApiArticle
         {
             // ON VA FAIRE APPEL AU MODEL POUR AJOUTER UNE LIGNE SQL
             Model::update("article", $id, $tabAssoToken);
+            ApiArticle::read();
         }
     }
 
     static function read ()
     {
         // ICI ON VA TRAITER LE FORMULAIRE DE READ
+        Controller::$tabAssoJson["listeArticle"] = Model::read("article");
     }
 }

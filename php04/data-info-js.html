@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="" class="" data-action="coucou">ACTION1</button>
+    <button data-action="bonjour">ACTION2</button>
+
+    <img data-photo-grand="photo-pleine-resolution.jpg" src="photo-legere.jpg" alt="">
+    
+    <script>
+
+var activerAction = function (event)
+{
+    console.log(event.target);
+    var typeAction = event.target.getAttribute('data-action');
+
+    if (typeAction == "coucou")
+    {
+        console.log("ACTIVATION SCENARIO 1");
+
+    }
+    if (typeAction == "bonjour")
+    {
+        console.log("ACTIVATION SCENARIO 2");
+        
+    }
+}        
+
+// ON VA APPELER LA MEME FONCTION SUR LES 2 BOUTONS
+var listeBouton = document.querySelectorAll('button');
+for(var b=0; b<listeBouton.length; b++)
+{
+    var bouton = listeBouton[b];
+    bouton.addEventListener('click', activerAction);
+}
+
+    </script>
+</body>
+</html>
