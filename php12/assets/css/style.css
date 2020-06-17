@@ -132,6 +132,7 @@ header {
 form {
     max-width:600px;
     padding:1rem;
+    margin: 0 auto;
 }
 
 input, textarea, button {

@@ -21,6 +21,9 @@ h1, h2, h3 {
 footer {
     text-align: center;
 }
+nav {
+    text-align: center;
+}
 form {
     max-width:640px;
     padding:1rem;
