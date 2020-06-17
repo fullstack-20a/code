@@ -3,6 +3,15 @@
 class ApiUser
 {
     // METHODES
+
+    static function login ()
+    {
+        // DEBUG
+        echo "ApiUser::login";
+
+    }
+
+    // VARIANTE SUR LE CREATE
     static function installer ()
     {
         // DEBUG
@@ -28,6 +37,13 @@ class ApiUser
     
             if (Controller::isOK())
             {
+                // AVANT D'INSERER LA LIGNE, ON VA HASHER LE MOT DE PASSE ET AJOUTER UN GRAIN DE SEL
+                $passwordNonHashe = $tabAssoToken["password"];
+                // https://www.php.net/manual/fr/function.password-hash.php
+                $passwordHasheSale = password_hash($passwordNonHashe, PASSWORD_DEFAULT);
+                // ON REMPLACE LE MOT DE PASSE EN CLAIR PAR LE MOT DE PASSE HASHE ET SALE
+                $tabAssoToken["password"] = $passwordHasheSale;
+
                 Model::insert("user", $tabAssoToken);
                 Controller::$tabAssoJson["listeUser"] = Model::read("user");
             }
