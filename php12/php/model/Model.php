@@ -3,6 +3,24 @@
 class Model
 {
     // METHODES
+    static function compter ($nomTable)
+    {
+        // https://sql.sh/fonctions/agregation/count
+        $requeteSQL =
+<<<CODESQL
+
+SELECT count(*) FROM `$nomTable`
+
+CODESQL;
+
+        // IL FAUT ENFIN RAJOUTER id DANS LES TOKENS
+        $pdoStatement = Model::envoyerRequeteSQL($requeteSQL, []);
+        // ASTUCE: ON PEUT RECUPERER DIRECTEMENT LA VALEUR DE LA PREMIERE COLONNE
+        // https://www.php.net/manual/fr/pdostatement.fetchcolumn.php
+        $nbLigne = $pdoStatement->fetchColumn();
+
+        return $nbLigne;
+    }
 
     static function update ($nomTable, $id, $tabAssoToken)
     {
