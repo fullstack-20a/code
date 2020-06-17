@@ -162,3 +162,10 @@ logout.php
     POUR FINIR: LE LOGOUT CONSISTE SIMPLEMENT A EFFACER LA CLE API DANS sessionStorage
 
     PAUSE JUSQU'A 16H05...
+
+
+## CREER DES DIAGRAMMES DANS LE NAVIGATEUR
+
+    https://app.diagrams.net/
+
+    

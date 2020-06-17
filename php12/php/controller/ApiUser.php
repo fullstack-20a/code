@@ -48,6 +48,10 @@ class ApiUser
                 {
                     // ON VA EN PLUS RENVOYER LA CLE API (BAGDE D'ACCES)
                     Controller::$tabAssoJson["cleAPI"] = Config::$cleAdminAPI;
+
+                    // ON VEUT AJOUTER UNE REDIRECTION
+                    Controller::$tabAssoJson["redirection"] = 'crud-article.php';
+
                 }
                 // ON PEUT AJOUTER PLUS DE CLES API SUIVANT LES DIFFERENTS LEVELS...
 

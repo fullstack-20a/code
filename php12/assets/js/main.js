@@ -28,6 +28,7 @@ var envoyerRequeteAjax = function (event)
                 baliseConfirmation.innerHTML = objetJS.confirmation;
             }
 
+            // CODE ACTIVE SEULEMENT SI ON RECOIT EN REPONSE cleAPI
             if ( 'cleAPI' in objetJS)
             {
                 // ON VA MEMORISER LA CLE API
@@ -42,7 +43,15 @@ var envoyerRequeteAjax = function (event)
                 // ON APPELLE DYNAMIQUEMENT LA FONCTION DE CALLBACK
                 boiteAjax[callback](objetJS, event);
             }
-            
+
+            // PLUTOT GARDER LA REDIRECTION A LA FIN ? (POUR NE PAS BLOQUER LES AUTRES CODES JS)
+            // CODE ACTIVE SEULEMENT SI ON RECOIT EN REPONSE redirection
+            if ( 'redirection' in objetJS)
+            {
+                // ON VA DECLENCHER LA REDIRECTION DEMANDEE PAR PHP
+                location.href = objetJS.redirection;
+            }
+
         });
     });
 
