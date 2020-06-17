@@ -1,7 +1,7 @@
 
         <section>
             <h2>FORMULAIRE DE LOGIN</h2>
-            <form action="api.php" method="POST">
+            <form class="ajax" action="api.php" method="POST">
                 <!-- PARTIE A REMPLIR PAR LE VISITEUR -->
                 <input type="email" name="email" required placeholder="email">
                 <input type="password" name="password" required placeholder="password">

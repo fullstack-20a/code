@@ -231,23 +231,6 @@ function ajouterAction (selecteurCSS, evenement, callback)
 // QUAND ON CLIQUE SUR UN BOUTON delete
 var baliseButtonDelete  = document.querySelector('form.delete button[type=submit]'); 
 var baliseInputIdDelete = document.querySelector('form.delete input[name=id]'); 
-/*
-var listeBoutonDelete   = document.querySelectorAll('button.delete');
-for(var b=0; b<listeBoutonDelete.length; b++)
-{
-    var bouton = listeBoutonDelete[b];
-    bouton.addEventListener('click', function(event) {
-        // DEBUG
-        console.log(event.target);
-        var id = event.target.getAttribute('data-id');
-        console.log(id);
-        // COPIER LA VALEUR DE id
-        baliseInputIdDelete.value = id;
-        // ET IL SUFFIT D'ACTIVER LE FORMULAIRE
-        baliseButtonDelete.click();
-    })
-}
-*/
 var activerDelete = function(event) {
     // DEBUG
     console.log(event.target);
@@ -264,26 +247,6 @@ ajouterAction('button.delete', 'click', activerDelete);
 // JE VEUX COPIER LE FORMULAIRE PRE-REMPLI DANS LE FORMULAIRE D'UPDATE
 var baliseSectionUpdate = document.querySelector('section.lightbox');
 var baliseUpdateCopy = document.querySelector('form.update div.update-copy');
-/*
-
-var listeBoutonModifier = document.querySelectorAll('button.update');
-for(var b=0; b<listeBoutonModifier.length; b++)
-{
-    var bouton = listeBoutonModifier[b];
-    bouton.addEventListener('click', function(event) {
-        var id = event.target.getAttribute('data-id');
-        var selecteurForm = '.update-' + id;
-        var divSource = document.querySelector(selecteurForm);
-        // DEBUG
-        console.log(divSource);
-        // ON COPIE LE FORMULAIRE PREREMPLI
-        baliseUpdateCopy.innerHTML = divSource.innerHTML;
-
-        // ON MONTRE LA LIGHTBOX
-        baliseSectionUpdate.classList.add('active');
-    })
-}
-*/
 var activerModifier = function(event) {
     var id = event.target.getAttribute('data-id');
     var selecteurForm = '.update-' + id;
