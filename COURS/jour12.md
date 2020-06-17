@@ -28,6 +28,22 @@ login.php
 
 logout.php
 
+## CREATION DE LA PAGE installation.php
+
+    CREER LA TABLE SQL user
+
+        user
+            id                  INT             INDEX=PRIMARY A_I
+            email               VARCHAR(160)
+            login               VARCHAR(160)
+            password            VARCHAR(160)
+            level               INT
+            dateCreation        DATETIME
+
+    ET ENSUITE CODER LE FORMULAIRE HTML
+    => ASTUCE ON UTILISE LE NOM DES COLONNES SQL DANS LES BALISES HTML (name="...")
+
+    
 
 
 
