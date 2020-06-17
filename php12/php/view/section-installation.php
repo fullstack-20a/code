@@ -6,7 +6,7 @@
                 <input type="email" name="email" required placeholder="email">
                 <input type="text" name="login" required placeholder="login">
                 <input type="password" name="password" required placeholder="password">
-                <button>CREER LE COMPTE ADMIN</button>
+                <button type="submit">CREER LE COMPTE ADMIN</button>
                 <!-- PARTIE TECHNIQUE -->
                 <input type="hidden" name="classeCible" value="User">
                 <input type="hidden" name="methodeCible" value="installer">
