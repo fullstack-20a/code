@@ -278,11 +278,6 @@ boutonClose.addEventListener('click', function() {
     baliseSectionUpdate.classList.remove('active');
 })
 
-// ON CREE LA FONCTION ET DONC ON PEUT CHOISIR LE NOM DES PARAMETRES
-// CETTE FONCTION SERA APPELEE PAR JS
-// ET JS FOURNIRA LA VALEUR AU PARAMETRE event
-
-var boiteAjax = {};
 boiteAjax.gererAjaxArticle = function (objetJS, event)
 {
     // ON RECOIT LA NOUVELLE LISTE DES ARTICLES
@@ -339,13 +334,6 @@ boiteAjax.gererAjaxArticle = function (objetJS, event)
     }
 
 }
-
-// ETAPE2: ON APPELLE LA FONCTION
-// => ON DONNE LES VALEURS AUX PARAMETRES
-// JS FAIT selecteur = 'form.ajax' ET evenement = 'submit' ET callback = function (event) { ... }
-
-ajouterAction('form.ajax', 'submit', envoyerRequeteAjax);
-
 
 // JE VAIS CHARGER LA LISTE AVEC UN TEMPS DE DECALAGE
 setTimeout(function(){
