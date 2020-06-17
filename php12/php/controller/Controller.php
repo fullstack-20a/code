@@ -38,8 +38,7 @@ class Controller
         $outputDetourne = ob_get_clean();
 
         // ON VA FOURNIR DU CODE JSON
-        Controller::$tabAssoJson["propriete1"] = "valeur1";
-        Controller::$tabAssoJson["propriete2"] = "valeur2";
+        Controller::$tabAssoJson["request"]    = $_REQUEST; // POUR AIDER AU DEBUG
         Controller::$tabAssoJson["debug"]      = $outputDetourne;
 
         // ON CONVERTIR LE TABLEAU ASSOCIATIF EN CODE JSON
