@@ -12,6 +12,6 @@ class Config
     public static $hostSQL          = "localhost";
 
     // CONFIG POUR FORMULAIRE
-    public static $cleAdminAPI      = '$2y$10$60tyMmQdDotbeZ5Dh3yp9eeuq4tjspSstK5b/TMEnoyzhuS8DC8jW';
+    public static $cleAdminAPI      = 'CLE-API-A-CHANGER';
 
 }

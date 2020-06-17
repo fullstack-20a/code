@@ -46,11 +46,11 @@ class ApiUser
                 // ON VERIFIE EN PLUS LE LEVEL AVANT DE RENVOYER LA CLE API
                 if (100 <= $tabLigne[0]['level'])
                 {
-                    // ON VA EN PLUS RENVOYER LA CLE API
+                    // ON VA EN PLUS RENVOYER LA CLE API (BAGDE D'ACCES)
                     Controller::$tabAssoJson["cleAPI"] = Config::$cleAdminAPI;
                 }
                 // ON PEUT AJOUTER PLUS DE CLES API SUIVANT LES DIFFERENTS LEVELS...
-                
+
             }
             else
             {
@@ -103,6 +103,14 @@ class ApiUser
 
                 Model::insert("user", $tabAssoToken);
                 Controller::$tabAssoJson["listeUser"] = Model::read("user");
+
+                // ON PEUT AJOUTER PLUS DE CODE D'INSTALLATION
+                // CREER LA CLE API...
+                $cleAPiAleatoire = password_hash(uniqid(), PASSWORD_DEFAULT);
+                $codeModele = file_get_contents("php/model/Config-modele.php");
+                $codeFinal = str_replace("CLE-API-A-CHANGER", $cleAPiAleatoire, $codeModele);
+                file_put_contents("php/model/Config.php", $codeFinal);
+
             }
         }
     }
