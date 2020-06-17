@@ -6,6 +6,15 @@ class ApiArticle
     // METHODES
     static function create ()
     {
+        // ON VA AJOUTER UNE PROTECTION AVEC UNE CLE API
+        // LE FORMULAIRE DEVRA ENVOYER UNE INFORMATION SUPPLEMENTAIRE QUI SERA LA CLE API
+        $cleAPI = Controller::filtrer("cleAPI");
+        if ($cleAPI != Config::$cleAdminAPI)
+        {
+            Controller::$tabAssoJson["confirmation"] = "cleAPI MANQUANTE";
+            return; // ON ARRETE L'EXECUTION DU CODE DE CETTE METHODE
+        }
+
         // ICI ON VA TRAITER LE FORMULAIRE DE CREATE
         // DEBUG
         echo "<h4>ON A ACTIVE LE CODE DE ApiArticle::create</h4>";
@@ -44,6 +53,13 @@ class ApiArticle
 
     static function delete ()
     {
+        $cleAPI = Controller::filtrer("cleAPI");
+        if ($cleAPI != Config::$cleAdminAPI)
+        {
+            Controller::$tabAssoJson["confirmation"] = "cleAPI MANQUANTE";
+            return; // ON ARRETE L'EXECUTION DU CODE DE CETTE METHODE
+        }
+
         // ICI ON VA TRAITER LE FORMULAIRE DE DELETE
         echo "<h4>ON A ACTIVE LE CODE DE ApiArticle::delete</h4>";
 
@@ -62,6 +78,13 @@ class ApiArticle
 
     static function update ()
     {
+        $cleAPI = Controller::filtrer("cleAPI");
+        if ($cleAPI != Config::$cleAdminAPI)
+        {
+            Controller::$tabAssoJson["confirmation"] = "cleAPI MANQUANTE";
+            return; // ON ARRETE L'EXECUTION DU CODE DE CETTE METHODE
+        }
+
         // ICI ON VA TRAITER LE FORMULAIRE DE UPDATE
         // DEBUG
         echo "<h4>ON A ACTIVE LE CODE DE ApiArticle::update</h4>";
@@ -98,6 +121,13 @@ class ApiArticle
 
     static function read ()
     {
+        $cleAPI = Controller::filtrer("cleAPI");
+        if ($cleAPI != Config::$cleAdminAPI)
+        {
+            Controller::$tabAssoJson["confirmation"] = "cleAPI MANQUANTE";
+            return; // ON ARRETE L'EXECUTION DU CODE DE CETTE METHODE
+        }
+
         // ICI ON VA TRAITER LE FORMULAIRE DE READ
         Controller::$tabAssoJson["listeArticle"] = Model::read("article");
     }

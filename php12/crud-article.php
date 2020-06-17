@@ -65,6 +65,13 @@ table td button {
 <body>
     <header>
         <h1>CRUD article</h1>
+        <nav>
+            <!-- MENU TEMPORAIRE -->
+            <a href="installation.php">installation</a>
+            <a href="login.php">login</a>
+            <a href="crud-article.php">crud article</a>
+            <a href="logout.php">logout</a>
+        </nav>
     </header>
     <main>
         <section>
@@ -77,6 +84,7 @@ table td button {
                 <input type="text" name="categorie" required placeholder="categorie">
                 <button type="submit">PUBLIER MON ARTICLE</button>
                 <!-- PARTIE TECHNIQUE -->
+                <input type="hidden" name="cleAPI" required placeholder="cleAPI">
                 <input type="hidden" name="classeCible" value="Article">
                 <input type="hidden" name="methodeCible" value="create">
                 <!-- POUR AFFICHER UN MESSAGE DE CONFIRMATION -->
@@ -91,6 +99,7 @@ table td button {
                 <input type="number" name="id" required placeholder="id">
                 <button type="submit">SUPPRIMER MON ARTICLE</button>
                 <!-- PARTIE TECHNIQUE -->
+                <input type="hidden" name="cleAPI" required placeholder="cleAPI">
                 <input type="hidden" name="classeCible" value="Article">
                 <input type="hidden" name="methodeCible" value="delete">
                 <!-- POUR AFFICHER UN MESSAGE DE CONFIRMATION -->
@@ -112,6 +121,7 @@ table td button {
                 </div>
                 <button type="submit">MODIFIER MON ARTICLE</button>
                 <!-- PARTIE TECHNIQUE -->
+                <input type="hidden" name="cleAPI" required placeholder="cleAPI">
                 <input type="hidden" name="classeCible" value="Article">
                 <input type="hidden" name="methodeCible" value="update">
                 <!-- POUR AFFICHER UN MESSAGE DE CONFIRMATION -->
@@ -124,6 +134,7 @@ table td button {
             <form class="ajax read" action="">
                 <button type="submit">RAFRAICHIR LA LISTE DES ARTICLES</button>
                 <!-- PARTIE TECHNIQUE -->
+                <input type="hidden" name="cleAPI" required placeholder="cleAPI">
                 <input type="hidden" name="classeCible" value="Article">
                 <input type="hidden" name="methodeCible" value="read">
                 <!-- POUR AFFICHER UN MESSAGE DE CONFIRMATION -->
@@ -342,6 +353,28 @@ setTimeout(function(){
 },
 2000);
 
+
+// ON VA RECUPERER LA CLE API MEMORISEE DANS sessionStorage
+// ET ON VA PRE-REMPLIR LES CHAMPS DE FORMULAIRES AVEC CETTE VALEUR
+var cleAPI = sessionStorage.getItem("cleAPI");
+console.log(cleAPI);
+if (cleAPI != null)
+{
+    var listeInput = document.querySelectorAll('input[name=cleAPI]');
+    for (var b=0; b < listeInput.length; b++)
+    {
+        var input = listeInput[b];
+        input.value = cleAPI;
+    }
+}
+else
+{
+    console.log('REDIRECTION...')
+    // ON VA REDIRIGER LE VISITEUR VERS LA PAGE DE login.php
+    // https://www.w3schools.com/jsref/prop_loc_href.asp
+    location.replace('login.php');
+    
+}
         </script>
 
 </body>

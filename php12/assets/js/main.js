@@ -28,6 +28,14 @@ var envoyerRequeteAjax = function (event)
                 baliseConfirmation.innerHTML = objetJS.confirmation;
             }
 
+            if ( 'cleAPI' in objetJS)
+            {
+                // ON VA MEMORISER LA CLE API
+                // POUR POUVOIR S'EN RESSERVIR DANS LES AUTRES PAGES
+                // ON VA UTILISER localStorage OU sessionStorage
+                sessionStorage.setItem('cleAPI', objetJS.cleAPI);
+            }
+
             // PARCOURIR LES PROPRIETES D'UN OBJET
             for(callback in boiteAjax)
             {

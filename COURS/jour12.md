@@ -102,4 +102,10 @@ logout.php
     admin    $2y$10$tp8Kni9wrj/AxOrphDelMOAyyFNCuFS9epm8iHubEaICR28M.Uqiu
 
 
+## JS: localStorage vs sessionStorage
 
+    https://developer.mozilla.org/fr/docs/Web/API/Window/localStorage
+
+    DANS LE NAVIGATEUR, ON PEUT MEMORISER DES INFOS SOUS LA FORME CLE/VALEUR
+    * localStorage      => PAS DE LIMITE DE TEMPS
+    * sessionStorage    => DETRUIT A LA FERMETURE DE L'ONGLET

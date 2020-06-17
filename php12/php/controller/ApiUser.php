@@ -43,6 +43,9 @@ class ApiUser
                 // MESSAGE DE CONFIRMATION
                 Controller::$tabAssoJson["confirmation"] = "BIENVENUE $login";
 
+                // ON VA EN PLUS RENVOYER LA CLE API
+                Controller::$tabAssoJson["cleAPI"] = Config::$cleAdminAPI;
+
             }
             else
             {
