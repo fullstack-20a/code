@@ -43,9 +43,14 @@ class ApiUser
                 // MESSAGE DE CONFIRMATION
                 Controller::$tabAssoJson["confirmation"] = "BIENVENUE $login";
 
-                // ON VA EN PLUS RENVOYER LA CLE API
-                Controller::$tabAssoJson["cleAPI"] = Config::$cleAdminAPI;
-
+                // ON VERIFIE EN PLUS LE LEVEL AVANT DE RENVOYER LA CLE API
+                if (100 <= $tabLigne[0]['level'])
+                {
+                    // ON VA EN PLUS RENVOYER LA CLE API
+                    Controller::$tabAssoJson["cleAPI"] = Config::$cleAdminAPI;
+                }
+                // ON PEUT AJOUTER PLUS DE CLES API SUIVANT LES DIFFERENTS LEVELS...
+                
             }
             else
             {
