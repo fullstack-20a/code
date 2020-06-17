@@ -4,10 +4,49 @@ class ApiUser
 {
     // METHODES
 
+    // VARIANTE SUR LE READ
     static function login ()
     {
         // DEBUG
         echo "ApiUser::login";
+        // ON VA RECUPERER LES INFOS DE FORMULAIRES
+        // email ET password EN CLAIR
+        // ON VA UTILISER email POUR CHERCHER LA LIGNE CORRESPONDANTE DANS LA TABLE SQL user
+        // ET ENSUITE ON POURRA VERIFIER SI LE MOT DE PASSE EN CLAIR CORRESPOND AU HASH SALE
+        $tabAssoToken =
+        [
+            "email"             => Controller::filtrer("email"),
+            "password"          => Controller::filtrer("password"),
+        ];
+
+        $tabLigne = Model::chercher("user", "email", $tabAssoToken["email"]);
+        // POUR SAVOIR SI ON A TROUVE UNE LIGNE
+        if (count($tabLigne) == 1)
+        {
+            // ON A UNE LIGNE QUI CORRESPOND A L'EMAIL ENTRE...
+            // DEBUG
+            // print_r($tabLigne);
+            $passwordEnClair   = $tabAssoToken["password"];
+            $passwordHasheSale = $tabLigne[0]["password"];
+            // ON VA UTILISER LA FONCTION password_verify
+            // https://www.php.net/manual/fr/function.password-verify.php
+            // AVEC LE HASHAGE, SI ON A LA MEME SOURCE (MOT DE PASSE EN CLAIR + GRAIN DE SEL) 
+            // ON ARRIVE AU MEME HASH
+            $loginOK = password_verify($passwordEnClair, $passwordHasheSale);
+            if ($loginOK)
+            {
+                // SCENARIO: BIENVENUE
+                // DEBUG
+                $login = $tabLigne[0]["login"];
+                echo "BIENVENUE $login";
+            }
+            else
+            {
+                // SCENARIO: MAUVAIS IDENTIFIANTS
+                // DEBUG
+                echo "DESOLE, VERIFIEZ VOS IDENTIFIANTS";
+            }
+        }
 
     }
 

@@ -114,6 +114,23 @@ CODESQL;
         return $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    static function chercher ($nomTable, $colonneFiltre, $valeurCherchee)
+    {
+        $requeteSQL =
+<<<CODESQL
+
+SELECT * FROM $nomTable
+WHERE $colonneFiltre = :$colonneFiltre
+ORDER BY id DESC
+
+CODESQL;
+
+        $pdoStatement = Model::envoyerRequeteSQL($requeteSQL, [ $colonneFiltre => $valeurCherchee ]);
+
+        // ON RENVOIE UN TABLEAU ORDONNE DE TABLEAUX ASSOCIATIFS
+        return $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     static function envoyerRequeteSQL($requeteSQL, $tabAssoToken)
     {
         $dbname         = Config::$dbnameSQL ?? "";     // A CHANGER A CHAQUE PROJET
