@@ -39,15 +39,25 @@ class ApiUser
                 // DEBUG
                 $login = $tabLigne[0]["login"];
                 echo "BIENVENUE $login";
+
+                // MESSAGE DE CONFIRMATION
+                Controller::$tabAssoJson["confirmation"] = "BIENVENUE $login";
+
             }
             else
             {
                 // SCENARIO: MAUVAIS IDENTIFIANTS
                 // DEBUG
                 echo "DESOLE, VERIFIEZ VOS IDENTIFIANTS";
+                // MESSAGE DE CONFIRMATION
+                Controller::$tabAssoJson["confirmation"] = "DESOLE, VERIFIEZ VOS IDENTIFIANTS";
             }
         }
-
+        else
+        {
+            // MESSAGE DE CONFIRMATION (ATTENTION A LA CONFIDENTIALITE...)
+            Controller::$tabAssoJson["confirmation"] = "DESOLE, VERIFIEZ VOTRE EMAIL";
+        }
     }
 
     // VARIANTE SUR LE CREATE

@@ -20,10 +20,26 @@ var envoyerRequeteAjax = function (event)
             {
                 console.log(objetJS.debug);
             }
+
+            if ( 'confirmation' in objetJS)
+            {
+                // ON AFFICHE UN MESSAGE DE CONFIRMATION
+                var baliseConfirmation = event.target.querySelector('.confirmation');
+                baliseConfirmation.innerHTML = objetJS.confirmation;
+            }
+
+            // PARCOURIR LES PROPRIETES D'UN OBJET
+            for(callback in boiteAjax)
+            {
+                // ON APPELLE DYNAMIQUEMENT LA FONCTION DE CALLBACK
+                boiteAjax[callback](objetJS, event);
+            }
+            
         });
     });
 
 }
+var boiteAjax = {};
 
 function ajouterAction (selecteurCSS, evenement, callback)
 {

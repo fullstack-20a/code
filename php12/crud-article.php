@@ -213,19 +213,15 @@ CODEHTML;
                 </tbody>
             </table>
         </section>
-        <script>
 
-// ETAPE1: DECLARATION DE LA FONCTION
-// PASSAGE DES FORMULAIRES EN AJAX
-function ajouterAction (selecteurCSS, evenement, callback)
-{
-    var listeBalise = document.querySelectorAll(selecteurCSS);
-    for(var b=0; b<listeBalise.length; b++)
-    {
-        var balise = listeBalise[b];
-        balise.addEventListener(evenement, callback);
-    }
-}
+
+    </main>
+    <footer>
+        <p>tous droits réservés</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
 
 // ON VEUT AJOUTER UN FONCTION DE CALLBACK
 // QUAND ON CLIQUE SUR UN BOUTON delete
@@ -268,104 +264,67 @@ boutonClose.addEventListener('click', function() {
     baliseSectionUpdate.classList.remove('active');
 })
 
-
-
 // ON CREE LA FONCTION ET DONC ON PEUT CHOISIR LE NOM DES PARAMETRES
 // CETTE FONCTION SERA APPELEE PAR JS
 // ET JS FOURNIRA LA VALEUR AU PARAMETRE event
-var envoyerRequeteAjax = function (event)
+
+var boiteAjax = {};
+boiteAjax.gererAjaxArticle = function (objetJS, event)
 {
-    console.log(event);
-    // BLOQUER LE FORMULAIRE ACTUEL
-    event.preventDefault();
-    // DEBUG
-    console.log(event.target);
+    // ON RECOIT LA NOUVELLE LISTE DES ARTICLES
+    if ('listeArticle' in objetJS)
+    {
+        console.log(objetJS.listeArticle);
+        // ON VA RECONSTRUIRE LA LISTE DANS LA PARTIE READ
+        // POUR AFFICHER UNE LISTE D'ARTICLES ACTUALISEE
+        // JE VAIS VIDER LA LISTE ACTUELLE QUI EST PERIMEE
+        var baliseTableBody = document.querySelector('tbody.container-articles');
+        baliseTableBody.innerHTML = '';
+        // MAINTENANT IL FAUT RECONSTRUIRE LE NOUVEL CODE HTML
+        var nouveauCodeHtml = '';
+        // PARCOURIR LA LISTE JSON ET CONSTRUIRE LE HTML POUR CHAQUE ARTICLE
+        for(var a=0; a <objetJS.listeArticle.length; a++)
+        {
+            var article = objetJS.listeArticle[a];
+            // ON CONCATENE AVEC LE CODE HTML
+            nouveauCodeHtml += 
+            `
+                <tr>
+                    <td>${article.id}</td>
+                    <td>${article.titre}</td>
+                    <td>${article.contenu}</td>
+                    <td>${article.photo}</td>
+                    <td>${article.categorie}</td>
+                    <td>${article.datePublication}</td>
+                    <!-- BOUTONS -->
+                    <td>
+                        <button data-id="${article.id}" class="update">modifier</button>
+                        <div class="source update-${article.id}">
+                            <!-- PARTIE A REMPLIR PAR L'UTILISATEUR -->
+                            <input type="hidden" name="id" required placeholder="id" value="${article.id}">
+                            <input type="text" name="titre" required placeholder="titre" value="${article.titre}">
+                            <textarea name="contenu" required placeholder="contenu">${article.contenu}</textarea>
+                            <input type="text" name="photo" required placeholder="photo" value="${article.photo}">
+                            <input type="text" name="categorie" required placeholder="categorie" value="${article.categorie}">
+                        </div>
+                    </td>
+                    <td><button class="delete" data-id="${article.id}">supprimer</button></td>
+                </tr>
+            `;
+        }
 
-    // MAINTENANT JE PEUX PRENDRE LA MAIN ET ENVOYER UNE REQUETE AVEC AJAX
-    // https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch
-    // ON ENVOIE UNE REQUETE A api.php SANS RECHARGER LA PAGE ACTUELLE
-    // MAIS C'EST MIEUX SI ON PEUT ENVOYER LES INFOS DU FORMULAIRE AUSSI
-    var boiteFormulaire = new FormData(event.target);  // ON ASPIRE LES ENTREES DU VISITEUR
-    var paramFetch = {
-        method : 'POST',    // PRATIQUE POUR POUVOIR FAIRE UPLOAD
-        body: boiteFormulaire 
-    };
-    // ENVOI DE LA REQUETE AJAX
-    var requeteAjax = fetch('api.php', paramFetch);
+        baliseTableBody.innerHTML = nouveauCodeHtml;
+        // LE JS DES EVENT LISTENER EST AUSSI PARTI AVEC L'ANCIEN HTML
+        // IL FAUT LE REINSTALLER SUR LE NOUVEAU HTML
+        ajouterAction('tbody.container-articles button.delete', 'click', activerDelete);
+        ajouterAction('tbody.container-articles button.update', 'click', activerModifier);
 
-    // RECEVOIR LES INFOS RENVOYEES EN REPONSE
-    requeteAjax
-    .then(function(reponseServeur){
-        console.log(reponseServeur);
-        // SI ON VEUT RECUPERER LE CONTENU BRUT
-        reponseServeur
-        //.text()   // SI ON A UNE SEULE INFO
-        .json()     // ON CONVERTIT LE CODE JSON EN OBJET JS
-        .then(function(objetJS) {
-            console.log(objetJS);
-
-            if ('debug' in objetJS)
-            {
-                console.log(objetJS.debug);
-            }
-
-            // ON RECOIT LA NOUVELLE LISTE DES ARTICLES
-            if ('listeArticle' in objetJS)
-            {
-                console.log(objetJS.listeArticle);
-                // ON VA RECONSTRUIRE LA LISTE DANS LA PARTIE READ
-                // POUR AFFICHER UNE LISTE D'ARTICLES ACTUALISEE
-                // JE VAIS VIDER LA LISTE ACTUELLE QUI EST PERIMEE
-                var baliseTableBody = document.querySelector('tbody.container-articles');
-                baliseTableBody.innerHTML = '';
-                // MAINTENANT IL FAUT RECONSTRUIRE LE NOUVEL CODE HTML
-                var nouveauCodeHtml = '';
-                // PARCOURIR LA LISTE JSON ET CONSTRUIRE LE HTML POUR CHAQUE ARTICLE
-                for(var a=0; a <objetJS.listeArticle.length; a++)
-                {
-                    var article = objetJS.listeArticle[a];
-                    // ON CONCATENE AVEC LE CODE HTML
-                    nouveauCodeHtml += 
-                    `
-                        <tr>
-                            <td>${article.id}</td>
-                            <td>${article.titre}</td>
-                            <td>${article.contenu}</td>
-                            <td>${article.photo}</td>
-                            <td>${article.categorie}</td>
-                            <td>${article.datePublication}</td>
-                            <!-- BOUTONS -->
-                            <td>
-                                <button data-id="${article.id}" class="update">modifier</button>
-                                <div class="source update-${article.id}">
-                                    <!-- PARTIE A REMPLIR PAR L'UTILISATEUR -->
-                                    <input type="hidden" name="id" required placeholder="id" value="${article.id}">
-                                    <input type="text" name="titre" required placeholder="titre" value="${article.titre}">
-                                    <textarea name="contenu" required placeholder="contenu">${article.contenu}</textarea>
-                                    <input type="text" name="photo" required placeholder="photo" value="${article.photo}">
-                                    <input type="text" name="categorie" required placeholder="categorie" value="${article.categorie}">
-                                </div>
-                            </td>
-                            <td><button class="delete" data-id="${article.id}">supprimer</button></td>
-                        </tr>
-                    `;
-                }
-
-                baliseTableBody.innerHTML = nouveauCodeHtml;
-                // LE JS DES EVENT LISTENER EST AUSSI PARTI AVEC L'ANCIEN HTML
-                // IL FAUT LE REINSTALLER SUR LE NOUVEAU HTML
-                ajouterAction('tbody.container-articles button.delete', 'click', activerDelete);
-                ajouterAction('tbody.container-articles button.update', 'click', activerModifier);
-
-                // A LA FIN
-                // JE VIDE LE FORMULAIRE
-                event.target.reset();
-            }
-        })
-    });
+        // A LA FIN
+        // JE VIDE LE FORMULAIRE
+        event.target.reset();
+    }
 
 }
-
 
 // ETAPE2: ON APPELLE LA FONCTION
 // => ON DONNE LES VALEURS AUX PARAMETRES
@@ -385,10 +344,5 @@ setTimeout(function(){
 
         </script>
 
-
-    </main>
-    <footer>
-        <p>tous droits réservés</p>
-    </footer>
 </body>
 </html>

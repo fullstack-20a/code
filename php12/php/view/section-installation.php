@@ -7,6 +7,7 @@
                 <input type="text" name="login" required placeholder="login">
                 <input type="password" name="password" required placeholder="password">
                 <button type="submit">CREER LE COMPTE ADMIN</button>
+                <div class="confirmation"></div>
                 <!-- PARTIE TECHNIQUE -->
                 <input type="hidden" name="classeCible" value="User">
                 <input type="hidden" name="methodeCible" value="installer">
