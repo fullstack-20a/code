@@ -3,6 +3,7 @@
 // POUR TRAITER LES FORMULAIRES
 class ApiArticle 
 {
+
     // METHODES
     static function create ()
     {
@@ -29,10 +30,10 @@ class ApiArticle
         [
             // "cle"   => "valeur",
             // CLE: COLONNES SQL (DEJA CREEES)         // VALEUR: name HTML
-            "titre"             => Controller::filtrer("titre"),   // $name = "titre"
-            "contenu"           => Controller::filtrer("contenu"),
+            "titre"             => Controller::filtrerTexte("titre"),   // $name = "titre"
+            "contenu"           => Controller::filtrerTexte("contenu"),
             "photo"             => Controller::filtrerUpload("photo"), // SPECIAL POUR GERER L'UPLOAD DE FICHIER
-            "categorie"         => Controller::filtrer("categorie"),
+            "categorie"         => Controller::filtrerTexte("categorie"),
             // COMPLETER LES COLONNES MANQUANTES
             "datePublication"   => date("Y-m-d H:i:s"), // FORMAT DATETIME 2020-06-15 11:07:23
         ];

@@ -42,8 +42,9 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?7A105199780FFECCCD1732196
 
     LES INFOS SUR LE FICHIER EN QUARANTAINE EST DANS LE TABLEAU $_FILES
     $_FILES EST UN TABLEAU ASSOCIATIF DE TABLEAU ASSOCIATIF
+    (FOURNI AUTOMATIQUEMENT PAR PHP)
 
-    Array
+    $_FILES = Array
     (
         [photo] => Array
             (
@@ -85,8 +86,19 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?7A105199780FFECCCD1732196
             // ET ON VA LE DEPLACER DANS assets/upload 
             // (NE PAS OUBLIER DE CREER CE DOSSIER AVANT...)
             // https://www.php.net/manual/fr/function.move-uploaded-file.php
-            $destination = "assets/upload/$name";
-            move_uploaded_file($tmp_name, $destination);
+
+            // AJOUTER PLEIN DE TESTS...
+            if ($error == 0)
+            {
+                // EVITER D'ACCEPTER DES FICHIERS AVEC DES EXTENSIONS DANGEREUSES
+                $destination = "assets/upload/$name";
+                move_uploaded_file($tmp_name, $destination);
+
+            }
+            else
+            {
+                // ERREUR PENDANT LE TRANSFERT
+            }
 
         }
         // ON RENVOIE LE CHEMIN DU FICHIER SUR LE SERVEUR

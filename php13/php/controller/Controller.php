@@ -7,6 +7,10 @@ class Controller
     // PROPRIETE STATIC
     public static $tabAssoJson = [];
 
+    // PROPRIETE QUI VA MEMORISER LES ERREURS DETECTEES DANS LES FORMULAIRES
+    public static $tabErreur = [];
+
+
     // METHODES
     static function traiterFormulaire ()
     {
@@ -75,6 +79,15 @@ class Controller
         return $resultat;
     }
 
+    static function filtrerTexte ($name)
+    {
+        $texte = Controller::filtrer($name);
+        if ($texte == "")
+        {
+            Controller::$tabErreur[] = "$name EST OBLIGATOIRE";
+        }
+    }
+    
     // CODE A PART POUR GERER LES UPLOADS DANS UN FORMULAIRE
     static function filtrerUpload ($name)
     {
@@ -89,18 +102,70 @@ class Controller
         {
             // OUI ON A UN FICHIER EN QUARANTAINE EN ATTENTE
             $tabAssoFichier = $_FILES[$name];
+            /*
             $error      = $tabAssoFichier["error"];     // 0 SI TOUT EST BIEN TRANSFERE
             $size       = $tabAssoFichier["size"];      // TAILLE DU FICHIER EN OCTETS
             $name       = $tabAssoFichier["name"];      // NOM DU FICHIER ORIGINAL
             $tmp_name   = $tabAssoFichier["tmp_name"];  // LE FICHIER EN QUARANTAINE
+            */
+            // https://www.php.net/manual/fr/function.extract.php
+            extract($tabAssoFichier);
+
             // ICI IL FAUT DECIDER SI ON RECUPERE CE FICHIER
             // SI ON NE LE RECUPERE PAS APACHE VA LE DETRUIRE RAPIDEMENT... 
-            // SI ON EST OPEN BAR ON VA RECUPERER LE FICHIER EN QUARANTAINE 
+            // ON VA RECUPERER LE FICHIER EN QUARANTAINE 
             // ET ON VA LE DEPLACER DANS assets/upload 
             // (NE PAS OUBLIER DE CREER CE DOSSIER AVANT...)
             // https://www.php.net/manual/fr/function.move-uploaded-file.php
-            $destination = "assets/upload/$name";
-            move_uploaded_file($tmp_name, $destination);
+            // AJOUTER PLEIN DE TESTS...
+            if ($error == 0)
+            {
+                // EVITER D'ACCEPTER DES FICHIERS AVEC DES EXTENSIONS DANGEREUSES
+                // https://www.php.net/manual/fr/function.in-array
+                // https://www.php.net/manual/fr/function.pathinfo.php
+                /*
+                $extension = pathinfo($name, PATHINFO_EXTENSION);
+                $filename  = pathinfo($name, PATHINFO_FILENAME);
+                */
+                extract(pathinfo($name));
+
+                // METTRE L'EXTENSION EN MINUSCULES
+                // https://www.php.net/manual/fr/function.strtolower.php
+                $extension = strtolower($extension);
+                if (in_array($extension, Config::$listeExtensionOK))
+                {
+                    if ($size < Config::$sizeMaxUpload)
+                    {
+                        // FILTRER LE NOM DU FICHIER
+                        // POUR ENLEVER LES CARACTERES SPECIAUX
+                        // https://www.php.net/manual/fr/function.preg-replace.php
+                        // https://regex101.com/
+                        $filename = Controller::str_without_accents($filename);
+                        $filename = preg_replace("/[^a-zA-Z0-9-]/", "", $filename);
+
+                        $destination = "assets/upload/$filename.$extension";
+                        // FILTRER POUR PASSER EN MINUSCULES
+                        $destination = strtolower($destination);
+                        move_uploaded_file($tmp_name, $destination);
+                    }
+                    else
+                    {
+                        // ERREUR: TAILLE DEPASSEE
+                        Controller::$tabErreur[] = "TAILLE DEPASSEE";
+                    }
+                }
+                else
+                {
+                    // ERREUR SUR L'EXTENSION
+                    Controller::$tabErreur[] = "EXTENSION NON AUTORISEE";
+                }
+
+            }
+            else
+            {
+                // ERREUR PENDANT LE TRANSFERT
+                Controller::$tabErreur[] = "ERREUR RESEAU";
+            }
 
         }
         // ON RENVOIE LE CHEMIN DU FICHIER SUR LE SERVEUR
@@ -108,12 +173,35 @@ class Controller
 
     }
 
+    // https://stackoverflow.com/questions/1017599/how-do-i-remove-accents-from-characters-in-a-php-string
+    static function str_without_accents($str, $charset='utf-8')
+    {
+        $str = htmlentities($str, ENT_NOQUOTES, $charset);
+
+        $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+        $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str); // pour les ligatures e.g. '&oelig;'
+        $str = preg_replace('#&[^;]+;#', '', $str); // supprime les autres caractères
+
+        return $str;   // or add this : mb_strtoupper($str); for uppercase :)
+    }
+
     // SECURITE: VALIDER LES INFOS DU FORMULAIRE
     static function isOK ()
     {
-        // TODO
-        $resultat = true;
-        // ... A COMPLETER... 
-        return $resultat;
+        // ON COMPTE LE NOMBRE D'ERREURS DETECTEES PAR LES METHODES filtrer...
+        $nbErreur = count(Controller::$tabErreur);
+        if ($nbErreur == 0)
+        {
+            return true;
+        }
+        else
+        {
+            // ON PEUT CONSTRUIRE LE MESSAGE D'ERREUR
+            $listeErreur = implode(", ", Controller::$tabErreur);
+
+            Controller::$tabAssoJson["confirmation"] = $listeErreur;
+
+            return false;
+        }
     }
 }
