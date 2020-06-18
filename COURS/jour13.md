@@ -136,6 +136,20 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?7A105199780FFECCCD1732196
 ## CSS SUR LES TEXTES
 
     SI LE TEXTE DEBORDE DE SON CONTAINER...
-    
+
     https://developer.mozilla.org/fr/docs/Web/CSS/word-break
     https://developer.mozilla.org/fr/docs/Web/CSS/white-space
+
+
+## EXPRESSIONS REGULIERES (REGEXP)
+
+    OUTIL ANCIEN ET PUISSANT POUR MANIPULER DES TEXTES...
+
+    SITE POUR TESTER ET EXPLIQUER LA SIGNIFICATION DES EXPRESSIONS REGULIERES
+
+    https://regex101.com/
+
+    EN PHP, ON A PARFOIS BESOIN D'UTILISER DES REGEXP 
+    EXEMPLE:
+    https://www.php.net/manual/fr/function.preg-replace.php
+
