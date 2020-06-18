@@ -110,3 +110,25 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?7A105199780FFECCCD1732196
 
     PAUSE JUSQU'A 10H55
 
+## ACTIVITE POUR CET APRES-MIDI
+
+    2 * autonomie
+    2 * ajouter les miniatures
+    1 * creer schemas de synthèse
+    * ajouter plus automatisation dans le crud
+    * compléter UPDATE pour upload
+    * exercices
+    * revenir sur des points pas assez clairs...
+    3 * nsp (sieste...)
+
+    PISTE POUR CREER LES MINIATURES:
+    https://www.php.net/manual/fr/function.imagecopyresampled.php
+
+    LIMITER LA LONGUEUR DU TEXTE AFFICHE...
+    https://www.php.net/manual/fr/function.substr
+
+    * JUSQU'A 15H30
+        ACTIVITE LIBRE ET AUTONOME
+    * ET EN FIN DE JOURNEE:
+        ajouter les miniatures
+  
