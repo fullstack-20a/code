@@ -1,6 +1,6 @@
 
 <section>
-    <h2>LISTE DES ARTICLES</h2>
+    <h2>TEMPLATE POUR UN ARTICLE</h2>
     <div class="ligne x3col">
 <?php
 // CHARGER LE CODE PHP
