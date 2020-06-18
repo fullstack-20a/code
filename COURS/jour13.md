@@ -132,3 +132,10 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?7A105199780FFECCCD1732196
     * ET EN FIN DE JOURNEE:
         ajouter les miniatures
   
+
+## CSS SUR LES TEXTES
+
+    SI LE TEXTE DEBORDE DE SON CONTAINER...
+    
+    https://developer.mozilla.org/fr/docs/Web/CSS/word-break
+    https://developer.mozilla.org/fr/docs/Web/CSS/white-space
