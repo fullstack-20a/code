@@ -155,7 +155,7 @@ CODESQL;
 
         // AFFICHE LES INFOS SUR LA REQUETE SQL 
         // => PRATIQUE POUR LE DEBUG (A ACTIVER SI BESOIN...)
-        $pdoStatement->debugDumpParams();
+        // $pdoStatement->debugDumpParams();
 
         // POUR LA LECTURE, ON A BESOIN DE CONTINUER A UTILISER $pdoStatement
         return $pdoStatement;

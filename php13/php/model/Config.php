@@ -16,8 +16,8 @@ class Config
 
     // EVITER D'ACCEPTER DES FICHIERS AVEC DES EXTENSIONS DANGEREUSES
     public static $listeExtensionOK = [ "jpg", "jpeg", "png", "gif", "svg", "mp3", "mp4" ];
-    
+
     // TAILLE MAX DES FICHIERS UPLOAD (EN OCTETS)
-    public static $sizeMaxUpload = 10;
+    public static $sizeMaxUpload = 100000000;
 
 }

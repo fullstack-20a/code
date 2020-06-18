@@ -86,8 +86,9 @@ class Controller
         {
             Controller::$tabErreur[] = "$name EST OBLIGATOIRE";
         }
+        return $texte;
     }
-    
+
     // CODE A PART POUR GERER LES UPLOADS DANS UN FORMULAIRE
     static function filtrerUpload ($name)
     {
