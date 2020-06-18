@@ -140,6 +140,11 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?7A105199780FFECCCD1732196
     https://developer.mozilla.org/fr/docs/Web/CSS/word-break
     https://developer.mozilla.org/fr/docs/Web/CSS/white-space
 
+## JS SUR LES TEXTES
+
+    POUR LIMITER LA TAILLE D'UN TEXTE...
+    https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/substring
+    ...
 
 ## EXPRESSIONS REGULIERES (REGEXP)
 
@@ -155,4 +160,3 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?7A105199780FFECCCD1732196
 
     TUTO...
     https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql/916990-les-expressions-regulieres-partie-1-2
-    
