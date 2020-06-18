@@ -15,12 +15,16 @@ foreach($tabArticle as $tabLigne)            // $tabLigne EST UN TABLEAU ASSOCIA
     // https://www.php.net/manual/fr/function.extract.php
     extract($tabLigne);
     // CREE AUTOMATIQUEMENT LES VARIABLES AVEC LES NOMS DES COLONNES
+
+    // ON CHOISIT LA PHOTO A AFFICHER
+    $photo400 = str_replace("/upload/", "/mini400/", $photo);
+
     echo 
 <<<CODEHTML
 
     <article>
         <h3><a href="article.php?id=$id">$titre</a></h3>
-        <img src="$photo" alt="$titre"> 
+        <img src="$photo400" alt="$titre"> 
         <pre>$contenu</pre>
     </article>
 

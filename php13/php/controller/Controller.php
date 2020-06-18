@@ -148,6 +148,18 @@ class Controller
                         // FILTRER POUR PASSER EN MINUSCULES
                         $destination = strtolower($destination);
                         move_uploaded_file($tmp_name, $destination);
+
+                        // ON PEUT TRAVAILLER SUR LE FICHIER UPLOADE
+                        // ON PEUT CREER DES MINIATURES SUR LES 3 FORMATS jpg, png, gif
+                        $tabFormatImage = [ "jpg", "jpeg", "png", "gif" ];
+                        if (in_array($extension, $tabFormatImage))
+                        {
+                            // ON VA CREER DES MINIATURES
+                            foreach(Config::$tabMiniature as $taille => $dossierCible)
+                            {
+                                Controller::creerMini($taille, $destination, $dossierCible);
+                            }
+                        }
                     }
                     else
                     {
@@ -171,6 +183,96 @@ class Controller
         }
         // ON RENVOIE LE CHEMIN DU FICHIER SUR LE SERVEUR
         return $destination;
+
+    }
+
+    static function creerMini ($taille, $fichierSource, $dossierCible)
+    {
+        // DETERMINER LE FORMAT DE L'IMAGE
+        // CHARGER L'IMAGE EN MEMOIRE PHP A PARTIR DU FICHIER SOURCE
+        // DETERMINER LES DIMENSIONS DE L'IMAGE SOURCE
+        // CALCULER LES DIMENSIONS DE L'IMAGE CIBLE
+        // CREER EN MEMOIRE PHP L'ESPACE NECESSAIRE POUR DESSINER L'IMAGE CIBLE
+        // COPIER LE CONTENU DE L'IMAGE SOURCE VERS L'IMAGE CIBLE
+        // ENREGISTRER LE CONTENU CIBLE DANS LE DOSSIER CIBLE
+
+        // https://www.php.net/manual/fr/function.exif-imagetype.php
+        $formatImage = exif_imagetype($fichierSource);
+        $imageSource = null;
+        if ($formatImage == IMAGETYPE_JPEG)
+        {
+            // https://www.php.net/manual/fr/function.imagecreatefromjpeg.php
+            $imageSource = imagecreatefromjpeg($fichierSource);
+        }
+        elseif ($formatImage == IMAGETYPE_PNG)
+        {
+            // https://www.php.net/manual/fr/function.imagecreatefrompng.php
+            $imageSource = imagecreatefrompng($fichierSource);
+        }
+        elseif ($formatImage == IMAGETYPE_GIF)
+        {
+            // https://www.php.net/manual/fr/function.imagecreatefromgif.php
+            $imageSource = imagecreatefromgif($fichierSource);
+        }
+
+        if ($imageSource)
+        {
+            // IMAGE SOURCE BIEN CHARGEE
+            // https://www.php.net/manual/fr/function.imagesx.php
+            // https://www.php.net/manual/fr/function.imagesy.php
+            $largeurSource = imagesx($imageSource);
+            $hauteurSource = imagesy($imageSource);
+
+            // ON VEUT AVOIR UNE IMAGE CIBLE LA PLUS PETITE QUI CONTIENNE LE CARRE DE COTE $taille
+            $largeurCible = $taille;
+            $hauteurCible = $taille;
+
+            // PORTRAIT
+            if ($largeurSource < $hauteurSource)
+            {
+                // LARGEUR = TAILLE DU CARRE OK
+                $hauteurCible = $hauteurSource * $taille / $largeurSource;
+            }
+            // PAYSAGE
+            if ($largeurSource >= $hauteurSource)
+            {
+                // LONGUEUR = TAILLE DU CARRE OK
+                $largeurCible = $largeurSource * $taille / $hauteurSource;
+            }
+            // https://www.php.net/manual/fr/function.imagecreatetruecolor.php
+            $imageCible = imagecreatetruecolor($largeurCible, $hauteurCible);
+
+            imagealphablending($imageCible, false); // GARDE LA TRANSPARENCE
+            // https://www.php.net/manual/fr/function.imagesavealpha.php
+            imagesavealpha($imageCible, true);
+
+            // https://www.php.net/manual/fr/function.imagecopyresampled.php
+            imagecopyresampled(
+                $imageCible, $imageSource,
+                0, 0,
+                0, 0,
+                $largeurCible, $hauteurCible,
+                $largeurSource, $hauteurSource
+            );
+
+            $nomCible = pathinfo($fichierSource, PATHINFO_BASENAME);
+            if ($formatImage == IMAGETYPE_JPEG)
+            {
+                // https://www.php.net/manual/fr/function.imagejpeg.php
+                imagejpeg($imageCible, "$dossierCible/$nomCible");
+            }
+            elseif ($formatImage == IMAGETYPE_PNG)
+            {
+                // https://www.php.net/manual/fr/function.imagepng.php
+                imagepng($imageCible, "$dossierCible/$nomCible");
+            }
+            elseif ($formatImage == IMAGETYPE_GIF)
+            {
+                // https://www.php.net/manual/fr/function.imagegif.php
+                imagegif($imageCible, "$dossierCible/$nomCible");
+            }
+    
+        }
 
     }
 

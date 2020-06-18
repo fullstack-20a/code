@@ -20,4 +20,12 @@ class Config
     // TAILLE MAX DES FICHIERS UPLOAD (EN OCTETS)
     public static $sizeMaxUpload = 100000000;
 
+    // TABLEAU DES TAILLES DE MINIATURES
+    // ATTENTION: NE PAS OUBLIER DE CREER LES DOSSIERS assets/mini...
+    public static $tabMiniature = [
+        "200"   => "assets/mini200",        // CARRE QUE LA MINIATURE POURRA COUVRIR
+        "400"   => "assets/mini400",
+    ];
+
+
 }

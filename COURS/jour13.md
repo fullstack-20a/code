@@ -160,3 +160,6 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?7A105199780FFECCCD1732196
 
     TUTO...
     https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql/916990-les-expressions-regulieres-partie-1-2
+
+
+    PAUSE JUSQU'A 15H45...

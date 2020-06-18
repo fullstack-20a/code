@@ -63,6 +63,9 @@ table td button {
     background-color: rgba(0,0,0, 0.8);
 }
 
+img.mini200 {
+    width:200px;
+}
     </style>
 </head>
 <body>
@@ -295,6 +298,9 @@ boiteAjax.gererAjaxArticle = function (objetJS, event)
         for(var a=0; a <objetJS.listeArticle.length; a++)
         {
             var article = objetJS.listeArticle[a];
+
+            var photo200 = article.photo.replace('/upload', '/mini200/');
+
             // ON CONCATENE AVEC LE CODE HTML
             nouveauCodeHtml += 
             `
@@ -302,7 +308,7 @@ boiteAjax.gererAjaxArticle = function (objetJS, event)
                     <td>${article.id}</td>
                     <td>${article.titre}</td>
                     <td>${article.contenu}</td>
-                    <td>${article.photo}</td>
+                    <td><img class="mini200" src="${photo200}"></td>
                     <td>${article.categorie}</td>
                     <td>${article.datePublication}</td>
                     <!-- BOUTONS -->
