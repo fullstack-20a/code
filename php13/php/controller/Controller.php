@@ -75,6 +75,39 @@ class Controller
         return $resultat;
     }
 
+    // CODE A PART POUR GERER LES UPLOADS DANS UN FORMULAIRE
+    static function filtrerUpload ($name)
+    {
+        // ON DOIT GERER LES UPLOAD A PART
+        // SI IL Y A UN FICHIER EN QUARANTAINE
+        // LES INFOS SONT DANS UN TABLEAU ASSOCIATIF $_FILES
+        // DEBUG
+        print_r($_FILES);
+        $destination = "";
+        // https://www.php.net/manual/fr/function.isset.php
+        if (isset($_FILES[$name]))
+        {
+            // OUI ON A UN FICHIER EN QUARANTAINE EN ATTENTE
+            $tabAssoFichier = $_FILES[$name];
+            $error      = $tabAssoFichier["error"];     // 0 SI TOUT EST BIEN TRANSFERE
+            $size       = $tabAssoFichier["size"];      // TAILLE DU FICHIER EN OCTETS
+            $name       = $tabAssoFichier["name"];      // NOM DU FICHIER ORIGINAL
+            $tmp_name   = $tabAssoFichier["tmp_name"];  // LE FICHIER EN QUARANTAINE
+            // ICI IL FAUT DECIDER SI ON RECUPERE CE FICHIER
+            // SI ON NE LE RECUPERE PAS APACHE VA LE DETRUIRE RAPIDEMENT... 
+            // SI ON EST OPEN BAR ON VA RECUPERER LE FICHIER EN QUARANTAINE 
+            // ET ON VA LE DEPLACER DANS assets/upload 
+            // (NE PAS OUBLIER DE CREER CE DOSSIER AVANT...)
+            // https://www.php.net/manual/fr/function.move-uploaded-file.php
+            $destination = "assets/upload/$name";
+            move_uploaded_file($tmp_name, $destination);
+
+        }
+        // ON RENVOIE LE CHEMIN DU FICHIER SUR LE SERVEUR
+        return $destination;
+
+    }
+
     // SECURITE: VALIDER LES INFOS DU FORMULAIRE
     static function isOK ()
     {

@@ -79,11 +79,11 @@ table td button {
     <main>
         <section>
             <h2>CREATE</h2>
-            <form class="ajax create" action="api.php" method="POST">
+            <form class="ajax create" action="api.php" method="POST" enctype="multipart/form-data">
                 <!-- PARTIE A REMPLIR PAR L'UTILISATEUR -->
                 <input type="text" name="titre" required placeholder="titre">
                 <textarea name="contenu" required placeholder="contenu"></textarea>
-                <input type="text" name="photo" required placeholder="photo">
+                <input type="file" name="photo" required placeholder="photo">
                 <input type="text" name="categorie" required placeholder="categorie">
                 <button type="submit">PUBLIER MON ARTICLE</button>
                 <!-- PARTIE TECHNIQUE -->
