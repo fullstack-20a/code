@@ -1,7 +1,7 @@
 <?php
 
 // ATTENTION: SANS LE CHARGEMENT AUTOMATIQUE DE CLASSE
-//  NE PAS OUBLIER DE RAJOUTER LA LIGNE require_once DANS api.php
+// NE PAS OUBLIER DE RAJOUTER LA LIGNE require_once DANS api.php
 class ApiContact
 {
     // METHODES
@@ -25,6 +25,9 @@ class ApiContact
 
             Controller::$tabAssoJson["confirmation"] = "MERCI DE VOTRE MESSAGE";
 
+            // DEMANDER AU NAVIGATEUR DE RECHARGER LA PAGE
+            Controller::$tabAssoJson["redirection"] = 'crud-contact.php';
+
             // ENVOYER UN MAIL
             // https://www.php.net/manual/fr/function.mail
             // @mail("destinataire@mail.me", "sujet", "message");
@@ -35,5 +38,56 @@ class ApiContact
             // SOUS LA FORME D'UN TABLEAU DE TABLEAUX...
             // ApiContact::read();
         }
+    }
+
+    static function delete ()
+    {
+        $tabAssoToken =
+        [
+            "id"             => Controller::filtrer("id"),
+        ];
+
+        // SECURITE: VERIFIER QUE TOUTES LES INFOS SONT CORRECTES...
+        if (Controller::isOK())
+        {
+            Model::delete("contact", $tabAssoToken);
+            // ApiArticle::read();
+
+            Controller::$tabAssoJson["confirmation"] = "LIGNE SUPPRIMEE";
+
+            // DEMANDER AU NAVIGATEUR DE RECHARGER LA PAGE
+            Controller::$tabAssoJson["redirection"] = 'crud-contact.php';
+
+        }
+
+    }
+
+    // GARDER UPDATE A LA FIN
+    static function update ()
+    {
+        // NOTE: SQL N'OBLIGE PAS A MODIFIER TOUTES LES COLONNES...
+        $tabAssoToken =
+        [
+            "email"             => Controller::filtrerEmail("email"),
+            "nom"               => Controller::filtrerTexte("nom"),
+            "message"           => Controller::filtrerTexte("message"),
+        ];
+
+        // ON RECUPERE id A PART
+        $id = Controller::filtrer("id");
+
+        // SECURITE: VERIFIER QUE TOUTES LES INFOS SONT CORRECTES...
+        if (Controller::isOK())
+        {
+            // ON VA FAIRE APPEL AU MODEL POUR AJOUTER UNE LIGNE SQL
+            Model::update("contact", $id, $tabAssoToken);
+
+            Controller::$tabAssoJson["confirmation"] = "LIGNE MODIFIEE";
+
+            // DEMANDER AU NAVIGATEUR DE RECHARGER LA PAGE
+            Controller::$tabAssoJson["redirection"] = 'crud-contact.php';
+            // ApiContact::read();
+        }
+
     }
 }

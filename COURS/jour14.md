@@ -126,6 +126,8 @@ spl_autoload_register("chargerCodeClasse");
     => Minimum Viable Product
     => QU'EST-CE QU'ON PEUT FAIRE AVEC VOTRE SITE/APP ?
 
+    CREER DES SCENARIOS D'UTILISATIONS (USER STORIES / USES CASE...)
+    => VA FOURNIR LES PAGES A CODER EN PRIORITE
 
 ## CARTO EN JS
 
@@ -138,3 +140,13 @@ spl_autoload_register("chargerCodeClasse");
     https://developers.google.com/maps/documentation/javascript/adding-a-google-map?hl=fr
 
 
+## WEB APPS DANS GOOGLE PLAY
+
+    https://www.numendo.com/blog/mobile/pwa-googleplaystore/
+
+
+## IDEES DE STARTUPS
+
+    https://lespepitestech.com/
+
+    
