@@ -25,6 +25,10 @@ class ApiContact
 
             Controller::$tabAssoJson["confirmation"] = "MERCI DE VOTRE MESSAGE";
 
+            // ENVOYER UN MAIL
+            // https://www.php.net/manual/fr/function.mail
+            // @mail("destinataire@mail.me", "sujet", "message");
+
             // ON PEUT RENVOYER LA NOUVELLE LISTE DES ARTICLES
             // DANS LA REPONSE JSON
             // ON UTILISE LA METHODE read QUI RENVOIE LA LISTE DES LIGNES
