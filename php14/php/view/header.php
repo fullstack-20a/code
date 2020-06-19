@@ -23,7 +23,7 @@ Config::start();    // ACTIVE LE CHARGEMENT AUTOMATIQUE DES AUTRES CLASSES
             <a href="blog.php">blog</a>
             <a href="contact.php">contact</a>
         </nav>
-        <form action="recherche.php" method="GET">
+        <form class="horizontal" action="recherche.php" method="GET">
             <input type="text" name="recherche" required placeholder="entrez un mot">
             <button type="submit">rechercher</button>
         </form>
