@@ -3,6 +3,34 @@
 class Model
 {
     // METHODES
+
+    // READ SPECIAL
+    static function rechercherLike ($recherche)
+    {
+        // ON VA UTILISER SQL POUR EFFECTUER LA RECHERCHE
+        // https://sql.sh/cours/where/like
+        $requeteSQL =
+<<<CODESQL
+
+SELECT * FROM article
+WHERE
+    titre LIKE :recherche
+    OR
+    contenu LIKE :recherche
+ORDER BY id DESC
+
+CODESQL;
+
+        // ATTENTION: IL FAUT AJOUTER LES % AUTOUR DE LA RECHERCHE
+        $tabAssoToken = [ "recherche" => "%$recherche%"];
+
+        $pdoStatement = Model::envoyerRequeteSQL($requeteSQL, $tabAssoToken);
+
+        $tabResultat = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $tabResultat;
+    }
+
     static function compter ($nomTable)
     {
         // https://sql.sh/fonctions/agregation/count
