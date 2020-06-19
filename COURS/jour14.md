@@ -100,4 +100,26 @@ spl_autoload_register("chargerCodeClasse");
 ```
 
     PAUSE DEJEUNER JUSQU'A 13H35... BON APP ;-p
+
+
+## ACTIVITE POUR CET APRES-MIDI
+
+    * projet fin formation
+    * autonomie pour préparer l'évaluation php-sql intermédiaire
+        (s'entrainer à coder un crud sur une table sql... newsletter et contact...)
+    * ???
+
+    AUTONOMIE ET QUESTIONS AU BESOIN...
+
+## DEMARRER UN PROJET
+
+    * LISTE DES PAGES
+    * LISTE DES TEMPLATES
+    * DISTINGUER LE CONTENU STATIQUE DU CONTENU DYNAMIQUE
+        CONTENU STATIQUE    => CODE EN DUR EN PHP
+        CONTENU DYNAMIQUE   => STOCKE DANS DES TABLES SQL
+                                    => CRUD SUR CHAQUE SQL
+    * LISTE DES FORMULAIRES
+
     
+
