@@ -40,3 +40,12 @@ https://ffmpeg.org/
             nom                 VARCHAR(160)
             message             TEXT
             dateReception       DATETIME
+
+## SERVICE DE NEWSLETTER
+
+https://mailchimp.com/pricing/
+
+
+    PAUSE JUSQU'A 11H
+
+    

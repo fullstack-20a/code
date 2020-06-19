@@ -7,6 +7,8 @@ require_once "php/controller/Controller.php";
 // NE PAS OUBLIER DE RAJOUTER LES NOUVEAUX FICHIERS API
 require_once "php/controller/ApiArticle.php";
 require_once "php/controller/ApiUser.php";
+require_once "php/controller/ApiNewsletter.php";
+require_once "php/controller/ApiContact.php";
 
 // DEFINITION D'UNE API
 // Application Programming Interface

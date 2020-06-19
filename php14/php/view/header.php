@@ -13,7 +13,9 @@
         <h1>BLOG</h1>
         <nav>
             <!-- MENU TEMPORAIRE -->
+            <a href="index.php">accueil</a>
             <a href="blog.php">blog</a>
+            <a href="contact.php">contact</a>
             <a href="installation.php">installation</a>
             <a href="login.php">login</a>
             <a href="logout.php">logout</a>

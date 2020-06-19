@@ -79,6 +79,19 @@ class Controller
         return $resultat;
     }
 
+    static function filtrerEmail ($name)
+    {
+        $email = Controller::filtrerTexte($name);
+        // ON VA VERIFIER LE FORMAT DE L'EMAIL
+        // https://www.php.net/manual/fr/filter.examples.validation.php
+        if ( ! filter_var($email, FILTER_VALIDATE_EMAIL)) 
+        {
+            // SI ON A DETECTE UNE ERREUR ON VA LA RAJOUTER DANS LE TABLEAU DES ERREURS
+            Controller::$tabErreur[] = "$email N'EST PAS VALIDE";
+        }
+        return $email;
+    }
+    
     static function filtrerTexte ($name)
     {
         $texte = Controller::filtrer($name);
