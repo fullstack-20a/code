@@ -121,10 +121,16 @@ spl_autoload_register("chargerCodeClasse");
                                     => CRUD SUR CHAQUE SQL
     * LISTE DES FORMULAIRES
 
+    DETERMINER LES SCENARIOS PRIORITAIRES
+    => PERSONA
+    => Minimum Viable Product
+    => QU'EST-CE QU'ON PEUT FAIRE AVEC VOTRE SITE/APP ?
+
+
 ## CARTO EN JS
 
     * SIMPLE ET RAPIDE POUR DEMARRER
-    
+
     https://leafletjs.com/examples/mobile/
 
     * PLUS COMPLET MAIS PLUS COMPLIQUE
