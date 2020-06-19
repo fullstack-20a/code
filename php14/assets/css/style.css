@@ -85,9 +85,6 @@ img {
     max-width:1366px;
     margin: 0 auto;
 }
-/* > NE SELECTIONNE QUE LES BALISES ENFANTS DIRECTS */
-.ligne > * {
-}
 
 .ligne p {
     padding:0.75rem;
