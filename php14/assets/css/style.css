@@ -16,6 +16,9 @@ header {
     display: flex;
     align-items: center;
 }
+header > * {
+    width: calc(100% /3);
+}
 form.horizontal {
     display: flex;
 }
