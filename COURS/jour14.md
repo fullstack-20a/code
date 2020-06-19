@@ -99,3 +99,5 @@ spl_autoload_register("chargerCodeClasse");
 
 ```
 
+    PAUSE DEJEUNER JUSQU'A 13H35... BON APP ;-p
+    

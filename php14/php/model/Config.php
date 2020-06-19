@@ -50,8 +50,8 @@ class Config
 
     static function start ()
     {
+        // https://www.php.net/manual/fr/function.spl-autoload-register
         spl_autoload_register("Config::chargerCodeClasse");
-
     }
 
 }
