@@ -20,7 +20,7 @@ $nbResultat = count($tabResultat);
 
     <div class="ligne x3col">
 <?php        
-    foreach($tabResultat as $tabLigne)            // $tabLigne EST UN TABLEAU ASSOCIATIF
+foreach($tabResultat as $tabLigne)            // $tabLigne EST UN TABLEAU ASSOCIATIF
 {
     // https://www.php.net/manual/fr/function.extract.php
     extract($tabLigne);
