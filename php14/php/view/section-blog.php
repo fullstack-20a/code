@@ -3,9 +3,6 @@
     <h2>LISTE DES ARTICLES</h2>
     <div class="ligne x3col">
 <?php
-// CHARGER LE CODE PHP
-require_once "php/model/Config.php";
-require_once "php/model/Model.php";
 
 // RECUPERER LA LISTE DES ARTICLES
 // ET CONSTRUIRE LE HTML POUR CHAQUE ARTICLE

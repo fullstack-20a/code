@@ -48,4 +48,54 @@ https://mailchimp.com/pricing/
 
     PAUSE JUSQU'A 11H
 
-    
+
+## LOI DE PARETO 80/20
+
+    GENERALEMENT 80% DU CODE D'UN PROJET EST ASSEZ STANDARD
+    => CONSOMME 20% DU TEMPS DE DEV 
+        (CAR LE CODE EST DEJA DISPONIBLE)
+
+    MAIS 20% DU CODE D'UN PROJET EST SPECIFIQUE
+    => CONSOMME 80% DU TEMPS DE DEV 
+        (CAR LE CODE DOIT ETRE CREE DE ZERO...)
+
+## CHARGEMENT AUTOMATIQUE DE CLASSE
+
+    DANS PHP, IL Y AUSSI DES MECANISMES 
+    DE CALLBACKS ET D'EVENEMENTS (SYNCHRONES...)
+    (ALORS DANS JS, C'EST ASYNCHRONE...)
+
+    QUAND PHP A BESOIN D'UNE CLASSE, IL DECLENCHE UN EVENEMENT 
+    ET ON PEUT AJOUTER UN CALLBACK SUR CET EVENEMENT
+
+    => PERFORMANCE TRES INTERESSANTES
+        => PHP NE CHARGE QUE LE CODE DONT PHP A BESOIN
+        => PHP NE CHARGE CE CODE QUE AU MOMENT OU IL EN A BESOIN
+
+    https://www.php.net/manual/fr/function.spl-autoload-register.php
+
+```php
+// ON PEUT AJOUTER UN CALLBACK
+function chargerCodeClasse($nomClasse)  // PHP FOURNIRA LA VALEUR A CE PARAMETRE
+{
+    // ON DOIT AJOUTER LE CODE POUR CHARGER LE FICHIER QUI CONTIENT LE CODE
+    // ASTUCE: LA CLASSE EST DANS UN FICHIER QUI REPREND LE NOM DE LA CLASSE
+    // exemple: LA CLASSE Controller EST DANS LE FICHIER Controller.php
+    // => ON PEUT AUTOMATISER LE CHARGEMENT DU FICHIER
+    $cheminFichier = "php/*/$nomClasse.php";
+    // https://www.php.net/manual/fr/function.glob.php
+    $tabFichier = glob($cheminFichier);
+    foreach($tabFichier as $fichier)
+    {
+        // ON A TROUVE UN FICHIER
+        // DEBUG
+        // echo "<h3>ON A TROUVE $fichier</h3>";
+        // ON VA CHARGER SON CODE
+        require_once $fichier;
+    }
+}
+
+spl_autoload_register("chargerCodeClasse");
+
+```
+

@@ -3,11 +3,6 @@
     <h2>TEMPLATE POUR UN ARTICLE</h2>
     <div class="ligne x3col">
 <?php
-// CHARGER LE CODE PHP
-require_once "php/model/Config.php";
-require_once "php/model/Model.php";
-require_once "php/controller/Controller.php";
-
 
 // RECUPERER UN SEUL ARTICLE AVEC id FOURNIE EN PARAMETRE GET
 $id = Controller::filtrer("id");

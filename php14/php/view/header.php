@@ -1,3 +1,9 @@
+<?php
+
+require_once "php/model/Config.php";
+Config::start();    // ACTIVE LE CHARGEMENT AUTOMATIQUE DES AUTRES CLASSES
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -3,13 +3,9 @@
     <h2>RESULTATS DE LA RECHERCHE</h2>
 <?php
 
-// RECUPERER LE MOT CLE RECHERCHE
-require_once "php/controller/Controller.php";
-require_once "php/model/Model.php";
-require_once "php/model/Config.php";
-
 //             <input type="text" name="recherche" required placeholder="entrez un mot">
 $recherche = Controller::filtrerTexte("recherche");
+// Fatal error: Uncaught Error: Class 'Controller' not found
 
 $tabResultat = Model::rechercherLike($recherche);
 $nbResultat = count($tabResultat);

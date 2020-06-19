@@ -1,14 +1,17 @@
 <?php
 
 // CHARGER LE CLASSES DEFINIES DANS DES FICHIERS SEPARES
-require_once "php/model/Config.php";
-require_once "php/model/Model.php";
-require_once "php/controller/Controller.php";
+// require_once "php/model/Config.php";
+// require_once "php/model/Model.php";
+// require_once "php/controller/Controller.php";
 // NE PAS OUBLIER DE RAJOUTER LES NOUVEAUX FICHIERS API
-require_once "php/controller/ApiArticle.php";
-require_once "php/controller/ApiUser.php";
-require_once "php/controller/ApiNewsletter.php";
-require_once "php/controller/ApiContact.php";
+// require_once "php/controller/ApiArticle.php";
+// require_once "php/controller/ApiUser.php";
+// require_once "php/controller/ApiNewsletter.php";
+// require_once "php/controller/ApiContact.php";
+
+require_once "php/model/Config.php";
+Config::start();    // ACTIVE LE CHARGEMENT AUTOMATIQUE DES AUTRES CLASSES
 
 // DEFINITION D'UNE API
 // Application Programming Interface
