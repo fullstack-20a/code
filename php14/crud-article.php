@@ -87,7 +87,7 @@ img.mini200 {
                 <input type="text" name="titre" required placeholder="titre">
                 <textarea name="contenu" required placeholder="contenu"></textarea>
                 <input type="file" name="photo" required placeholder="photo">
-                <input type="text" name="categorie" required placeholder="categorie">
+                <input type="text" name="categorie" required placeholder="categorie" value="<?php echo date("Y-m-d H:i:s") ?>">
                 <button type="submit">PUBLIER MON ARTICLE</button>
                 <!-- PARTIE TECHNIQUE -->
                 <input type="hidden" name="cleAPI" required placeholder="cleAPI">

@@ -180,7 +180,7 @@ CODESQL;
             $dbname         = Config::$dbnameSQL ?? "";     // A CHANGER A CHAQUE PROJET
             $userSQL        = Config::$userSQL ?? "root";
             $passwordSQL    = Config::$passwordSQL ?? "";
-            $port           = Config::$portSQL ??"3306";
+            $port           = Config::$portSQL ?? "3306";
             $host           = Config::$hostSQL ?? "localhost";
 
             // ON N'A PAS DE CONNEXION ACTIVE AVEC SQL
