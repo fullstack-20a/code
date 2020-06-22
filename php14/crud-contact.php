@@ -32,7 +32,7 @@
                 <thead>
                     <!-- A COMPLETER -->
                 </thead>
-                <tbody>
+                <tbody class="container-contacts">
 <?php
 require_once "php/model/Config.php";
 Config::start();    // ACTIVE LE CHARGEMENT AUTOMATIQUE DES AUTRES CLASSES
@@ -40,7 +40,8 @@ Config::start();    // ACTIVE LE CHARGEMENT AUTOMATIQUE DES AUTRES CLASSES
 // $tabContact EST UN TABLEAU ORDONNE DE TABLEAU ASSOCIATIF
 $tabContact = Model::read("contact");
 
-//BOUCLE SUR CE TABLEAU
+// VERSION SSR => PHP CREE LE CODE HTML DES BALISES tr
+// BOUCLE SUR CE TABLEAU
 foreach($tabContact as $uneLigne)
 {
     // DE LA LIGNE, ON VA EXTRAIRE LES VALEURS DE CHAQUE COLONNE
@@ -57,12 +58,19 @@ foreach($tabContact as $uneLigne)
         <td><pre>$message</pre></td>
         <td>$dateReception</td>
         <td>
-            <button data-id="$id">MODIFIER</button>
+            <button class="update" data-id="$id">MODIFIER</button>
+            <div class="update-$id">
+                <input type="number" name="id" required placeholder="votre id" value="$id">
+                <input type="email" name="email" required placeholder="votre email" value="$email">
+                <input type="text" name="nom" required placeholder="votre nom" value="$nom">
+                <textarea name="message" required placeholder="votre message">$message</textarea>
+            </div>
         </td>
         <td>
             <button class="delete" data-id="$id">SUPPRIMER</button>
         </td>
     </tr>
+
 CODEHTML;
 
 }
@@ -75,10 +83,12 @@ CODEHTML;
             <h2>FORMULAIRE DE UPDATE</h2>
             <form class="ajax update" action="api.php" method="POST" enctype="multipart/form-data">
                 <!-- PARTIE A REMPLIR PAR L'UTILISATEUR -->
-                <input type="number" name="id" required placeholder="votre id">
-                <input type="email" name="email" required placeholder="votre email">
-                <input type="text" name="nom" required placeholder="votre nom">
-                <textarea name="message" required placeholder="votre message"></textarea>
+                <div class="updateCopy">
+                    <input type="number" name="id" required placeholder="votre id">
+                    <input type="email" name="email" required placeholder="votre email">
+                    <input type="text" name="nom" required placeholder="votre nom">
+                    <textarea name="message" required placeholder="votre message"></textarea>
+                </div>
                 <button type="submit">MODIFIER VOTRE MESSAGE</button>
                 <!-- PARTIE TECHNIQUE -->
                 <input type="hidden" name="classeCible" value="Contact">
@@ -121,6 +131,64 @@ var activerDelete = function(event) {
 };
 ajouterAction('button.delete', 'click', activerDelete);
 
+// CODE JS POUR COPIER LES INFOS PRE REMPLIES DANS LE FORMULAIRE
+var baliseCopyUpdate = document.querySelector(".updateCopy");
+var activerCopyUpdate = function (event)
+{
+    var id = event.target.getAttribute('data-id');
+    // ON VA SELECTIONNER LA BALISE QUI CONTIENT LE FORMULAIRE PRE-REMPLI
+    var formulairePrerempli = document.querySelector(".update-" + id);
+    // COPIER LE HTML PREREMPLI
+    baliseCopyUpdate.innerHTML = formulairePrerempli.innerHTML;
+}
+ajouterAction('tbody button.update', 'click', activerCopyUpdate);
+
+
+// ON VA RECONSTRUIRE LA LISTE EN JS
+boiteAjax.majContact = function (objetJS, event)
+{
+    if ('tabContact' in objetJS)
+    {
+        var nouveauHTML = '';
+        for(var c=0; c<objetJS.tabContact.length; c++)
+        {
+            var contact = objetJS.tabContact[c];
+            nouveauHTML +=
+            `
+    <tr>
+        <!-- READ -->
+        <td>${contact.id}</td>
+        <td>${contact.email}</td>
+        <td>${contact.nom}</td>
+        <td><pre>${contact.message}</pre></td>
+        <td>${contact.dateReception}</td>
+        <td>
+            <button class="update" data-id="${contact.id}">MODIFIER</button>
+            <!-- UPDATE PRE REMPLI -->
+            <div class="update-${contact.id}">
+                <input type="number" name="id" required placeholder="votre id" value="${contact.id}">
+                <input type="email" name="email" required placeholder="votre email" value="${contact.email}">
+                <input type="text" name="nom" required placeholder="votre nom" value="${contact.nom}">
+                <textarea name="message" required placeholder="votre message">${contact.message}</textarea>
+            </div>
+        </td>
+        <td>
+            <button class="delete" data-id="${contact.id}">SUPPRIMER</button>
+        </td>
+    </tr>
+            `;
+
+        }
+        // ON MET A JOUR LA LISTE AVEC LE NOUVEAU CODE HTML
+        var balideTbody = document.querySelector("tbody.container-contacts");
+        balideTbody.innerHTML = nouveauHTML;
+
+        // ON DOIT RAJOUTER DE NOUVEAU LES EVENT LISTENER SUR LES NOUVEAUX BOUTONS
+        ajouterAction('tbody button.delete', 'click', activerDelete);
+        ajouterAction('tbody button.update', 'click', activerCopyUpdate);
+
+    }
+}
     </script>
 </body>
 </html>

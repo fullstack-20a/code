@@ -26,7 +26,7 @@ class ApiContact
             Controller::$tabAssoJson["confirmation"] = "MERCI DE VOTRE MESSAGE";
 
             // DEMANDER AU NAVIGATEUR DE RECHARGER LA PAGE
-            Controller::$tabAssoJson["redirection"] = 'crud-contact.php';
+            // Controller::$tabAssoJson["redirection"] = 'crud-contact.php';
 
             // ENVOYER UN MAIL
             // https://www.php.net/manual/fr/function.mail
@@ -36,7 +36,7 @@ class ApiContact
             // DANS LA REPONSE JSON
             // ON UTILISE LA METHODE read QUI RENVOIE LA LISTE DES LIGNES
             // SOUS LA FORME D'UN TABLEAU DE TABLEAUX...
-            // ApiContact::read();
+            Controller::$tabAssoJson["tabContact"] = Model::read("contact");
         }
     }
 
@@ -56,7 +56,8 @@ class ApiContact
             Controller::$tabAssoJson["confirmation"] = "LIGNE SUPPRIMEE";
 
             // DEMANDER AU NAVIGATEUR DE RECHARGER LA PAGE
-            Controller::$tabAssoJson["redirection"] = 'crud-contact.php';
+            // Controller::$tabAssoJson["redirection"] = 'crud-contact.php';
+            Controller::$tabAssoJson["tabContact"] = Model::read("contact");
 
         }
 
@@ -85,9 +86,10 @@ class ApiContact
             Controller::$tabAssoJson["confirmation"] = "LIGNE MODIFIEE";
 
             // DEMANDER AU NAVIGATEUR DE RECHARGER LA PAGE
-            Controller::$tabAssoJson["redirection"] = 'crud-contact.php';
-            // ApiContact::read();
+            // Controller::$tabAssoJson["redirection"] = 'crud-contact.php';
+            Controller::$tabAssoJson["tabContact"] = Model::read("contact");
         }
 
     }
+
 }

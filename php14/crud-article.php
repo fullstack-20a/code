@@ -283,6 +283,7 @@ boutonClose.addEventListener('click', function() {
 
 boiteAjax.gererAjaxArticle = function (objetJS, event)
 {
+    // VERSION CSR => JS CREE LE CODE HTML DES BALISES tr
     // ON RECOIT LA NOUVELLE LISTE DES ARTICLES
     if ('listeArticle' in objetJS)
     {
