@@ -44,6 +44,18 @@ class ApiArticle
             // ON VA FAIRE APPEL AU MODEL POUR AJOUTER UNE LIGNE SQL
             Model::insert("article", $tabAssoToken);
 
+            // Model::insert NE FOURNIT DIRECTEMENT LE NOUVEL id
+            $nouvelId = Model::lastInsertId();
+
+            Controller::$tabAssoJson["confirmation"] = 
+<<<CODEHTML
+            <div>VOTRE ARTICLE EST PUBLIE</div>
+            <div>
+                <a href="article.php?id=$nouvelId">cliquer ici pour voir l'article</a>
+            </div>
+CODEHTML;
+
+
             // ON PEUT RENVOYER LA NOUVELLE LISTE DES ARTICLES
             // DANS LA REPONSE JSON
             // ON UTILISE LA METHODE read QUI RENVOIE LA LISTE DES LIGNES

@@ -63,6 +63,9 @@ class Controller
     
     // CETTE METHODE VA PROTEGER PHP
     // EN FILTRANT LES INFOS RECUES DES FORMULAIRES
+    // <input name="toto">
+    // EN PHP ON VA RETROUVER LA SAISIE DU VISITEUR DANS 
+    // $_REQUEST["toto"]
     static function filtrer ($name)
     {
         // $_REQUEST VA RECEVOIR LES INFOS EN GET ET EN POST: PRATIQUE COTE HTML ON PEUT FAIRE LES 2

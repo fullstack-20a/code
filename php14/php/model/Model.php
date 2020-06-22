@@ -2,6 +2,9 @@
 
 class Model
 {
+    // PROPRIETES STATIC
+    public static $dbh = null;  // AUCUNE CONNEXION AU DEPART
+
     // METHODES
 
     // READ SPECIAL
@@ -159,25 +162,43 @@ CODESQL;
         return $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // SQL GERE LA COLONNE id
+    // APRES LE CREATE ON A PARFOIS LE BESOIN DE RECUPERER CETTE VALEUR id
+    // https://www.php.net/manual/fr/pdo.lastinsertid.php
+    static function lastInsertId ()
+    {
+        // Model::$dbh EST UN OBJET DE LA CLASSE PDO
+        return Model::$dbh->lastInsertId();
+    }
+
     static function envoyerRequeteSQL($requeteSQL, $tabAssoToken)
     {
-        $dbname         = Config::$dbnameSQL ?? "";     // A CHANGER A CHAQUE PROJET
-        $userSQL        = Config::$userSQL ?? "root";
-        $passwordSQL    = Config::$passwordSQL ?? "";
-        $port           = Config::$portSQL ??"3306";
-        $host           = Config::$hostSQL ?? "localhost";
+        // ON VA CONTINUER A UTILISER LA MEME CONNEXION Model::$dbh 
+        // SUR PLUSIEURS APPELS SUCCESSIFS A LA METHODE envoyerRequeteSQL
+        if (Model::$dbh == null)
+        {
+            $dbname         = Config::$dbnameSQL ?? "";     // A CHANGER A CHAQUE PROJET
+            $userSQL        = Config::$userSQL ?? "root";
+            $passwordSQL    = Config::$passwordSQL ?? "";
+            $port           = Config::$portSQL ??"3306";
+            $host           = Config::$hostSQL ?? "localhost";
 
-        // CODE NECESSAIRE POUR COMMUNIQUER ENTRE PHP ET SQL
-        // $dbh GERE LA CONNEXION ENTRE PHP ET SQL
-        $dbh = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $userSQL, $passwordSQL);
+            // ON N'A PAS DE CONNEXION ACTIVE AVEC SQL
+            // ON VA CREER LA CONNEXION
+            // CODE NECESSAIRE POUR COMMUNIQUER ENTRE PHP ET SQL
+            // $dbh GERE LA CONNEXION ENTRE PHP ET SQL
+            Model::$dbh = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $userSQL, $passwordSQL);
+            // A PARTIR DE MAINTENANT Model::$dbh EST DIFFERENT DE null
 
-        // AFFICHER LES ERREURS SQL COMME ERREURS PHP
-        // https://www.php.net/manual/fr/pdo.error-handling.php
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            // AFFICHER LES ERREURS SQL COMME ERREURS PHP
+            // https://www.php.net/manual/fr/pdo.error-handling.php
+            Model::$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+        }
 
         // SECURITE: ON ISOLE LES VALEURS DANS LE TABLEAU ASSOCIATIF
         // PROTECTION CONTRE LES INJECTIONS SQL
-        $pdoStatement = $dbh->prepare($requeteSQL);
+        $pdoStatement = Model::$dbh->prepare($requeteSQL);
         
         $pdoStatement->execute($tabAssoToken);
 
