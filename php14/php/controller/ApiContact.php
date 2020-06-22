@@ -92,4 +92,9 @@ class ApiContact
 
     }
 
+    static function read ()
+    {
+        Controller::$tabAssoJson["tabContact"] = Model::read("contact");
+    }
+
 }
