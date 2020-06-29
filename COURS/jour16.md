@@ -416,6 +416,7 @@ https://medium.com/lequipe-tech/20-ans-d%C3%A9volutions-techniques-et-de-culture
     * marketplace (le bon coin)
     * app de partage de parking
     * site communautaire pour partager les bons alcools
+    * plannificateur de menus avec liste de courses
 
     * blog avec commentaires
         etape1: liste des pages
@@ -649,16 +650,211 @@ https://medium.com/lequipe-tech/20-ans-d%C3%A9volutions-techniques-et-de-culture
             description
             photo
             prix
+            id_user         INT     => CLE ETRANGERE VERS TABLE user
+            id_ville        INT     => CLE ETRANGERE VERS TABLE ville
 
         table2 user
             id              INT     PRIMARY_KEY     A_I
             auteur
             password
+            id_ville        INT     => CLE ETRANGERE VERS TABLE ville
 
         table3 ville
             id              INT     PRIMARY_KEY     A_I
             codePostal
-            ville
+            nom
 
     PAUSE JUSQU'A 15H55
+
+    RELATION ENTRE user ET annonce 
+    => ONE-TO-MANY
+    => UN user PEUT CREER PLUSIEURS ANNONCES
+    => UNE annonce EST PUBLIEE PAR UN SEUL user
+    => COLONNE CLE ETRANGERE DANS LA TABLE MANY
+
+    RELATION ENTRE ville ET annonce
+    POUR UNE annonce ON A UNE SEULE VILLE
+    POUR UNE ville ON PEUT AVOIR PLUSIEURS ANNONCES
+    => ONE-TO-MANY
+    => COLONNE CLE ETRANGERE DANS LA TABLE MANY annonce
+
+    RELATION ENTRE ville ET user ?
+    => ONE TO MANY
+    => UN user EST DANS UNE SEULE ville
+    => UNE ville PEUT AVOIR PLUSIEURS user
+
+
+    JE VEUX AFFICHER LES user QUI SONT DANS LA VILLE 'marseille'
+
+    SELECT *
+    FROM user
+    INNER JOIN  ville
+        ON ville.id = user.id_ville
+    WHERE 
+        ville.nom = 'marseille'
+
+
+    JE VEUX AFFICHER TOUTES LES annonce DU user QUI A id = 123
+
+    SELECT *
+    FROM annonce
+    INNER JOIN user
+        ON annonce.id_user = user.id
+    WHERE
+        user.id = '123'
+
+## APP DE PARTAGE DE PARKING
+
+    etape1: liste des pages
+        accueil                 => surtout statique
+        liste des parkings dispo sur une carte avec geolocalisation
+                                => surtout dynamique
+        contact                 => surtout statique
+
+    etape2: liste des templates
+        accueil
+        contact
+        liste des parkings
+
+    etape3: template parkings
+                latitude
+                longitude
+                heureDispo
+                typeVehicule
+
+    DANS COMBIEN DE TABLES SQL ?
+
+        table1  parking
+            id              INT     PRIMARY_KEY     A_I
+            latitude
+            longitude
+            heureDispo      DATETIME        => QUALITE A LA RELATION      
+            taillePlace
+
+        table2  user
+            id              INT     PRIMARY_KEY     A_I
+            login
+            email
+            password
+            tailleDefaut
+
+
+    QUELLE RELATION ENTRE parking ET user ?
+    => UN parking PEUT AVOIR PLUSIEURS user
+    => UN user PEUT AVOIR UN SEUL parking
+    => ONE-TO-MANY entre parking ET user
+    => CLE ETRANGERE SUR LE MANY user
+
+    SI ON VEUT AFFICHER LES PLACES DISPONIBLES AUTOUR D'UNE POSITION GPS
+    POUR UN TYPE DE VEHICULE
+
+    SELECT *
+    FROM parking
+    WHERE
+        latitude < latmax   AND latitude > latmin
+        AND 
+        longitude < lonmax   AND longitude > lonmin
+        AND 
+        heureDispo > (heureactu - 600)
+        AND 
+        typeVehicule = 'ma taille de voiture'
+
+
+## PLANNIFICATEUR DE MENUS AVEC LISTE DE COURSES
+
+
+    etape1: liste des pages
+        accueil
+        contact
+        compte user
+        creer menu
+        ...
+
+    etape2: liste des templates
+        accueil
+        contact
+        compte user
+        creer menu      => surtout dynamique
+
+    etape3: template creer menu   
+
+        formulaire des ingrédients
+            nom
+            description
+            quantité
+
+        formulaire de créer des recettes
+            => admin vont publier des listes de recettes
+            => quantité de travail pour créer du contenu...
+            nom
+            durée préparation
+            nbPersonne
+
+        formulaire pour créer menu
+            nom
+            date
+
+        formulaire de liste de courses
+            nom
+
+
+        CREATE
+            type        entrée/plat/dessert
+            niveau      rapide/gastro
+            regime      vegetarien/vegan/sans gluten/hallal
+            nbPersonne
+
+        READ
+            menu calendrier
+            menu hebdo
+            menu jours (prochains 2, 3, ...)
+
+
+
+    tables SQL:
+
+        user
+            id              INT     PRIMARY_KEY     A_I
+            login
+            password
+
+        ingredient
+            id              INT     PRIMARY_KEY     A_I
+            nom
+            description
+
+        recette
+            id              INT     PRIMARY_KEY     A_I
+            nom
+            nbPersonne
+
+        ingredient_recette
+            id              INT     PRIMARY_KEY     A_I
+            id_recette      INT     => CLE ETRANGERE VERS recette
+            id_ingredient   INT     => CLE ETRANGERE VERS ingredient
+            quantite
+
+        menu
+            id              INT     PRIMARY_KEY     A_I
+            nom
+            type            entrée/plat/dessert
+            niveau          rapide/gastro
+            regime          vegetarien/vegan/sans gluten/hallal
+            nbPersonne
+
+        recette_menu
+            id              INT     PRIMARY_KEY     A_I
+            id_recette      INT     => CLE ETRANGERE VERS recette
+            id_menu         INT     => CLE ETRANGERE VERS menu
+
+        agenda
+            id              INT     PRIMARY_KEY     A_I
+            dateHeure
+
+        
+        RELATION ENTRE ingredient ET recette
+        => MANY TO MANY
+        => UN INGREDIENT PEUT ETRE UTILISE DANS PLUSIEURS RECETTES
+        => UNE RECETTE CONTIENT PLUSIEURS INGREDIENTS
+        => table technique supplémentaire
 
