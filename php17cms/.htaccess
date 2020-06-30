@@ -1,0 +1,22 @@
+
+RewriteEngine On                        # ACTIVATION DU MODULE REWRITE_RULES
+
+# ATTENTION: A CHANGER POUR CHAQUE PROJET
+# SI LA RACINE DU SITE EST http://localhost/wf3/php17cms/
+RewriteBase /wf3/php17cms/
+
+# SUR UN VRAI SITE, LA RACINE EST https://monsite.fr/
+# RewriteBase /
+
+# SI LE NAVIGATEUR DEMANDE COMME URL http://localhost/wf3/php17cms/index.php
+# ALORS ON LUI FOURNIT index.php
+RewriteRule ^index\.php$ - [L]
+
+# SI LE NAVIGATEUR DEMANDE UNE URL QUI N'EXISTE PAS
+# !-f VEUT DIRE N'EST PAS UN FICHIER
+# !-d VEUT DIRE N'EST PAS UN DOSSIER
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# ALORS ON DELEGUE A index.php LA CREATION DE LA PAGE
+RewriteRule . ./index.php [L]
+

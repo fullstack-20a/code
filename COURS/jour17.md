@@ -348,6 +348,103 @@ $objetDeveloppeur2->tache = "DEBUGGER PROD";
 
     https://fr.wikipedia.org/wiki/Histoire_de_l%27informatique
 
-    PAUSE DEJEUNER ET REPISE A 13H50
+    PAUSE DEJEUNER ET REPRISE A 13H50
+
+
+## PROJET CMS 
+
+    REWRITE RULES
+    => REECRITURE D'URL
+
+    https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html
+
+
+    EN PHP, ON PEUT UTILISER LE MEME FICHIER POUR CREER PLUSIEURS PAGES DE NOTRE SITE
+    article.php?id=123      => POUR GOOGLE CHAQUE URL DIFFERENTE REPRESENTE UNE PAGE DIFFERENTE DU SITE
+    article.php?id=234
+    ...
+
+    AU FINAL => ON N'AURA QU'UN SEUL FICHIER PHP EN POINT D'ENTREE POUR TOUTES LES PAGES DU SITE
+
+
+    PAR DEFAUT, SI LE NAVIGATEUR DEMANDE UNE URL QUI NE CORRESPOND PAS A UN FICHIER
+    http://localhost/wf3/php17cms/skjdfhsdjgsgfshjdj.php
+    => APACHE RENVOIE UNE ERREUR 404
+    => ET APACHE CREE UNE PAGE D'ERREUR...
+
+    EN AJOUTANT UN FICHIER .htaccess
+    AVEC DES PARAMETRES DE RE-ECRITURE D'URL
+
+    ON PREND LA MAIN 
+    ET ON DEMANDE A APACHE DE DELEGUER LE TRAVAIL A index.php
+
+```
+
+RewriteEngine On                        # ACTIVATION DU MODULE REWRITE_RULES
+
+# SI LA RACINE DU SITE EST http://localhost/wf3/php17cms/
+RewriteBase /wf3/php17cms/
+
+# SUR UN VRAI SITE, LA RACINE EST https://monsite.fr/
+# RewriteBase /
+
+# SI LE NAVIGATEUR DEMANDE COMME URL http://localhost/wf3/php17cms/index.php
+# ALORS ON LUI FOURNIT index.php
+RewriteRule ^index\.php$ - [L]
+
+# SI LE NAVIGATEUR DEMANDE UNE URL QUI N'EXISTE PAS
+# !-f VEUT DIRE N'EST PAS UN FICHIER
+# !-d VEUT DIRE N'EST PAS UN DOSSIER
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# ALORS ON DELEGUE A index.php LA CREATION DE LA PAGE
+RewriteRule . ./index.php [L]
+
+
+```
+
+    PREMIER INTERET: 
+    TOUTES LES PAGES PASSENT PAR UN SEUL FICHIER index.php
+
+    DEUXIEME INTERET: 
+    SECURITE ON CACHE LA PARTIE SERVEUR AU NAVIGATEUR
+    LES URLS NE CORRESPONDENT PLUS A DES DOSSIERS/FICHIERS SUR NOTRE SERVEUR
+
+
+    PROBLEMATIQUE:
+    ON A CENTRALISE SUR UN SEUL POINT D'ENTREE, 
+    MAIS NOTRE SITE PROPOSE PLEIN DE PAGES
+    => IL FAUT DECENTRALISER MAINTENANT
+    => ROUTEUR
+
+    PHP DOIT SAVOIR QUELLE EST L'URL DEMANDEE PAR LE NAVIGATEUR 
+    POUR POUVOIR CONSTRUIRE LA BONNE PAGE
+
+    ENSUITE QUAND PHP SAIT QUELLE CONTENU IL DEVRAIT AFFICHER
+    => AVEC L'INFO DU filename DANS L'URL
+
+    => ON PEUT STOCKER LE CONTENU DES PAGES DANS UNE TABLE SQL
+
+    DATABASE cms   
+        AVEC CHARSET utf8mb4_general_ci
+
+        TABLE SQL page
+            id          INT             PRIMARY_KEY     A_I
+            filename    VARCHAR(160)
+            titre       VARCHAR(160)
+            contenu     TEXT
+            photo       VARCHAR(160)
+
+
+    ON FAIT UN READ SUR LA TABLE page EN FILTRANT SUR LA COLONNE filename
+
+    EXEMPLE POUR AFFICHER LA PAGE contact.php
+
+
+    SELECT * FROM page
+    WHERE filename = 'contact'
+
+
+    PAUSE JUSQU'A 15H50
 
     
