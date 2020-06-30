@@ -3,8 +3,18 @@
 // RECEPTIONNE LES INFOS DE FORMULAIRES
 // ET QUI TRAITE LE FORMULAIRE EN INSERANT UNE NOUVELLE LIGNE SQL
 
+// FONCTIONS DE FILTRAGE
+function filtrerEntier ($name)
+{
+    $valeur = $_REQUEST[$name] ?? "";
+    $valeur = intval($valeur);
+
+    return $valeur;
+}
+
 // CODE MINIMUM EVALUATION
 
+// SECURITE: TOUT DEVRAIT ETRE FILTRE...
 // RECEPTIONNER LES INFOS DIRECTEMENT DANS LE TABLEAU ASSOCIATIF DES TOKENS
 $tabAssoToken =
 [
@@ -12,13 +22,12 @@ $tabAssoToken =
     "adresse"     => $_REQUEST["adresse"],
     "ville"       => $_REQUEST["ville"],
     "cp"          => $_REQUEST["cp"],
-    "surface"     => $_REQUEST["surface"],
-    "prix"        => $_REQUEST["prix"],
+    "surface"     => filtrerEntier("surface"), // $_REQUEST["surface"],
+    "prix"        => filtrerEntier("prix"),    // $_REQUEST["prix"],
     "type"        => $_REQUEST["type"],
     // $photo      = filtrerUpload(); // $_REQUEST["type"];
     "photo"       => "",
     "description" => $_REQUEST["description"],
-        
 ];
 
 
