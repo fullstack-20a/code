@@ -4,3 +4,78 @@
 
 https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26BF1DF027089
 
+## NEWS / QUESTIONS
+
+## PLANNING DU JOUR
+
+    * SQL: RELATIONS ET JOINTURES
+    * PHP: CRUD
+
+### EXERCICE 1: CREER LA DATABASE ET LES TABLES
+
+    TABLES SQL: 2 AU MINIMUM
+    UN CRUD PAR TABLE SQL
+
+    DATABASE multicrud
+        AVEC LE CHARSET utf8mb4_general_ci
+
+    TABLE1  user
+        id              INT             PRIMARY_KEY     A_I
+        login           VARCHAR(160)
+        password        VARCHAR(160)
+        ...
+
+    TABLE2  contenu
+        id              INT             PRIMARY_KEY     A_I
+        titre           VARCHAR(160)
+        description     TEXT
+        photo           VARCHAR(160)
+        id_user         INT             => CLE ETRANGERE VERS CLE PRIMAIRE id DE LA TABLE user
+        ...
+
+    (PAS BESOIN DE RAJOUTER DE CONTRAINTE DE CLE ETRANGERE AU DEPART => SECURITE SUPPLEMENTAIRE...) 
+
+    RELATION ENTRE LES 2 TABLES 
+    POUR UNE LIGNE DE user COMBIEN DE LIGNES DE contenu ?
+    => MANY
+    => UN UTILISATEUR PEUT CREER PLUSIEURS CONTENUS
+
+    POUR UNE LIGNE DE contenu COMBIEN DE LIGNES DE user ?
+    => ONE
+    => UN CONTENU N'A QU'UN SEUL AUTEUR
+
+    RELATION ONE-TO-MANY DE user VERS contenu
+    => TECHNIQUE: AJOUTER UNE COLONNE DE CLE ETRANGERE DANS LA TABLE MANY contenu
+
+### EXERCICE 2: CREATE SUR LES 2 TABLES
+
+    CREER 2 PAGES AVEC UN FORMULAIRE DE CREATE POUR CHAQUE TABLE
+
+    => SUR LE CREATE: QUAND ON AJOUTE UNE NOUVELLE LIGNE DANS contenu
+            IL FAUDRA EN PLUS FOURNIR LA VALEUR POUR LA CLE ETRANGERE id_user
+            => IL FAUT CONNAITRE L'AUTEUR AVANT DE CREER LE CONTENU
+            => CA SE PASSE BIEN: 
+                SCENARIO LE MEMBRE S'IDENTIFIE ET ENSUITE IL PEUT CREER UN CONTENU
+
+### EXERCICE 3: READ AVEC JOINTURES
+
+    (AJOUTER LES LIGNES AVEC PHPMYADMIN SI ON A BLOQUE SUR L'EXERCICE 2)
+
+    REQUETE AVEC JOINTURE:
+    SI JE VEUX AFFICHER LA LISTE DES CONTENUS ET L'AUTEUR DE CHAQUE CONTENU
+
+    SELECT *
+    FROM contenu
+    INNER JOIN user
+        ON user.id = contenu.id_user
+
+
+    * SUR LA PAGE DU MEMBRE 'toto'
+    JE VEUX AFFICHER LA LISTE DE SES CONTENUS POUR LE user QUI A login = 'toto' 
+
+    SELECT *
+    FROM contenu
+    INNER JOIN user
+        ON user.id = contenu.id_user
+    WHERE user.login = 'toto'
+
