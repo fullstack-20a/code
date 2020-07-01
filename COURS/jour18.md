@@ -37,6 +37,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
         id_user         INT             => (POUR NOUS...) CLE ETRANGERE VERS CLE PRIMAIRE id DE LA TABLE user
         ...
 
+
     (PAS BESOIN DE RAJOUTER DE CONTRAINTE DE CLE ETRANGERE AU DEPART => SECURITE SUPPLEMENTAIRE...) 
 
     RELATION ENTRE LES 2 TABLES 
@@ -87,6 +88,37 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
         ON user.id = contenu.id_user
     WHERE user.login = 'toto'
 
+### EXERCICE MANY TO MANY
+
+    TABLE3  categorie
+        id              INT             PRIMARY_KEY     A_I
+        nom             VARCHAR(160)
+        resume          TEXT
+
+    RELATION ENTRE LES TABLES contenu ET categorie
+    UN CONTENU PEUT ETRE DANS PLUSIEURS CATEGORIES
+    UNE CATEGORIE PEUT RASSEMBLER PLUSIEURS CONTENUS
+    => MANY-TO-MANY
+    => TABLE TECHNIQUE  contenu_categorie
+        id              INT             PRIMARY_KEY     A_I
+        id_contenu      INT             => (POUR NOUS...) CLE ETRANGERE VERS CLE PRIMAIRE id DE LA TABLE contenu
+        id_categorie    INT             => (POUR NOUS...) CLE ETRANGERE VERS CLE PRIMAIRE id DE LA TABLE categorie
+
+
+    CREATE SUR LES 2 TABLES
+    ET ENSUITE READ
+
+    JE VEUX AFFICHER TOUS LES CONTENUS DANS LA CATEGORIE nom = 'sport'
+
+    SELECT *
+    FROM contenu_categorie
+    INNER JOIN contenu
+        ON contenu.id = contenu_categorie.id_contenu
+    INNER JOIN categorie
+        ON categorie.id = contenu_categorie.id_categorie
+    WHERE
+        categorie.nom = 'sport'
+
 
 ## AJOUTER UNE CONTRAINTE DE CLE ETRANGERE
 
@@ -119,3 +151,5 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
     FAIRE D'ABORD UN TRAITEMENT QUI FONCTIONNE CORRECTEMENT 
     ET ENSUITE RAJOUTER LA REDIRECTION A LA FIN...
 
+
+    PAUSE DEJEUNER REPRISE A 13H35...
