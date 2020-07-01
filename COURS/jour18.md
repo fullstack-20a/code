@@ -98,6 +98,24 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
     ADD KEY `id_user` (`id_user`),
     ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
-
+    CONSEIL: 
+    ATTENDRE LA FIN DU DEV POUR AJOUTER LES CONTRAINTES DE CLE ETRANGERES...
 
     PAUSE JUSQU'A 11H05
+
+
+## REDIRECTION EN PHP
+
+    https://www.php.net/manual/fr/function.header.php
+
+    header("Location: url-cible.php");
+
+    EXEMPLE: AU BOUT DU TRAITEMENT DE FORMULAIRE DANS api.php
+        ON VA REDIRIGER VERS LA PAGE D'AFFICHAGE affichage.php
+
+    header("Location: affichage.php");
+
+    CONSEIL: 
+    FAIRE D'ABORD UN TRAITEMENT QUI FONCTIONNE CORRECTEMENT 
+    ET ENSUITE RAJOUTER LA REDIRECTION A LA FIN...
+
