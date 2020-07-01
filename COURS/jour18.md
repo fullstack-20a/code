@@ -11,6 +11,10 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
     * SQL: RELATIONS ET JOINTURES
     * PHP: CRUD
 
+## EVALUATION
+
+    CREER UN NOUVEAU DOSSIER multicrud
+
 ### EXERCICE 1: CREER LA DATABASE ET LES TABLES
 
     TABLES SQL: 2 AU MINIMUM
@@ -30,7 +34,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
         titre           VARCHAR(160)
         description     TEXT
         photo           VARCHAR(160)
-        id_user         INT             => CLE ETRANGERE VERS CLE PRIMAIRE id DE LA TABLE user
+        id_user         INT             => (POUR NOUS...) CLE ETRANGERE VERS CLE PRIMAIRE id DE LA TABLE user
         ...
 
     (PAS BESOIN DE RAJOUTER DE CONTRAINTE DE CLE ETRANGERE AU DEPART => SECURITE SUPPLEMENTAIRE...) 
@@ -79,3 +83,17 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
         ON user.id = contenu.id_user
     WHERE user.login = 'toto'
 
+
+## AJOUTER UNE CONTRAINTE DE CLE ETRANGERE
+
+    DANS LA TABLE article AJOUTER UNE COLONNE id_user AVEC PhpMyAdmin
+    REMPLIR LA COLONNE AVEC UN id EXISTANT DANS user (FAIRE UNE REQUETE SQL UPDATE...)
+    ET ENSUITE LANCER LA COMMANDE SQL POUR AJOUTER LA CONTRAINTE DE CLE ETRANGERE
+
+    ALTER TABLE `article`
+    ADD KEY `id_user` (`id_user`),
+    ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
+
+
+
+    PAUSE JUSQU'A 11H05
