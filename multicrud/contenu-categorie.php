@@ -13,17 +13,19 @@
             <a href="contenu.php">contenu</a>
             <a href="categorie.php">categorie</a>
             <a href="contenu-categorie.php">contenu-categorie</a>
-       </nav>
+        </nav>
     </header>
     <main>
         <section>
-            <h2>FORMULAIRE DE CREATE SUR user</h2>
-            <form action="api.php" method="POST">
-                <input type="text" name="login" required placeholder="login">
-                <input type="password" name="password" required placeholder="password">
-                <button type="submit">INSCRIPTION</button>
+            <h2>FORMULAIRE DE CREATE SUR contenu_categorie</h2>
+            <!-- NE PAS OUBLIER ATTRIBUT enctype SI UPLOAD SANS AJAX -->
+            <form action="api-contenu-categorie.php" method="POST">
+                <input type="number" name="id_contenu" required placeholder="id_contenu">
+                <input type="number" name="id_categorie" required placeholder="id_categorie">
+                <button type="submit">AJOUTER UN LIEN CONTENU-CATEGORIE</button>
             </form>
         </section>
+
     </main>
     <footer>
         <p>tous droits réservés</p>

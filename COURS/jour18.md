@@ -116,7 +116,8 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
 
     AJOUTER LE CODE POUR OBTENIR
     * CREATE SUR LES 2 TABLES
-        AJOUTER DES CATEGORIES
+        AJOUTER DES CATEGORIES 
+            (DONT UNE AVEC nom = 'sport'...)
         ET ENSUITE AJOUTER DES LIENS ENTRE LES CONTENUS ET DES CATEGORIES
     * ET ENSUITE READ
 
@@ -168,4 +169,3 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
 
     PAUSE JUSQU'A 15H55
 
-    

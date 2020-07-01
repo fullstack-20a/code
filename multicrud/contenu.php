@@ -11,6 +11,8 @@
         <nav>
             <a href="inscription.php">inscription</a>
             <a href="contenu.php">contenu</a>
+            <a href="categorie.php">categorie</a>
+            <a href="contenu-categorie.php">contenu-categorie</a>
         </nav>
     </header>
     <main>
@@ -153,6 +155,76 @@ foreach($tabLigne as $tabColonne)
         <td>$photo</td>
         <td>$id_user</td>
         <td>$login</td>
+    </tr>
+codehtml;
+
+}
+
+?>
+                </tbody>
+            </table>
+
+        </section>
+
+        <section>
+            <h2>AFFICHAGE DES CONTENUS DANS LA CATEGORIE sport</h2>
+            <table>
+                <thead>
+                    <!-- AJOUTER LES TITRES DES COLONNES -->
+                    <tr>
+                        <td>titre</td>
+                        <td>description</td>
+                        <td>photo</td>
+                        <td>id_user</td>
+                        <td>nom</td>
+                    </tr>
+                </thead>
+                <tbody>
+<?php
+// ON VA CREER UNE LIGNE tr POUR CHAQUE LIGNE SQL DE LA TABLE contenu
+
+// astuce: 
+// on peut ajouter des colonnes supplémentaires et choisir le nom de ces colonnes
+// SELECT *, contenu.id as idcontenu FROM contenu
+
+$requeteSQL =
+<<<codesql
+
+SELECT *
+FROM contenu_categorie
+INNER JOIN contenu
+    ON contenu.id = contenu_categorie.id_contenu
+INNER JOIN categorie
+    ON categorie.id = contenu_categorie.id_categorie
+WHERE
+    categorie.nom = 'sport'
+
+codesql;
+$tabAssoToken = [];     // pas de token
+
+// ENVOYER LA REQUETE SQL (CREATE)
+// NE PAS OUBLIER DE CHANGER LE NOM DE LA DATABASE
+$dbname             = "multicrud";
+$objetPDO           = new PDO("mysql:host=localhost;port=3306;dbname=$dbname;charset=utf8", "root", "");   
+$objetPDOStatement  = $objetPDO->prepare($requeteSQL);
+$objetPDOStatement->execute($tabAssoToken);
+
+// POUR LE READ ON A DES ETAPES EN PLUS
+$tabLigne = $objetPDOStatement->fetchAll(PDO::FETCH_ASSOC);
+// ON BOUCLE SUR LE TABLEAU
+foreach($tabLigne as $tabColonne)
+{
+    extract($tabColonne);
+    // => CREE LES VARIABLES A PARTIR DES NOMS DES COLONNES SQL
+    
+    echo
+<<<codehtml
+    <tr>
+        <td>$titre</td>
+        <td>$description</td>
+        <td>$photo</td>
+        <td>$id_user</td>
+        <td>$nom</td>
     </tr>
 codehtml;
 
