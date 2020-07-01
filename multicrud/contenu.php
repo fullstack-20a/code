@@ -107,6 +107,11 @@ codehtml;
                 <tbody>
 <?php
 // ON VA CREER UNE LIGNE tr POUR CHAQUE LIGNE SQL DE LA TABLE contenu
+
+// astuce: 
+// on peut ajouter des colonnes supplémentaires et choisir le nom de ces colonnes
+// SELECT *, contenu.id as idcontenu FROM contenu
+
 $requeteSQL =
 <<<codesql
 
