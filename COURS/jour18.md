@@ -165,3 +165,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
 
 
     PAUSE DEJEUNER REPRISE A 13H35...
+
+    PAUSE JUSQU'A 15H55
+
+    
