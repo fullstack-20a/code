@@ -11,6 +11,8 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
     * SQL: RELATIONS ET JOINTURES
     * PHP: CRUD
 
+    https://sql.sh/cours/jointures
+
 ## EVALUATION
 
     CREER UN NOUVEAU DOSSIER multicrud
@@ -70,6 +72,9 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
 
     (SI ON A BLOQUE SUR L'EXERCICE 2... AVEC PHPMYADMIN... AJOUTER DES LIGNES DANS LES 2 TABLES SQL...)
 
+    https://sql.sh/cours/jointures/inner-join
+    https://sql.sh/cours/jointures/left-join
+
     REQUETE AVEC JOINTURE:
     SI JE VEUX AFFICHER LA LISTE DES CONTENUS ET LE login DE L'AUTEUR DE CHAQUE CONTENU
 
@@ -90,6 +95,10 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
 
 ### EXERCICE MANY TO MANY
 
+    https://sql.sh/cours/jointures
+    https://sql.sh/cours/jointures/inner-join
+    https://sql.sh/cours/jointures/left-join
+
     TABLE3  categorie
         id              INT             PRIMARY_KEY     A_I
         nom             VARCHAR(160)
@@ -105,8 +114,9 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?3006D592432BD96F91CC25E26
         id_categorie    INT             => (POUR NOUS...) CLE ETRANGERE VERS CLE PRIMAIRE id DE LA TABLE categorie
 
 
-    CREATE SUR LES 2 TABLES
-    ET ENSUITE READ
+    AJOUTER LE CODE POUR OBTENIR
+    * CREATE SUR LES 2 TABLES
+    * ET ENSUITE READ
 
     JE VEUX AFFICHER TOUS LES CONTENUS DANS LA CATEGORIE nom = 'sport'
 
