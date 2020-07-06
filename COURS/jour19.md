@@ -428,6 +428,30 @@ get_footer();
     PAR DU CODE PHP POUR LES RENDRE DYNAMIQUES...
 
 
+## VEILLE TECHNO
+
+    * INFORMATIQUE GENERALE
+
+    https://www.lemondeinformatique.fr/
+
+    * STARTUPS
+
+    https://techcrunch.com/
+
+    * WEB
+
+    https://www.journaldunet.com/
+    
+    https://www.blogdumoderateur.com/comment-installer-wordpress/
+
+    * TUTORIELS ET LIBRAIRIES DE CODE
+
+    https://tutorialzine.com/2020/05/10-interesting-javascript-and-css-libraries-for-may-2020
+
+    https://www.hongkiat.com/blog/beginners-guide-to-wordpress-plugin-development/
+
+    https://www.elegantthemes.com/blog/business/best-project-management-software
+
 
 
 
