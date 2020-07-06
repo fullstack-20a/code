@@ -1,0 +1,52 @@
+html, body {
+    font-size:14px;
+    width:100%;
+    padding:0;
+    margin:0;
+    text-align: center;
+}
+* {
+    width:100%;
+    box-sizing: border-box;
+}
+header {
+    background-color: #cccccc;
+}
+H1, h2, h3, h4, h5, h6 {
+    margin-top:0;
+    padding:1rem;
+}
+a {
+    color: red;
+    text-decoration: none;
+}
+
+img {
+    max-height: 100vmin;
+    object-fit: cover;
+}
+
+footer {
+    padding:4rem;
+}
+/* MENU HORIZONTAL */
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;   /* ENLEVER LES PASTILLES */
+    padding:0;          /* ENLEVER LE PADDING LEFT */
+}
+nav ul li {
+    padding:0.5rem;
+    width: calc(100% / 6);
+}
+/* MENU VERTICAL */
+footer nav ul {
+    flex-direction: column;
+    text-align: center;
+}
+footer nav ul li {
+    padding:0.5rem;
+    width: calc(100% / 1);
+}
