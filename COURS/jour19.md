@@ -165,6 +165,12 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?289F51A6D56445BC6A7D18F82
 
 ## AJOUTER LE CODE POUR RETROUVER LE MENU DE NAVIGATION
 
+
+    https://developer.wordpress.org/reference/functions/add_action/
+    https://developer.wordpress.org/reference/functions/register_nav_menus/
+    https://developer.wordpress.org/reference/functions/wp_nav_menu/
+
+
     UN PEU PLUS COMPLIQUE...
     EN PLUSIEURS ETAPES...
 
@@ -204,7 +210,7 @@ add_action( 'init', 'montheme_menus' );
 ```
 
 
-    index.php
+    * TEMPLATE index.php
 
 
 ```php
@@ -218,6 +224,7 @@ add_action( 'init', 'montheme_menus' );
     <!-- wp_head DEBUT -->
     <?php wp_head() ?>
     <!-- wp_head FIN -->
+
     </head>
 <body>
     <header>
