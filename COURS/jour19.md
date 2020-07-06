@@ -90,6 +90,12 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?289F51A6D56445BC6A7D18F82
 
 ## CREER SON THEME AVEC WORDPRESS
 
+    * doc officielle
+    https://codex.wordpress.org/Theme_Development
+
+    * doc en français (peut-être pas à jour...)
+    https://codex.wordpress.org/FR:Theme_Development
+
     WORDPRESS COMME FRAMEWORK... POUR LES DEVELOPPEURS...
 
     DOSSIERS DE WORDPRESS:
@@ -239,4 +245,185 @@ add_action( 'init', 'montheme_menus' );
 
     PAUSE DEJEUNER ET ON REPREND A 13H35...
 
+## LE BOUCLE POUR AFFICHER LE CONTENU DE CHAQUE PAGE
+
+
+    https://codex.wordpress.org/The_Loop
+
+    https://developer.wordpress.org/themes/basics/the-loop/
+
+    https://developer.wordpress.org/reference/functions/have_posts/
+
+    https://developer.wordpress.org/reference/functions/the_post/
+
+    https://developer.wordpress.org/reference/functions/the_title/
+
+    https://developer.wordpress.org/reference/functions/the_content/
+
+    etc...
+
+```php
+
+<?php while ( have_posts() ) : the_post(); ?>
+    <article>
+        <h2><?php the_title() ?></h2>
+        <div><?php the_content() ?></div>
+    </article>
+<?php endwhile; ?>
+
+```
+
+## AJOUTER LE LIEN ENTRE HTML ET CSS
+
+    https://developer.wordpress.org/reference/functions/get_template_directory_uri/
+
+    ON PASSE PAR UNE FONCTION QUI CONSTRUIT L'URL JUSQU'AU DOSSIER montheme/
+
+```php
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/style.css">
+```
+
+## AJOUTER LE LIEN ENTRE HTML ET JS
+
+    https://developer.wordpress.org/reference/functions/get_template_directory_uri/
+
+    CREER LE DOSSIER assets/js/
+    ET LE FICHIER assets/js/main.js
+
+    ET AJOUTER ENSUITE DANS LE FICHIER index.php
+
+```php
+    <script src="<?php echo get_template_directory_uri() ?>/assets/js/main.js"></script>
+```
+
+
+## AJOUTER LE LIEN ENTRE HTML ET DES IMAGES
+
+
+    https://developer.wordpress.org/reference/functions/get_template_directory_uri/
+
+
+```php
+    <img src="<?php echo get_template_directory_uri() ?>/assets/img/leopard.jpg" alt="photo">
+```
+
+## AJOUTER DES CLASSES SUR LA BALISE body
+
+    https://developer.wordpress.org/reference/functions/body_class/
+
+```php
+<body <?php body_class() ?>>
+```
+
+## VOLUME DE CODE DE WORDPRESS
+
+    ON NE FAIT QUE UTILISER QUELQUES DIZAINES DE FONCTIONS 
+    SUR LES CENTAINES DE MILLIERS DE LIGNES DE CODE DANS WORDPRESS...
+
+    https://www.openhub.net/p/wordpress/analyses/latest/languages_summary
+
+
+
+## CREER PLUSIEURS TEMPLATES DE PAGES...
+
+
+    https://developer.wordpress.org/themes/template-files-section/page-template-files/
+
+    CREER UN SOUS-DOSSIER page-templates
+
+    wp-content/themes/montheme/page-templates/
+
+    ET ENSUITE AJOUTER UN FICHIER template-galerie.php
+    ET DEDANS AJOUTER L'ANNOTATION POUR DONNER UN NOM A NOTRE TEMPLATE
+
+    /*
+    Template Name: MON TEMPLATE POUR LA GALERIE
+    */
     
+```php
+<?php
+/*
+
+Template Name: MON TEMPLATE POUR LA GALERIE
+
+=> ANNOTATION: 
+    ASTUCE DES FRAMEWORKS... 
+    COMMENTAIRE POUR PHP
+    MAIS CODE ACTIF POUR WORDPRESS
+
+*/
+?>
+```
+
+    ENSUITE QUAND ON MODIFIE UNE PAGE
+    DANS LE TIROIR "Attributs de la page"
+    ON PEUT CHOISIR ENTRE PLUSIEURS MODELES DE PAGES
+
+    Modèle Par Défaut               => index.php
+    MON TEMPLATE POUR LA GALERIE    => template-galerie.php
+
+## EXTENSION: WHAT THE FILE
+
+    AJOUTER DES INFOS SUR LE TEMPLATE ACTIVE POUR AFFICHER UNE PAGE
+
+    https://wordpress.org/plugins/what-the-file/
+
+
+    SUR LA PARTIE PUBLIQUE, ON A UN MENU EN PLUS QUI DONNE LE TEMPLATE UTILISE POUR CHAQUE PAGE...
+    => PRATIQUE POUR COMPRENDRE QUELLE PAGE UTILISE QUEL TEMPLATE ...
+
+
+
+## DECOUPAGE DU TEMPLATES EN DIFFERENTS FICHIERS
+
+    CREER DANS LE DOSSIER montheme/
+    LE FICHIER header.php
+    LE FICHIER footer.php
+
+    CREER UN SOUS-DOSSIER template-parts/
+    ET AJOUTER DANS CE SOUS-DOSSIER LES SECTIONS
+    section-index.php
+    section-galerie.php
+
+
+    ET ENFIN RECOMPOSER CHAQUE TEMPLATE AVEC LES TRANCHES...
+
+
+    https://developer.wordpress.org/reference/functions/get_header/
+    https://developer.wordpress.org/reference/functions/get_footer/
+    https://developer.wordpress.org/reference/functions/get_template_part/
+
+
+```php
+<?php
+// EN PHP
+// RECOMPOSER LE TEMPLATE AVEC LES 3 TRANCHES
+// require_once "header.php";
+// require_once "section-index.php";
+// require_once "footer.php";
+
+// AVEC WORDPRESS
+get_header();
+get_template_part("template-parts/section-index"); // ATTENTION: SANS .php 
+get_footer();
+
+```
+
+    PAUSE JUSQU'A 16H...
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
