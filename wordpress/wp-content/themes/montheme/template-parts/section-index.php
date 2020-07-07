@@ -5,6 +5,7 @@
     <article>
         <h2><?php the_title() ?></h2>
         <div><?php the_content() ?></div>
+        <div><?php the_post_thumbnail() ?></div>
     </article>
 <?php endwhile; ?>
 

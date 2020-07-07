@@ -21,3 +21,8 @@ function montheme_menus() {
 
 // WORDPRESS VA AUTOMATIQUEMENT APPELER LA FONCTION DE CALLBACK SUR L'EVENEMENT init
 add_action( 'init', 'montheme_menus' );
+
+
+// ON VEUT POUVOIR ASSOCIER AUX ARTICLES UNE IMAGE MISE EN AVANT
+add_theme_support( 'post-thumbnails' );
+

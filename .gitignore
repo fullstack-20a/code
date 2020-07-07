@@ -3,6 +3,7 @@ wordpress/wp-includes/
 wordpress/wp-content/languages/
 wordpress/wp-content/upgrade/
 wordpress/wp-content/uploads/
+wordpress/wp-content/plugins/caldera-forms/
 wordpress/*.*
 
 
