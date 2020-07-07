@@ -64,7 +64,10 @@ footer nav ul li {
 article .photo img {
     height:35vh;
 }
-
+article video {
+    height:35vh;
+    object-fit: cover;
+}
 /* BLOG */
 .blog article {
     border:1px solid #dddddd;
