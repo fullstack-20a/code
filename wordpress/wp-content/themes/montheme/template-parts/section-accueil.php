@@ -1,9 +1,21 @@
 
+<!-- BOUCLE PRIMAIRE -->
 <section>
     <h2>SECTION ACCUEIL</h2>
+    <div class="row">
+<?php while ( have_posts() ) : the_post(); ?>
+        <article>
+            <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+            <div><?php the_content() ?></div>
+            <div><?php the_post_thumbnail() ?></div>
+        </article>
+<?php endwhile; ?>
+    </div>
+
 </section>
 
 
+<!-- BOUCLES MULTIPLES -->
 <section>
     <h2>AFFICHAGE DES SAFARIS</h2>
 <?php
