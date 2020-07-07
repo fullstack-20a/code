@@ -43,8 +43,9 @@ while ( have_posts() )
 
 ?>
         </section>
-
+<!--
         <section class="test">
             <h2>LEOPARD</h2>
             <img src="<?php echo get_template_directory_uri() ?>/assets/img/leopard.jpg" alt="photo">
         </section>
+-->
