@@ -64,3 +64,32 @@ footer nav ul li {
 article .photo img {
     height:30vh;
 }
+
+/* BLOG */
+.blog article {
+    border:1px solid #dddddd;
+    padding:1rem;
+    margin-bottom:1rem;
+    margin-top:1rem;
+}
+
+.blog article img {
+    max-width:50vmin;
+    max-height:50vmin;
+}
+
+/* FORM  */
+form {
+    max-width:640px;
+    margin: 0 auto;
+}
+
+/* ETC... */
+figure {
+    margin:0;
+}
+
+section.test img {
+    height:10vmin;
+    object-fit: contain;
+}
