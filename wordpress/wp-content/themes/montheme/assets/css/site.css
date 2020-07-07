@@ -50,3 +50,17 @@ footer nav ul li {
     padding:0.5rem;
     width: calc(100% / 1);
 }
+
+/* FLEX SUR LES 3 COLONNES */
+.row {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.row.x3col > * {
+    width: calc(100% / 3);
+}
+
+article .photo img {
+    height:30vh;
+}
