@@ -14,7 +14,7 @@
     <!-- wp_head FIN -->
 </head>
 
-<body <?php body_class() ?>>
+<body <?php body_class("maclasse1 maclasse2") ?>>
 
     <header>
         <h1>Into The Wild</h1>
