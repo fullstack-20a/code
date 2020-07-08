@@ -109,6 +109,37 @@ add_shortcode( 'heure', 'heure_func' );
 
 ```
 
+## THEME STARTER
+
+    BASE DE CODE D'UN THEME
+    DANS LEQUEL ON AJOUTE NOTRE CODE DIRECTEMENT DANS LE THEME STARTER...
+    (ON NE CREE PAS DE THEME ENFANT...)
+
+    * THEME STARTER DES DEV DE THEME WORDPRESS
+    https://underscores.me/
+
+    * AUTRES INITIATIVES INTERESSANTES
+    https://www.wpbeginner.com/wp-themes/21-best-wordpress-starter-themes-for-developers/
+
+## THEMES ENFANTS
+
+    ON UTILISE UN THEME DEJA CODE (THEME PARENT)
+    ET ON LE COMPLETE/MODIFIE EN AJOUTANT NOTRE CODE DANS UN THEME ENFANT
+
+    PAUSE JUSQU'A 13H40...
+
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
     
