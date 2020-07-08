@@ -62,3 +62,16 @@ function nb_visites_callback ()
 }
 add_shortcode( 'nb_visites', 'nb_visites_callback' );
 
+
+// [tableau nbligne="2" nbcolonne="3"]
+function tableau_callback ($tabAssoAttribut)
+{
+    // ON PEUT RECUPERER LES VALEURS DES ATTRIBUTS DU SHORTCODE 
+    // AVEC LE TABLEAU ASSOCIATIF FOURNI EN PARAMETRE
+    $nbligne   = $tabAssoAttribut["nbligne"] ?? 1;
+    $nbcolonne = $tabAssoAttribut["nbcolonne"] ?? 1;
+
+    return "(ON A DEMANDE UN TABLEAU AVEC $nbligne x $nbcolonne)";
+}
+
+add_shortcode( 'tableau', 'tableau_callback' );
