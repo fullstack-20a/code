@@ -6,7 +6,11 @@ wordpress/wp-content/uploads/
 wordpress/wp-content/plugins/caldera-forms/
 wordpress/wp-content/plugins/advanced-custom-fields/
 wordpress/wp-content/plugins/custom-post-type-ui/
+wordpress/wp-content/plugins/child-theme-configurator/
+wordpress/wp-content/plugins/colibri-page-builder/
 wordpress/wp-content/themes/storefront/
+wordpress/wp-content/themes/colibri-wp/
+wordpress/wp-content/themes/calliope/
 wordpress/*.*
 
 
