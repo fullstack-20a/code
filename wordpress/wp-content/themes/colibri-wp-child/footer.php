@@ -1,6 +1,6 @@
-    <div>
+    <footer>
         MON COPYRIGHT A MOI
-    </div>
+    </footer>
 
 </div><!-- #page -->
 <?php wp_footer(); ?>
