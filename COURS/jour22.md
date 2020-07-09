@@ -269,7 +269,21 @@ add_filter('the_content', 'filtrer_contenu');
 
     AUTONOMIE POUR LE RESTE DE LA JOURNEE...
 
-    
+## PORTAGE SALARIAL
+
+    https://www.smartfr.fr/communaute/design-web/#Developpeur
+
+
+## STATS SUR WORDPRESS
+
+    https://kinsta.com/fr/blog/statistiques-wordpress/
+
+    https://kinsta.com/fr/blog/salaire-developpeur-wordpress/
+
+
+## CDD POUR L'ETAT FRANCAIS
+
+    https://design.numerique.gouv.fr/commando-ux/
 
 
 
