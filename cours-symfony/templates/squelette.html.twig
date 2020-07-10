@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <!-- DANS LE SQUELETTE ON MET LE CODE COMMUN AUX PAGES -->
+    <head>
+        <meta charset="UTF-8">
+        <title>PAGE A LA MAIN...</title>
+
+        {% block zonecss %}
+        {% endblock %}
+
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>TITRE1</h1>
+        </header>
+        <main>
+            <section>
+                <h2>TITRE2</h2>
+            </section>
+            {% block zone1 %}
+                <h2>CODE HTML PAR DEFAUT</h2>
+            {% endblock %}
+        </main>
+        <footer>
+            <p>tous droits réservés</p>
+        </footer>
+
+        {% block zonejs %}
+        {% endblock %}
+
+    </body>
+</html>

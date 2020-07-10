@@ -191,3 +191,83 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?09A7A469E98313E1424BE1CC6
 
 
     PAUSE DEJEUNER... REPRISE A 13H40...
+
+## UTILISER LA CONSOLE POUR CREER UNE BASE DE CODE
+
+    DANS LE DOSSIER bin
+    ON A LE PROGRAMME console
+
+    DANS LE TERMINAL, IL FAUT ETRE DANS LE DOSSIER cours-symfony/
+
+    php bin/console
+
+    => ON PEUT UTILISER PHP EN LIGNE DE COMMANDE DANS LE TERMINAL
+
+    php bin/console
+    => ON VEUT EXECUTER LE CODE PHP DANS LE FICHIER bin/console
+
+    ON VA UTLISER LA COMMANDE
+    make:controller                         Creates a new controller class
+
+    POUR LANCER LA CREATION D'UNE CLASSE Controller...
+
+    php bin/console make:controller
+
+    ON VA AVOIR UN SCRIPT QUI GENERE UNE BASE DE CODE...
+
+    Choose a name for your controller class (e.g. OrangeElephantController):
+    > AccueilController
+
+    created: src/Controller/AccueilController.php
+    created: templates/accueil/index.html.twig
+
+    => LE CODE HTML EST MAINTENANT DANS DES FICHIERS SEPARES
+    => AU FORMAT TWIG
+
+## TWIG POUR LES TEMPLATES
+
+    UN COMPOSANT DE SYMFONY MAIS QUI PEUT ETRE UTILISE EN DEHORS DE SYMFONY
+
+    (NOTE: LARAVEL UTILISE BLADE QUI SE MELANGE AVEC DU CODE PHP)
+
+    https://twig.symfony.com/
+
+    PHP N'EST PAS UN BON MOTEUR DE TEMPLATE SELON TWIG
+    TWIG EST UN MOTEUR DE TEMPLATE ECRIT EN PHP
+    ET QUI PROPOSE LE LANGAGE TWIG A LA PLACE DU CODE PHP...
+
+    DEPUIS QUELQUES ANNEES, PLUSIEURS CMS ONT DECIDE DE MIGRER LEUR CODE SUR SYMFONY...
+    * LE CMS DRUPAL DEPUIS DRUPAL8 A BASCULE SON CODE SUR SYMFONY
+        DRUPAL9 VIENT DE SORTIR EN JUIN 
+        ET EST BASEE SUR LA LTS SYMFONY 4.4
+        https://www.drupal.org/docs/understanding-drupal/drupal-9-resources
+
+    * PRESTASHOP QUI A COMMENCE A MIGRER LA PARTIE TEMPLATE VERS TWIG
+        https://devdocs.prestashop.com/1.7/development/architecture/migration-guide/templating-with-twig/
+
+
+## EXERCICE: CREER DES PAGES ET DES TEMPLATES TWIG POUR AFFICHER CES PAGES
+
+    IL MANQUE 
+    * COMMENT RELIER LE HTML AVEC UN FICHIER CSS
+    * COMMENT RELIER LE HTML AVEC UN FICHIER JS
+    * COMMENT RELIER LE HTML AVEC UN FICHIER IMG
+    * COMMENT CREER UN MENU POUR NAVIGUER ENTRE LES PAGES
+    * ...
+
+
+## JS ET REFERENCEMENT
+
+    https://developers.google.com/search/docs/guides/javascript-seo-basics?hl=fr
+
+    Gardez à l'esprit que l'affichage côté serveur ou le pré-affichage est recommandé, 
+    car il permet aux utilisateurs et aux robots d'exploration d'accéder à votre site plus rapidement. 
+    De plus, tous les robots n'utilisent pas forcément JavaScript.
+
+    https://developers.google.com/search/docs/guides/get-started?hl=fr
+
+
+    PAUSE JUSQU'A 15H55...
+
+
+
