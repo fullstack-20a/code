@@ -49,7 +49,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?09A7A469E98313E1424BE1CC6
 
     SYMFONY4    VERSION SIMPLIFIEE DE SYMFONY3
                 (INSTALLATION MINIMALE 1/3 COMPARE A SYMFONY3...)
-                => IL Y A DEJA UN BUNDLE POUR LE PROJET MAIS ON N'EN PARLE PLUS...
+                => IL Y A DEJA UN BUNDLE App POUR LE PROJET MAIS ON N'EN PARLE PLUS...
 
     LTS ACTUELLE SYMFONY 4.4    => END OF MAINTENANCE   NOV 2022
 
@@ -115,6 +115,79 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?09A7A469E98313E1424BE1CC6
 
     PAUSE JUSQU'A 11H...
 
-    
+## INSTALLATION DE SYMFONY
 
 
+    https://symfony.com/doc/current/setup.html
+
+    ESSAYER LA COMMANDE POUR VERIFIER SI COMPOSER EST INSTALLE
+
+    composer -v
+
+    SUR WINDOWS
+    * TELECHARGER LE FICHIER .exe ET LE LANCER...
+
+    https://getcomposer.org/Composer-Setup.exe
+
+    CHOISIR LA VERSION DU MOTEUR PHP...
+
+    COMPOSER EST UN OUTIL QUI PERMET D'INSTALLER DU CODE POUR UN PROJET PHP
+    (comme nodejs...)
+
+
+    * POUR INSTALLER UN PROJET SYMFONY, ON PASSE PAR UNE COMMANDE composer
+
+    composer create-project symfony/website-skeleton cours-symfony
+
+    OU SI VOUS AVEZ INSTALLE AVEC php
+
+    php composer.phar create-project symfony/website-skeleton cours-symfony
+
+
+## CONFIGURATION POUR LE SERVEUR APACHE
+
+    https://symfony.com/doc/current/setup/web_server_configuration.html
+
+    CHANGER DE DOSSIER POUR ALLER DANS LE DOSSIER QUI CONTIENT LE PROJET SYMFONY
+
+    cd cours-symfony
+
+    composer require symfony/apache-pack
+
+    SI ON COPIE LE FICHIER composer.phar DANS LE DOSSIER cours-symfony
+    php composer.phar require symfony/apache-pack
+
+    SINON
+    php ../composer.phar require symfony/apache-pack
+
+    ATTENTION: 
+    NE PAS FAIRE PLUSIEURS ENTREES "RETOUR CHARIOT"
+    PARCE QUE LE SCRIPT POSE UNE QUESTION ET IL FAUT REPONDRE y 
+    ET ENSUITE FAIRE LE RETOUR CHARIOT
+
+
+    AU BOUT DU SCRIPT...
+    SI TOUT S'EST BIEN PASSE, DANS LE DOSSIER public/
+    ON A UN FICHIER .htaccess
+
+    ET ON PEUT ALLER DANS LE NAVIGATEUR AFFICHER LA PAGE RACINE DU SITE
+    http://localhost/wf3/cours-symfony/public/
+
+    ET DONC ON DEVRAIT VOIR LE LOGO SYMFONY AVEC LA VERSION INSTALLEE...
+
+## CREER UNE PAGE DANS SYMFONY
+
+    https://symfony.com/doc/current/page_creation.html
+
+
+    EXEMPLE:
+    ON VEUT CREER UNE PAGE toto
+    AVEC CETTE URL
+    http://localhost/wf3/cours-symfony/public/toto
+
+    ON DOIT CREER UNE CLASSE DANS LE DOSSIER src/Controller/
+    PAR CONVENTION, LE NOM DE LA CLASSE DOIT FINIR PAR Controller
+
+
+
+    PAUSE DEJEUNER... REPRISE A 13H40...
