@@ -255,6 +255,8 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?09A7A469E98313E1424BE1CC6
 
     https://developers.google.com/search/docs/guides/get-started?hl=fr
 
+    * VIDEO GOOGLE: JAVASCRIPT SEO PLAYLIST
+    https://www.youtube.com/watch?v=LXF8bM4g-J4&list=PLKoqnv2vTMUPOalM1zuWDP9OQl851WMM9
 
     PAUSE JUSQU'A 15H55...
 
@@ -281,6 +283,6 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?09A7A469E98313E1424BE1CC6
     => IL FAUT COMPLETER L'INSTALLATION DU SYMFONY CLONE POUR AVOIR UN PROJET QUI MARCHE...
             ... LIGNES DE COMMANDE SUPPLEMENTAIRES ...
 
-            
+
 
 
