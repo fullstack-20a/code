@@ -438,7 +438,9 @@ $objet->faireTravail();         // ??? PHP VA APPELER QUELLE METHODE ?
 
     https://symfony.com/doc/4.2/best_practices/web-assets.html
 
-    ATTENTION: EN SYMFONY5, IL EST CONSEILLE D'UTILISER UN MODULE WEBPACK Encore...
+    ATTENTION: 
+    EN SYMFONY5, IL EST CONSEILLE D'UTILISER UN MODULE WEBPACK Encore...
+    https://symfony.com/doc/current/best_practices.html#use-webpack-encore-to-process-web-assets
 
 
     DANS LE DOSSIER public/
@@ -449,3 +451,9 @@ $objet->faireTravail();         // ??? PHP VA APPELER QUELLE METHODE ?
     ET IL FAUT COMPLETER LE CHEMIN MANQUANT
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+
+    AUTONOMIE JUSQU'A 15H30
+    PAUSE JUSQU'A 15H45
+    ET ENSUITE CHOIX DES ACTIVITES POUR LE RESTE DE LA JOURNEE...
+
