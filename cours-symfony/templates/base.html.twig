@@ -3,10 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <!-- CSS COMMUN A TOUTES LES PAGES -->
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+        <!-- CSS SPECIFIQUE A UNE PAGE -->
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
+
+        <!-- JS COMMUN A TOUTES LES PAGES -->
+        <script src="{{ asset('assets/js/main.js') }}"></script>
+
+        <!-- JS SPECIFIQUE A UNE PAGE -->
         {% block javascripts %}{% endblock %}
     </body>
 </html>
