@@ -455,7 +455,82 @@ $objet->faireTravail();         // ??? PHP VA APPELER QUELLE METHODE ?
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
 
-    AUTONOMIE JUSQU'A 15H30
-    PAUSE JUSQU'A 15H45
-    ET ENSUITE CHOIX DES ACTIVITES POUR LE RESTE DE LA JOURNEE...
+    * AUTONOMIE JUSQU'A 15H30
+    * PAUSE JUSQU'A 15H45
 
+    ET ENSUITE CHOIX DES ACTIVITES POUR LE RESTE DE LA JOURNEE...
+    * CONFIG GIT ET SYMFONY
+
+    
+## GIT ET SYMFONY
+
+    AVEC VSCODE, ON PEUT AJOUTER LE PROGRAMME git-scm
+
+    https://git-scm.com/
+
+    INSTALLER UN DOSSIER symfony AVEC composer create...
+    OUVRIR UN TERMINAL DANS LE DOSSIER DU PROJET git-symfony
+    TESTER git status
+
+    fatal: Not a git repository (or any of the parent directories): .git
+
+    => POUR LE MOMENT LE PROJET N'EST PAS GERE AVEC git
+
+    git init
+
+    Initialized empty Git repository in C:/xampp/htdocs/git-symfony/.git/
+    => CREE LE DOSSIER .git/
+
+    git status
+
+    => AFFICHE LES FICHIERS NON GERES PAR GIT
+
+    CONFIGURER LE NOM ET EMAIL DU USER git
+
+    git config --global user.name "LH"
+    git config --global user.email "lh@applh.com"
+
+
+    CREER LE REPO SUR GITHUB.COM
+    ET ENSUITE RELIER LE REPO GITHUB.COM AVEC LE DOSSIER git-symfony SUR NOTRE ORDI
+
+    git remote add origin https://github.com/fullstack-20a/git-symfony.git
+
+
+    LE 2 DEV OUVRE UN TERMINAL DANS LE DOSSIER htdocs/
+    ET IL FAIT UN GIT CLONE SUR SON ORDI...
+
+    git clone https://github.com/fullstack-20a/git-symfony.git dev2-symfony
+
+    => GIT CLONE CREE LE DOSSIER dev2-symfony
+    
+    => IL MANQUE DES DOSSIERS
+            var/
+            vendor/
+            etc...
+
+    SI ON ESSAIE DE REGARDER LE SITE DANS LE NAVIGATEUR, ON A UN MESSAGE D'ERREUR...
+    Warning: require(C:\xampp\htdocs\dev2-symfony/vendor/autoload.php): failed to open stream: No such file or directory
+
+    => OUVRIR UN TERMINAL DANS LE DOSSIER DU dev2-symfony
+            ET LANCER LA COMMANDE 
+
+    composer update
+
+
+## SCENARIOS AVEC GIT
+
+    SANS BRANCHE SUR LE MASTER
+    * SIMPLE
+    * MAIS IL FAUT QUE CHAQUE DEV RESPECTE BIEN LES FICHIERS DES AUTRES
+        ET VERIFIE QUE SON CODE MARCHE AVANT DE LE PARTAGER SUR GITHUB.COM...
+        SINON CA VA CASSER LES PROJETS DES AUTRES DEV...
+
+    AVEC BRANCHE
+    * PLUS LONG ET PLUS COMPLIQUE
+        CAR IL FAUT FUSIONNER/MERGER LES BRANCHES POUR RECUPERER LES CODES DES AUTRES DEV
+        DANGER: SI ON NE MERGE PAS REGULIEREMENT ON ACCUMULE DES CHANGEMENTS
+        => BIG BANG TESTING
+        => DIFFICILE A DEBUGGER...
+    * CHAQUE DEV EST ISOLE DES AUTRES
+        => PERMET DE METTRE EN QUARANTAINE LES MAUVAIS DEV...
