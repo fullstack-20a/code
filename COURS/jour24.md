@@ -452,6 +452,8 @@ $objet->faireTravail();         // ??? PHP VA APPELER QUELLE METHODE ?
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
 
     AUTONOMIE JUSQU'A 15H30
     PAUSE JUSQU'A 15H45
