@@ -397,5 +397,113 @@ class MonEnfant
     => ET AUSSI UNE TABLE SQL migration_versions
     => CREE UN FICHIER PHP
             QUI CONTIENT LE CODE SQL POUR CREER LA TABLE SQL ET LES COLONNES
-            
+
             $this->addSql('CREATE TABLE car (id INT AUTO_INCREMENT NOT NULL, marque VARCHAR(160) NOT NULL, modele VARCHAR(160) NOT NULL, couleur VARCHAR(160) NOT NULL, kilometrage INT NOT NULL, immatriculation VARCHAR(160) NOT NULL, carburant VARCHAR(160) NOT NULL, chevaux INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+
+
+    CETTE COMMANDE make:migration ANALYSE LE CODE PHP DES ENTITES 
+    ET AUSSI LES TABLES SQL
+    ET CONSTRUIT LE CODE NECESSAIRE POUR SYNCHRONISER LES 2 MONDES
+
+    ET ENFIN LA COMMANDE QUI LANCE LA CREATION DANS SQL...
+
+    php bin/console doctrine:migrations:migrate
+
+    SI TOUT SE PASSE BIEN, ON DOIT RETROUVER LA TABLE SQL DANS PHPMYADMIN...
+
+## CRUD AVEC SYMFONY
+
+    MAINTENANT QU'ON A LA TABLE SQL
+    ON PEUT AJOUTER UN CRUD SUR CETTE TABLE
+
+    https://symfony.com/blog/new-and-improved-generators-for-makerbundle
+
+    SI ON VEUT GENERER UN CODE CRUD POUR L'ENTITE Car
+
+    php bin/console make:crud Car
+
+    created: src/Controller/CarController.php
+    created: src/Form/CarType.php
+    created: templates/car/_delete_form.html.twig
+    created: templates/car/_form.html.twig
+    created: templates/car/edit.html.twig
+    created: templates/car/index.html.twig
+    created: templates/car/new.html.twig
+    created: templates/car/show.html.twig
+
+    Next: Check your new CRUD by going to /car/
+
+    DANS LE NAVIGATEUR, ON PEUT AFFICHER LES PAGES 
+    AVEC L'URL /car/
+
+    EXEMPLE:
+    http://localhost/wf3/cours-symfony/public/car/
+
+    COOL ;-p
+    ON A LES BASES D'UN CRUD QUI EST DISPONIBLE
+
+## LE CRUD DANS LE DETAIL DU CODE SYMFONY
+
+    src/Controller/CarController.php
+
+    TOUTES LES ROUTES DE LA CLASSE AURONT UN PREFIXE /car
+
+    /**
+    * @Route("/car")
+    */
+    class CarController extends AbstractController
+
+
+    SYMFONY PRECISE LE TYPE DES PARAMETRES
+    $carRepository EST UN OBJET DE LA CLASSE CarRepository
+    : Response     PRECISE QUE LA VALEUR RENVOYEE AVEC return SERA UN OBJET DE LA CLASSE Response
+
+    public function index(CarRepository $carRepository): Response
+
+## ROUTES AVEC PARAMETRES
+
+     * @Route("/{id}", name="car_show", methods={"GET"})
+
+    ON PEUT GERER PLUSIEURS URLS 
+    AVEC UNE SEULE ROUTE PARAMETREE 
+    ET UNE SEULE METHODE PHP
+
+
+
+    PAUSE JUSQU'A 15H50
+
+## EXERCICE: CREER UNE ENTITE ET PRODUIRE LE CODE DU CRUD POUR CETTE ENTITE
+
+    (CONTINUER A UTILISER LE MEME PROJET SYMFONY ET AUSSI LA MEME DATABASE...)
+    
+    PIOCHER UNE ENTITE ET CREER LES CODES AVEC LA CONSOLE POUR OBTENIR UN CRUD...
+
+    Article
+        (id)    GERE PAR SYMFONY
+        titre           string 160
+        contenu         text
+        image           string 160
+        signature       string 160
+        categorie       string 160
+        ...
+
+    Recette
+        (id)    GERE PAR SYMFONY
+        type            string 160
+        nom             string 160
+        ingredients     text
+        instructions    text
+        temps           string 160
+        ...
+
+    Pilote
+        (id)    GERE PAR SYMFONY
+        nom             string 160
+        prenom          string 160
+        age             integer
+        ecurie          string 160
+        voiture         string 160
+        numero          integer
+        nombreCourse    integer
+        ...
+
