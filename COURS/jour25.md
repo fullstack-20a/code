@@ -386,4 +386,16 @@ class MonEnfant
 
     PAUSE DEJEUNER JUSQU'A 13H40...
 
-    
+
+    POUR ENSUITE CREER LES TABLES SQL...
+    IL Y A DES ETAPES SUPPLEMENTAIRES...
+
+    php bin/console make:migration
+
+    Next: Review the new migration "src/Migrations/Version20200716114459.php"
+
+    => ET AUSSI UNE TABLE SQL migration_versions
+    => CREE UN FICHIER PHP
+            QUI CONTIENT LE CODE SQL POUR CREER LA TABLE SQL ET LES COLONNES
+            
+            $this->addSql('CREATE TABLE car (id INT AUTO_INCREMENT NOT NULL, marque VARCHAR(160) NOT NULL, modele VARCHAR(160) NOT NULL, couleur VARCHAR(160) NOT NULL, kilometrage INT NOT NULL, immatriculation VARCHAR(160) NOT NULL, carburant VARCHAR(160) NOT NULL, chevaux INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
