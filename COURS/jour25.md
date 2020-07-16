@@ -475,7 +475,7 @@ class MonEnfant
 ## EXERCICE: CREER UNE ENTITE ET PRODUIRE LE CODE DU CRUD POUR CETTE ENTITE
 
     (CONTINUER A UTILISER LE MEME PROJET SYMFONY ET AUSSI LA MEME DATABASE...)
-    
+
     PIOCHER UNE ENTITE ET CREER LES CODES AVEC LA CONSOLE POUR OBTENIR UN CRUD...
 
     Article
@@ -507,3 +507,7 @@ class MonEnfant
         nombreCourse    integer
         ...
 
+### POUR ALLER PLUS LOIN DANS LA PERSONNALISATION DES FORMULAIRES
+
+    form_row
+    https://symfony.com/doc/current/form/form_customization.html
