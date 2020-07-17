@@ -117,4 +117,26 @@ class MaClasse2
     ON A UNE COMMANDE POUR CREER LA DE CODE POUR GERER LES UTILISATEURS
 
     php bin/console make:user
-    
+
+    (REPONDRE AUX QUESTIONS...)
+
+    created: src/Entity/User.php
+    created: src/Repository/UserRepository.php
+    updated: src/Entity/User.php
+    updated: src/Entity/User.php
+    updated: config/packages/security.yaml
+
+
+    Next Steps:
+    - Review your new App\Entity\User class.
+    - Use make:entity to add more fields to your User entity and then run make:migration.
+    - Create a way to authenticate! See https://symfony.com/doc/current/security.html
+
+    LANCER ENSUITE LA COMMANDE
+
+    php bin/console make:migration
+
+        Next: Review the new migration "src/Migrations/Version20200717090458.php"      
+        Then: Run the migration with php bin/console doctrine:migrations:migrate       
+        See https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
+
