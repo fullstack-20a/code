@@ -101,6 +101,7 @@ class CarController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // ENREGISTRER LES MODIFICATIONS
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('car_index');
@@ -122,6 +123,7 @@ class CarController extends AbstractController
         
         if ($this->isCsrfTokenValid('delete'.$car->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            // DELETE DE LA LIGNE
             $entityManager->remove($car);
             $entityManager->flush();
         }

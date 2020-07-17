@@ -52,18 +52,23 @@ class Car
      */
     private $chevaux;
 
+    // GETTER
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    // GETTER
     public function getMarque(): ?string
     {
+        // ZERO SECURITE EN PLUS...
         return $this->marque;
     }
 
+    // SETTER
     public function setMarque(string $marque): self
     {
+        // ZERO SECURITE EN PLUS...
         $this->marque = $marque;
 
         return $this;
