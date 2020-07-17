@@ -140,3 +140,120 @@ class MaClasse2
         Then: Run the migration with php bin/console doctrine:migrations:migrate       
         See https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
 
+    php bin/console doctrine:migrations:migrate
+
+        -> CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB
+
+        (IL SE PEUT QU'IL Y AIT DES ERREURS SUIVANT LA VERSION DE BASE DE DONNEES...)
+
+
+    ON A UNE TABLE SQL user
+    MAIS ON N'A PAS DE LIGNE, IL FAUT AJOUTER UN UTILISATEUR AVANT DE FAIRE LE LOGIN
+    => PB LE MOT DE PASSE DOIT ETRE HASHE+SALE 
+    => IDEALEMENT, IL FAUDRAIT UN FORMULAIRE DE CREATION DE COMPTE...
+
+    https://symfony.com/doc/master/doctrine/registration_form.html
+
+    ON PEUT UTILISER LA COMMANDE
+
+    php bin/console make:registration-form
+
+    (REPONDRE AUX QUESTIONS...)
+
+        updated: src/Entity/User.php
+        updated: src/Entity/User.php
+        created: src/Security/EmailVerifier.php
+        created: templates/registration/confirmation_email.html.twig
+        created: src/Form/RegistrationFormType.php
+        created: src/Controller/RegistrationController.php
+        created: templates/registration/register.html.twig
+
+                
+        Success! 
+                
+
+        Next:
+        1) Install some missing packages:
+            composer require symfonycasts/verify-email-bundle
+        2) In RegistrationController::verifyUserEmail():
+        * Customize the last redirectToRoute() after a successful email verification.
+        * Make sure you're rendering success flash messages or change the $this->addFlash() line.
+        3) Review and customize the form, controller, and templates as needed.
+        4) Run "php bin/console make:migration" to generate a migration for the newly added User::isVerified property.
+
+        Then open your browser, go to "/register" and enjoy your new form!
+
+
+    AVANT D'OUBLIER...
+    TOUJOURS DANS LE DOSSIER cours-symfony
+    LANCER LA COMMANDE
+
+    composer require symfonycasts/verify-email-bundle
+
+    OU SUR UNE INSTALL AVEC composer.phar...
+
+    php ../composer.phar symfonycasts/verify-email-bundle
+
+    POUR SYNCHRONISER LA TABLE SQL ET AJOUTER LA COLONNE is_verified
+
+    php bin/console make:migration
+    php bin/console doctrine:migrations:migrate
+
+
+    QUAND ON ESSAIE D'ALLER SUR LA PAGE /register
+    
+    http://localhost/wf3/cours-symfony/public/register
+
+    => ON A UNE ERREUR DE CONFIGURATION 
+
+    The controller for URI "/register" is not callable: Environment variable not found: "MAILER_DSN".
+
+    https://symfony.com/doc/current/mailer.html
+
+    https://symfony.com/doc/current/mailer.html#disabling-delivery
+
+    MODIFIER LE FICHIER .env POUR PARAMETRER LE SERVEUR D'EMAIL
+
+    # EN LOCAL, POUR DESACTIVER L'ENVOI DE MAIL...
+    MAILER_DSN=null://null
+
+
+    => YOUPI SI ON A REUSSI ON PEUT CREER UN UTILISATEUR ;-p
+
+
+## FORMULAIRE DE LOGIN AVEC SYMFONY
+
+    https://symfony.com/blog/new-in-makerbundle-1-8-instant-user-login-form-commands
+
+    ON A UNE COMMANDE POUR CREER LA BASE DE CODE POUR LE LOGIN
+
+    php bin/console make:auth
+
+        updated: config/packages/security.yaml
+        created: src/Controller/SecurityController.php
+        created: templates/security/login.html.twig
+                
+        Success! 
+                
+        Next:
+        - Customize your new authenticator.
+        - Finish the redirect "TODO" in the App\Security\LoginFormAuthenticator::onAuthenticationSuccess() method.
+        - Review & adapt the login template: templates/security/login.html.twig.
+
+
+    DANS LE FICHIER src/Security/LoginFormAuthenticator
+    ET DANS LA METHODE onAuthenticationSuccess
+
+```php
+
+    // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
+    // ICI ON DETERMINE VERS QUELLE PAGE ON REDIRIGE APRES LE LOGIN
+    return new RedirectResponse($this->urlGenerator->generate('accueil'));
+
+    // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+```
+
+    ON PEUT TESTER LA PAGE DE LOGIN
+
+    http://localhost/wf3/cours-symfony/public/login
+
