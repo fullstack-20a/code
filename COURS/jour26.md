@@ -257,3 +257,53 @@ class MaClasse2
 
     http://localhost/wf3/cours-symfony/public/login
 
+
+    PAUSE DEJEUNER JUSQU'A 13H40...
+
+
+## FORMULAIRE PLUS AVANCE AVEC SYMFONY
+
+    https://symfony.com/doc/current/forms.html
+
+    https://symfony.com/doc/current/forms.html#rendering-forms
+
+    https://symfony.com/doc/current/form/form_customization.html#reference-forms-twig-form
+
+    DANS SYMFONY LES FORMULAIRES SONT GERES DANS UNE CLASSE QUI EST RANGEE
+    DANS src/Form/...Type.php
+
+    DANS TWIG
+    https://symfony.com/doc/2.0/reference/forms/twig_reference.html#reference-form-twig-functions
+
+
+    DANS PHP
+    COMMENT CHANGER LES CHAMPS DE FORMULAIRES
+
+    https://symfony.com/doc/current/forms.html#creating-form-classes
+
+    https://symfony.com/doc/current/reference/forms/types.html
+
+### SYMFONY ET UPLOAD AVEC INPUT TYPE FILE
+
+    https://symfony.com/doc/current/reference/forms/types/file.html#basic-usage
+
+
+## CMS BASE SUR SYMFONY: DRUPAL9
+
+    https://www.drupal.fr/articles/2020/drupal-9-est
+
+
+## RELATIONS ENTRE ENTITES
+
+    https://symfony.com/doc/current/doctrine/associations.html
+
+
+## ACTIVITE POUR LE RESTE DE LA JOURNEE
+
+    CONSEIL:
+    AVANCER SUR LE PROJET
+    => ESSAYER DE DETERMINER SI IL VOUS MANQUE DES ELEMENTS POUR REALISER LE PROJET AVEC SYMFONY
+    => OBJECTIF: REPERER LES POINTS DIFFICILES...
+
+    SI POSSIBLE: COMMENCER A CODER EN HTML ET CSS LES MAQUETTES...
+    

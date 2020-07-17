@@ -5,7 +5,31 @@
 {% block body %}
     <h1>Create new Car</h1>
 
-    {{ include('car/_form.html.twig') }}
+    {# CODE MINIMALISTE POUR AFFICHER LE FORMULAIRE form #}
+    {# form(form) #}
+
+    {# CODE PLUS DETAILLE POUR AFFICHER LE FORMULAIRE form #}
+    <div class="monform1">
+    {{ form_start(form) }} {# CREE LA BALISE OUVRANTE <form> #}
+        
+        <div class="carburant">
+            {{ form_row(form.carburant) }}
+        </div>
+
+        <div class="modele">
+            {{ form_row(form.modele) }}
+        </div>
+
+        <div class="kilometrage">
+            <label>le label que je veux</label>
+            {{ form_widget(form.kilometrage) }}
+        </div>
+
+        <h1>COUCOU</h1>
+    {{ form_end(form) }} {# CREE LE CODE MANQUANT POUR LE FORMULAIRE <form> #}
+    </div>
+
+    {# include('car/_form.html.twig') #}
 
     <a href="{{ path('car_index') }}">back to list</a>
 {% endblock %}

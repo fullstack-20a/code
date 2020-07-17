@@ -62,6 +62,7 @@ class CarController extends AbstractController
         // VIEW => AFFICHAGE DU FORMULAIRE
         return $this->render('car/new.html.twig', [
             // ON TRANSMET 2 VARIABLES A TWIG: car ET form
+            // PHP TRANSME LA VARIABLE form POUR TWIG
             'car'  => $car,
             'form' => $form->createView(),
         ]);
