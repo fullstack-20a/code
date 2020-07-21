@@ -143,3 +143,51 @@ twig:
 
     PAUSE ET REPRISE A 10H50
 
+
+## PAGE DES ANNONCES
+
+    https://symfony.com/doc/current/doctrine.html#fetching-objects-from-the-database
+
+    POUR FAIRE DES REQUETES DE LECTURE SUR UNE ENTITE
+    ON PASSE PAR UN OBJET DE LA CLASSE AnnonceRepository
+    ET LA METHODE D'OBJET findAll
+
+```php
+    /**
+     * @Route("/annonces", name="annonces")
+     */
+    public function annonces(AnnonceRepository $annonceRepository): Response
+    {
+        // ICI ON VEUT AFFICHER LA LISTE DES ANNONCES
+        // => SCENARIO CRUD : READ LISTE
+
+        return $this->render('marketplace/annonces.html.twig', [
+            // ON TRANSMET DE PHP A TWIG LA LISTE DES ANNONCES
+            // DANS LA VARIABLE TWIG annonces
+            'annonces' => $annonceRepository->findBy([], [ "datePublication" => "DESC" ]),
+            // COMPTER TOUTES LES LIGNES DANS LA TABLE SQL annonce
+            'annoncesTotal' => $annonceRepository->count([]),
+        ]);
+    }
+```
+
+```php
+    /**
+     * @Route("/", name="annonce_index", methods={"GET"})
+     */
+    public function index(AnnonceRepository $annonceRepository): Response
+    {
+        return $this->render('annonce/index.html.twig', [
+            
+            // 'annonces' => $annonceRepository->findAll(),    // TROP BASIQUE
+            // https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/working-with-objects.html#by-simple-conditions
+            // TRI PAR id DECROISSANT
+            'annonces' => $annonceRepository->findBy([], [ "id" => "DESC" ]),
+        ]);
+    }
+```
+
+
+    PAUSE DEJEUNER JUSQU'A 13H40...
+
+    
