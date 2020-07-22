@@ -104,4 +104,78 @@ class OrganismeFormation
 
     PAUSE JUSQU'A 11H...
 
+
+## EXERCICE SUR ENTITE User
+
+    AJOUTER UNE PROPRIETE codePostal
+
+    AJOUTER LA PROPRIETE DANS User
+
+    php bin/console make:entity User
+
+    php bin/console make:migration
+
+
+
+    PAUSE DEJEUNER JUSQU'A 13H40...
+
+
+## DEBUGGER AVEC dump
+
+    TRES PUISSANT ET PRATIQUE POUR DEBUGGER...
+    https://symfony.com/doc/current/components/var_dumper.html
+
+    https://symfony.com/doc/4.1/templating/debug.html
+
+    DANS PHP
+
+            // DEBUG: VA AFFICHER LES INFOS SUR LA VARIABLE DANS LA CONSOLE SYMFONY
+            dump($annonce);
+
+    DANS TWIG
+
+        {% dump(app) %}
+        {% dump(app.user) %}
+
+
+## UPLOAD PHOTO
+
+    https://symfony.com/doc/current/reference/forms/types.html
+
+    https://symfony.com/doc/current/reference/forms/types/file.html
+
+    https://symfony.com/doc/current/controller/upload_file.html
+
+## MENU LOGOUT
+
+    {% if (app.user.username ?? false) %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('app_logout') }}">déconnexion</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('app_login') }}">connexion</a>
+        </li>
+    {% endif %}
+
+
+
+    PAUSE JUSQU'A 15H45...
+
+## ACTIVITE POUR LE RESTE DE LA JOURNEE
+
+    ATELIER TENNIS
+    ATELIER MASQUES ET TUBAS
+    *** ATELIER PISCINE
+    ATELIER DESSIN ANIME
+    ATELIER SIESTE
+    ...
+
+
+    AVANCER SUR LE PROJET MARKETPLACE
+    AVANCER SUR LE PROJET EN EQUIPE
+    AJOUTER L'UPLOAD DE FICHIER SUR LE FORMULAIRE ADMIN ANNONCE
+    AJOUTER UNE NOUVELLE PROPRIETE SUR ENTITE User
+    AJOUTER UNE NOUVELLE PROPRIETE SUR ENTITE Annonce (codePostal, ...)
+
     
