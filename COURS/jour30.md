@@ -211,3 +211,61 @@ class Annonce
     PAUSE ET ON REPREND A 15H50...
 
 
+    COMMENCER PAR CREER L'ENTITE Contact
+
+    php bin/console make:entity Contact
+
+    php bin/console make:migration
+
+    php bin/console doctrine:migrations:migrate
+
+    php bin/console make:crud Contact
+
+    VERIFIER QUE LA PAGE S'AFFICHE
+    http://localhost/symfony-marketplace/public/contact/
+
+    ET EN FAIT, ON VA DEPLACER CES PAGES CRUD DANS LA PARTIE ADMIN...
+    => RAJOUTER /admin/contact DANS LA ROUTE
+
+```php
+    /**
+    * @Route("/admin/contact")
+    */
+    class ContactController extends AbstractController
+
+```
+
+    ENSUITE AJOUTER UNE NOUVELLE ROUTE POUR CREER LA PAGE /contact
+    ET CREER UN TEMPLATE
+    ET AJOUTER LE LIEN DANS LE MENU
+
+
+## AFFICHAGE INDIVIDUEL D'UNE ANNONCE
+
+    DANS templates/marketplace/annonces.html.twig
+
+    <h3><a href="{{ url('annonce_detail', { 'uri' : annonce.uri }) }}">{{ annonce.titre }}</a></h3>
+
+
+    DANS src/Controller/MarketplaceController.php
+
+```php
+
+    /**
+     * @Route("/annonce/{uri}", name="annonce_detail", methods={"GET"})
+     */
+    public function annonceDetail(Annonce $annonce): Response
+    {
+        return $this->render('marketplace/annonce_detail.html.twig', [
+            'annonce' => $annonce,
+        ]);
+    }
+
+```
+
+## FIN DES COURS
+
+    BRAVO ! VOUS ETES ARRIVES AU BOUT ;-p
+
+
+    
